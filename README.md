@@ -1,10 +1,10 @@
-RNAseq Data Analysis Plug-ins for BioJupies
+BioJupies Plug-ins
 ================
 Overview
 ----------------
 BioJupies (http://biojupies.cloud) is a web server for the automated generation of interactive notebooks for RNA-seq data analysis in the cloud through a simple user interface.
 
-To generate notebooks, BioJupies uses a modular set plug-ins which analyze RNA-seq data and embed the results using interactive plots and data visualizations. The source code for all plug-ins is stored in this GitHub repository.
+To generate notebooks, BioJupies uses a modular set plug-ins which analyze RNA-seq data and embed the results using interactive plots and data visualizations. Source code for all plug-ins is stored in this GitHub repository.
 
 The Plug-ins
 ----------------
@@ -31,7 +31,7 @@ Contributing your Plug-ins
 ----------------
 Users are welcome to contribute RNA-seq data analysis plug-ins for integration in BioJupies.
 
-To achieve this, 
+To contribute your plug-in, follow our [plug-in submission tutorial](#).
 
 Citation
 ----------------
