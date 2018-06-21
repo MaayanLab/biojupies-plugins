@@ -1,0 +1,65 @@
+{
+    "tool_name": "PCA",
+    "tool_description": "Linear dimensionality reduction technique to visualize similarity between samples",
+    "introduction": "Principal Component Analysis (PCA) is a statistical technique used to identify global patterns in high-dimensional datasets. It is commonly used to explore the similarity of biological samples in RNA-seq datasets. To achieve this, gene expression values are transformed into Principal Components (PCs), a set of linearly uncorrelated features which represent the most relevant sources of variance in the data, and subsequently visualized using a scatter plot.",
+    "methods": "Principal Component Analysis was performed using the PCA function from in the sklearn Python module. Prior to performing PCA, the raw gene counts were normalized using the {normalization} method, filtered by selecting the {nr_genes} genes with most variable expression, and finally transformed using the Z-score method.",
+    "result_description": "The PCA plug-in embeds an interactive, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If provided, sample groups are indicated using different colors, thus allowing for easier interpretation of the results.",
+    "reference_link": "https://doi.org/10.1080/14786440109462720",
+    "video_tutorial": "https://www.youtube.com/watch?v=r7WYtxeAaDw",
+    "requires_signature": 0,
+    "parameters": [
+        {
+            "parameter_name": "Top Genes",
+            "parameter_description": "Number of most variably expressed genes to use for the analysis",
+            "parameter_string": "nr_genes",
+            "values": [
+                {
+                    "value": "500",
+                    "default": 0
+                },
+                {
+                    "value": "2500",
+                    "default": 1
+                },
+                {
+                    "value": "5000",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "parameter_name": "Normalization",
+            "parameter_description": "Normalization method for the dataset",
+            "parameter_string": "normalization",
+            "values": [
+                {
+                    "value": "logCPM",
+                    "default": 1
+                },
+                {
+                    "value": "quantile",
+                    "default": 0
+                },
+                {
+                    "value": "VST",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "parameter_name": "Z-score",
+            "parameter_description": "Whether to perform Z-score on the rows of the normalized dataset",
+            "parameter_string": "z_score",
+            "values": [
+                {
+                    "value": "True",
+                    "default": 1
+                },
+                {
+                    "value": "False",
+                    "default": 0
+                }
+            ]
+        }
+    ]
+}

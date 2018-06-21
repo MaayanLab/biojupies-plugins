@@ -1,0 +1,65 @@
+{
+    "tool_name": "t-SNE",
+    "tool_description": "Nonlinear dimensionality reduction technique to visualize similarity between samples",
+    "introduction": "t-distributed Stochastic Neighbor Embedding (t-SNE) (Van Der Maaten and Hinton, Journal of Machine Learning Research 2008) is a nonlinear dimensionality reduction technique which can project high-dimensional data in lower dimensions by minimizing distances between near points and maximizing distances between far points.",
+    "methods": "t-SNE analysis was performed using the `TSNE` function from the `sklearn` Python module, available here: http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html. Prior to performing t-SNE, the dataset was normalized using the zscore method, and a subset of the top {nr_genes} most variably expressed genes was used for the t-SNE analysis.",
+    "result_description": "",
+    "reference_link": "https://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf",
+    "video_tutorial": "",
+    "requires_signature": 0,
+    "parameters": [
+        {
+            "parameter_name": "Top Genes",
+            "parameter_description": "Number of most variably expressed genes to use for the analysis",
+            "parameter_string": "nr_genes",
+            "values": [
+                {
+                    "value": "500",
+                    "default": 0
+                },
+                {
+                    "value": "2500",
+                    "default": 1
+                },
+                {
+                    "value": "5000",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "parameter_name": "Normalization",
+            "parameter_description": "Normalization method for the dataset",
+            "parameter_string": "normalization",
+            "values": [
+                {
+                    "value": "logCPM",
+                    "default": 1
+                },
+                {
+                    "value": "quantile",
+                    "default": 0
+                },
+                {
+                    "value": "VST",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "parameter_name": "Z-score",
+            "parameter_description": "Whether to perform Z-score on the rows of the normalized dataset",
+            "parameter_string": "z_score",
+            "values": [
+                {
+                    "value": "True",
+                    "default": 1
+                },
+                {
+                    "value": "False",
+                    "default": 0
+                }
+            ]
+        }
+    ]
+}

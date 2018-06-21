@@ -1,0 +1,11 @@
+{
+    "tool_name": "L1000FWD Query",
+    "tool_description": "Projects signatures on a 2-dimensional visualization of the L1000 signature database",
+    "introduction": "",
+    "methods": "",
+    "result_description": "",
+    "reference_link": "",
+    "video_tutorial": "",
+    "requires_signature": 1,
+    "parameters": []
+}

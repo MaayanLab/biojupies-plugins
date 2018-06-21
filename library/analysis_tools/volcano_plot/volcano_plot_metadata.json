@@ -1,0 +1,50 @@
+{
+    "tool_name": "Volcano Plot",
+    "tool_description": "Plot the logFC and logP values resulting from a differential expression analysis",
+    "introduction": "Volcano plots are a type of scatter plot commonly used to display the results of a differential gene expression analysis. They can be used to quickly identify genes whose expression is significantly altered in a perturbation, and to assess the global similarity of gene expression in two groups of biological samples. Each point in the scatter plot represents a gene; the axes display the significance versus fold-change estimated by the differential expression analysis.",
+    "methods": "Gene fold changes were transformed using log2 and displayed on the x axis; P-values were corrected using the Benjamini-Hochberg method, transformed using \u0096log10, and displayed on the y axis. See the Differential Gene Expression section for more information on the methods used to generate these values.",
+    "result_description": "The Volcano Plot plug-in embeds an interactive scatter plot which displays the log2-fold changes and statistical significance of each gene calculated by performing differential gene expression analysis comparing samples in the Control group to samples in the Perturbation group. Every point in the plot represents a gene; additional information for each gene is available by hovering over it.",
+    "reference_link": "",
+    "video_tutorial": "",
+    "requires_signature": 1,
+    "parameters": [
+        {
+            "parameter_name": "P-value Threshold",
+            "parameter_description": "P-value cutoff to display significant genes on the plot",
+            "parameter_string": "pvalue_threshold",
+            "values": [
+                {
+                    "value": "0.01",
+                    "default": 0
+                },
+                {
+                    "value": "0.05",
+                    "default": 1
+                },
+                {
+                    "value": "0.1",
+                    "default": 0
+                }
+            ]
+        },
+        {
+            "parameter_name": "logFC Threshold",
+            "parameter_description": "Threshold of the absolute log2-Fold Changes to indicate differentially expressed genes",
+            "parameter_string": "logfc_threshold",
+            "values": [
+                {
+                    "value": "1",
+                    "default": 0
+                },
+                {
+                    "value": "1.5",
+                    "default": 1
+                },
+                {
+                    "value": "2",
+                    "default": 0
+                }
+            ]
+        }
+    ]
+}
