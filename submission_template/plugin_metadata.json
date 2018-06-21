@@ -1,0 +1,24 @@
+{
+    "tool_name": "",
+    "tool_description": "",
+    "introduction": "",
+    "result_description": "",
+    "methods": "",
+    "doi": "",
+    "video_tutorial": "",
+    "section_fk": "",
+    "requires_signature": false,
+    "parameters": [
+        {
+            "parameter_name": "",
+            "parameter_description": "",
+            "parameter_string": "",
+            "values": [
+                {
+                    "value": "",
+                    "default": true
+                }
+            ]
+        }
+    ]
+}
