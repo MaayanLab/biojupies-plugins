@@ -4,11 +4,11 @@ Overview
 ----------------
 BioJupies (http://biojupies.cloud) is a web server for the automated generation of interactive notebooks for RNA-seq data analysis in the cloud through a simple user interface.
 
-To generate notebooks, BioJupies uses a modular set plug-ins for analysis of RNA-seq data. These plug-ins can perform a wide variety of different analyses, including heatmaps, differential gene expression, enrichment analysis, small molecule queries, and more.
+To generate notebooks, BioJupies uses a modular set plug-ins which analyze RNA-seq data and embed the results using interactive plots and data visualizations. The source code for all plug-ins is stored in this GitHub repository.
 
 The Plug-ins
 ----------------
-BioJupies currently contains the following RNA-seq data analysis plug-ins:
+The BioJupies RNA-seq analysis toolbox currently contains the following plug-ins:
 
 | Plug-in Name | Description |
 | --- | --- |
@@ -27,9 +27,11 @@ BioJupies currently contains the following RNA-seq data analysis plug-ins:
 | [L1000CDS2 Query](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/l1000cds2) | Small molecules which mimic or reverse a given differential gene expression signature |
 | [L1000FWD Query](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/l1000fwd) | Small molecules which mimic or reverse a given differential gene expression signature |
 
-Contributing Your Plug-ins
+Contributing your Plug-ins
 ----------------
 Users are welcome to contribute RNA-seq data analysis plug-ins for integration in BioJupies.
+
+To achieve this, 
 
 Citation
 ----------------
