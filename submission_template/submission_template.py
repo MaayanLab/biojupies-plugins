@@ -5,20 +5,13 @@
 #################################################################
 
 #############################################
-########## 1. Import libraries
+########## Import libraries
 #############################################
-##### 1. Python libraries #####
 import pandas as pd
 import numpy as np
 
-#######################################################
-#######################################################
-########## S1. Plug-in Code
-#######################################################
-#######################################################
-
 #############################################
-########## 1. Run
+########## 1. Run Analysis
 #############################################
 ##### The run function analyzes a dataset and/or signature.
 ### Input: a BioJupies-formatted dataset or signature. For more information on the format, see the GitHub repository README.
@@ -33,7 +26,7 @@ def run(dataset):
 	return analysis_results
 
 #############################################
-########## 2. Plot
+########## 2. Plot Results
 #############################################
 ##### The plot function displays the results of the run function by embedding a plot or interactive visualization in the Jupyter Notebook.
 ### Input: the output of the run function.
