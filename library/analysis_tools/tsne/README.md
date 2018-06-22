@@ -1,4 +1,4 @@
-t-SNE
+![t-SNE Icon](img/tsne-icon.png "t-SNE Icon") t-SNE
 ================
 Summary
 ----------------

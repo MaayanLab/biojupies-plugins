@@ -1,4 +1,4 @@
-Volcano Plot
+![Volcano Plot Icon](img/volcano_plot-icon.png "Volcano Plot Icon") Volcano Plot
 ================
 Summary
 ----------------

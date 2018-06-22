@@ -1,4 +1,4 @@
-Kinase Enrichment Analysis
+![Kinase Enrichment Analysis Icon](img/kinase_enrichment-icon.png "Kinase Enrichment Analysis Icon") Kinase Enrichment Analysis
 ================
 Summary
 ----------------

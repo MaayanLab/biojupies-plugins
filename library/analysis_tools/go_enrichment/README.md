@@ -1,4 +1,4 @@
-Gene Ontology Enrichment Analysis
+![Gene Ontology Enrichment Analysis Icon](img/go_enrichment-icon.png "Gene Ontology Enrichment Analysis Icon") Gene Ontology Enrichment Analysis
 ================
 Summary
 ----------------

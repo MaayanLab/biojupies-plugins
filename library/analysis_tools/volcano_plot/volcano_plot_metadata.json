@@ -1,5 +1,6 @@
 {
     "tool_name": "Volcano Plot",
+    "tool_string": "volcano_plot",
     "tool_description": "Plot the logFC and logP values resulting from a differential expression analysis",
     "introduction": "Volcano plots are a type of scatter plot commonly used to display the results of a differential gene expression analysis. They can be used to quickly identify genes whose expression is significantly altered in a perturbation, and to assess the global similarity of gene expression in two groups of biological samples. Each point in the scatter plot represents a gene; the axes display the significance versus fold-change estimated by the differential expression analysis.",
     "methods": "Gene fold changes were transformed using log2 and displayed on the x axis; P-values were corrected using the Benjamini-Hochberg method, transformed using \u0096log10, and displayed on the y axis. See the Differential Gene Expression section for more information on the methods used to generate these values.",

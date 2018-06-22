@@ -1,4 +1,4 @@
-Library Size Analysis
+![Library Size Analysis Icon](img/library_size_analysis-icon.png "Library Size Analysis Icon") Library Size Analysis
 ================
 Summary
 ----------------

@@ -1,4 +1,4 @@
-Pathway Enrichment Analysis
+![Pathway Enrichment Analysis Icon](img/pathway_enrichment-icon.png "Pathway Enrichment Analysis Icon") Pathway Enrichment Analysis
 ================
 Summary
 ----------------

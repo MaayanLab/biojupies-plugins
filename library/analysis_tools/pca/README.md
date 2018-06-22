@@ -1,4 +1,4 @@
-PCA
+![PCA Icon](img/pca-icon.png "PCA Icon") PCA
 ================
 Summary
 ----------------

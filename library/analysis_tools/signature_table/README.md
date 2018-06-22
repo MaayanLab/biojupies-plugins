@@ -1,4 +1,4 @@
-Differential Expression Table
+![Differential Expression Table Icon](img/signature_table-icon.png "Differential Expression Table Icon") Differential Expression Table
 ================
 Summary
 ----------------
