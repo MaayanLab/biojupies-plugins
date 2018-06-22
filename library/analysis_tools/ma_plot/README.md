@@ -1,4 +1,4 @@
-![MA Plot Icon](img/ma_plot-icon.png "MA Plot Icon") MA Plot
+![MA Plot](img/ma_plot-icon.png?s=50 "MA Plot") MA Plot
 ================
 Summary
 ----------------

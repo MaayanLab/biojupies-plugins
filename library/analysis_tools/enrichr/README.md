@@ -1,4 +1,4 @@
-![Enrichr Links Icon](img/enrichr-icon.png "Enrichr Links Icon") Enrichr Links
+![Enrichr Links](img/enrichr-icon.png?s=50 "Enrichr Links") Enrichr Links
 ================
 Summary
 ----------------

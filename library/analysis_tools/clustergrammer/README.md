@@ -1,4 +1,4 @@
-![Clustergrammer Icon](img/clustergrammer-icon.png "Clustergrammer Icon") Clustergrammer
+![Clustergrammer](img/clustergrammer-icon.png?s=50 "Clustergrammer") Clustergrammer
 ================
 Summary
 ----------------
