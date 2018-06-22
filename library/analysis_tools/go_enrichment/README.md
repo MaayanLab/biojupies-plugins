@@ -16,6 +16,7 @@ go_enrichment_results = go_enrichment.run(dataset)
 **Parameters**
 
 
+---
 ### Plotting the Results
 ```python
 # Plot Gene Ontology Enrichment Analysis results

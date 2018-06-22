@@ -16,6 +16,7 @@ signature_table_results = signature_table.run(dataset)
 **Parameters**
 
 
+---
 ### Plotting the Results
 ```python
 # Plot Differential Expression Table results

@@ -16,6 +16,7 @@ l1000fwd_results = l1000fwd.run(dataset)
 **Parameters**
 
 
+---
 ### Plotting the Results
 ```python
 # Plot L1000FWD Query results

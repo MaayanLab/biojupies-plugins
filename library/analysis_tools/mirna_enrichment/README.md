@@ -16,6 +16,7 @@ mirna_enrichment_results = mirna_enrichment.run(dataset)
 **Parameters**
 
 
+---
 ### Plotting the Results
 ```python
 # Plot miRNA Enrichment Analysis results

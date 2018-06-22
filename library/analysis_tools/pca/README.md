@@ -22,6 +22,7 @@ pca_results = pca.run(dataset, nr_genes=2500, normalization=logCPM, z_score=True
 | **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
 
 
+---
 ### Plotting the Results
 ```python
 # Plot PCA results

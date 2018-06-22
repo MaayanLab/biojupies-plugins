@@ -21,6 +21,7 @@ ma_plot_results = ma_plot.run(dataset, pvalue_threshold=0.05, logfc_threshold=1.
 | **logfc_threshold** | *float* | *1, 1.5 (default), 2* | Threshold of the absolute log2-Fold Changes to indicate differentially expressed genes. |
 
 
+---
 ### Plotting the Results
 ```python
 # Plot MA Plot results
