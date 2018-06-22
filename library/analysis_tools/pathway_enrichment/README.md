@@ -13,8 +13,6 @@ Usage
 pathway_enrichment_results = pathway_enrichment.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

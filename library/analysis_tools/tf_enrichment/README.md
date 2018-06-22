@@ -13,8 +13,6 @@ Usage
 tf_enrichment_results = tf_enrichment.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

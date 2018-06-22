@@ -13,8 +13,6 @@ Usage
 go_enrichment_results = go_enrichment.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

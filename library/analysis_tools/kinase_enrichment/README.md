@@ -13,8 +13,6 @@ Usage
 kinase_enrichment_results = kinase_enrichment.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

@@ -13,8 +13,6 @@ Usage
 signature_table_results = signature_table.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

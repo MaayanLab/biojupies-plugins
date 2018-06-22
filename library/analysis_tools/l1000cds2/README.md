@@ -13,8 +13,6 @@ Usage
 l1000cds2_results = l1000cds2.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results

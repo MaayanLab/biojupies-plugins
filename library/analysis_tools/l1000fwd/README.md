@@ -13,8 +13,6 @@ Usage
 l1000fwd_results = l1000fwd.run(dataset)
 ```
 
-**Parameters**
-
 
 ---
 ### Plotting the Results
