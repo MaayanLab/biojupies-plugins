@@ -15,7 +15,7 @@ The BioJupies RNA-seq analysis toolbox currently contains the following plug-ins
 | [PCA](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/pca) | Linear dimensionality reduction technique to visualize similarity between samples |
 | [Clustergrammer](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/clustergrammer) | Interactive hierarchically clustered heatmap |
 | [Library Size Analysis](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/library_size_analysis) | Analysis of readcount distribution for the samples within the dataset |
-| [Differential Expression Table](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/differential_expression_table) | Differential expression analysis between two groups of samples |
+| [Signature Table](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/signature_table) | Differential expression analysis between two groups of samples |
 | [Volcano Plot](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/volcano_plot) | Plot the logFC and logP values resulting from a differential expression analysis |
 | [MA Plot](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/ma_plot) | Plot the logFC and average expression values resulting from a differential expression analysis |
 | [Enrichr](https://github.com/MaayanLab/biojupies-plugins/tree/master/library/analysis_tools/enrichr) | Links to enrichment analysis results of the differentially expressed genes via Enrichr |
