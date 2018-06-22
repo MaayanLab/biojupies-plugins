@@ -1,4 +1,4 @@
-![miRNA Enrichment Analysis](img/mirna_enrichment-icon.png?s=50 "miRNA Enrichment Analysis") miRNA Enrichment Analysis
+<img src="img/mirna_enrichment-icon.png" width="50px"> miRNA Enrichment Analysis
 ================
 Summary
 ----------------

@@ -1,4 +1,4 @@
-![Transcription Factor Enrichment Analysis](img/tf_enrichment-icon.png?s=50 "Transcription Factor Enrichment Analysis") Transcription Factor Enrichment Analysis
+<img src="img/tf_enrichment-icon.png" width="50px"> Transcription Factor Enrichment Analysis
 ================
 Summary
 ----------------

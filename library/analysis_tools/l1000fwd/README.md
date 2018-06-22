@@ -1,4 +1,4 @@
-![L1000FWD Query](img/l1000fwd-icon.png?s=50 "L1000FWD Query") L1000FWD Query
+<img src="img/l1000fwd-icon.png" width="50px"> L1000FWD Query
 ================
 Summary
 ----------------

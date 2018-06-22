@@ -1,4 +1,4 @@
-![Pathway Enrichment Analysis](img/pathway_enrichment-icon.png?s=50 "Pathway Enrichment Analysis") Pathway Enrichment Analysis
+<img src="img/pathway_enrichment-icon.png" width="50px"> Pathway Enrichment Analysis
 ================
 Summary
 ----------------

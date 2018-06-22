@@ -1,4 +1,4 @@
-![L1000CDS<sup>2</sup> Query](img/l1000cds2-icon.png?s=50 "L1000CDS<sup>2</sup> Query") L1000CDS<sup>2</sup> Query
+<img src="img/l1000cds2-icon.png" width="50px"> L1000CDS<sup>2</sup> Query
 ================
 Summary
 ----------------

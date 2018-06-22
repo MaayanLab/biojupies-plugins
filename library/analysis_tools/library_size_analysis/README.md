@@ -1,4 +1,4 @@
-![Library Size Analysis](img/library_size_analysis-icon.png?s=50 "Library Size Analysis") Library Size Analysis
+<img src="img/library_size_analysis-icon.png" width="50px"> Library Size Analysis
 ================
 Summary
 ----------------

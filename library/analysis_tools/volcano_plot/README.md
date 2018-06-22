@@ -1,4 +1,4 @@
-![Volcano Plot](img/volcano_plot-icon.png?s=50 "Volcano Plot") Volcano Plot
+<img src="img/volcano_plot-icon.png" width="50px"> Volcano Plot
 ================
 Summary
 ----------------

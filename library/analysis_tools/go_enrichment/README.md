@@ -1,4 +1,4 @@
-![Gene Ontology Enrichment Analysis](img/go_enrichment-icon.png?s=50 "Gene Ontology Enrichment Analysis") Gene Ontology Enrichment Analysis
+<img src="img/go_enrichment-icon.png" width="50px"> Gene Ontology Enrichment Analysis
 ================
 Summary
 ----------------
