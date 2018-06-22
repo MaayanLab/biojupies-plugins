@@ -13,6 +13,7 @@
             "parameter_name": "Gene Set Size",
             "parameter_description": "Size of the gene set to be extracted to perform enrichment analysis",
             "parameter_string": "geneset_size",
+            "parameter_type": "int",
             "values": [
                 {
                     "value": "100",
