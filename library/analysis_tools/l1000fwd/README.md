@@ -1,11 +1,11 @@
 <img src="img/l1000fwd-icon.png" width="50px"> L1000FWD Query
 ================
 
-Overview
+Plug-in Overview
 ----------------
 
 
-How to Use the Plug-in
+Usage
 ----------------
 ### Running the Analysis
 ```python
@@ -22,7 +22,3 @@ l1000fwd_results = l1000fwd.run(dataset)
 l1000fwd.plot(l1000fwd_results)
 ```
 <img src="img/l1000fwd-example.png"> 
-
-
-Methods
-----------------
