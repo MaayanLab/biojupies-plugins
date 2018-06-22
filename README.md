@@ -31,7 +31,7 @@ Contributing your Plug-ins
 ----------------
 Users are welcome to contribute RNA-seq data analysis plug-ins for integration in BioJupies.
 
-To contribute your plug-in, follow our [plug-in submission tutorial](#).
+To contribute your plug-in, follow our [plug-in submission tutorial](https://amp.pharm.mssm.edu/biojupies/contribute).
 
 Citation
 ----------------
