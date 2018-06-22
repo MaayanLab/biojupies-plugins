@@ -14,6 +14,7 @@ volcano_plot_results = volcano_plot.run(dataset, pvalue_threshold=0.05, logfc_th
 ```
 
 **Parameters**
+
 | Name | Type | Values | Description |
 | ---- | ---- | ------ | ----------- |
 | **pvalue_threshold** | *float* | *0.01, 0.05 (default), 0.1* | P-value cutoff to display significant genes on the plot. |

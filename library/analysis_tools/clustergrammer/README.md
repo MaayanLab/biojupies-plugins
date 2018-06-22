@@ -14,6 +14,7 @@ clustergrammer_results = clustergrammer.run(dataset, nr_genes=2500, normalizatio
 ```
 
 **Parameters**
+
 | Name | Type | Values | Description |
 | ---- | ---- | ------ | ----------- |
 | **nr_genes** | *int* | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |

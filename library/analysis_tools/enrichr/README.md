@@ -14,6 +14,7 @@ enrichr_results = enrichr.run(dataset, geneset_size=500)
 ```
 
 **Parameters**
+
 | Name | Type | Values | Description |
 | ---- | ---- | ------ | ----------- |
 | **geneset_size** | *int* | *100, 250, 500 (default)* | Size of the gene set to be extracted to perform enrichment analysis. |
