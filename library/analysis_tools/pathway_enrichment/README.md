@@ -1,7 +1,7 @@
-<img src="img/pathway_enrichment-icon.png" width="50px"> Pathway Enrichment Analysis
+<img src="img/pathway_enrichment-icon.png" width="50px"> Pathway Enrichment Analysis Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Biological pathways are sequences of interactions between biochemical compounds which play a key role in determining cellular behavior. Databases such as KEGG, Reactome and WikiPathways contain a large number of associations between such pathways and genes. This information can be leveraged by Enrichr to identify the biological pathways which are over-represented in the up-regulated and down-regulated genes identified by comparing two groups of samples.
 

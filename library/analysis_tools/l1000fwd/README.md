@@ -1,7 +1,7 @@
-<img src="img/l1000fwd-icon.png" width="50px"> L1000FWD Query
+<img src="img/l1000fwd-icon.png" width="50px"> L1000FWD Query Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 
 

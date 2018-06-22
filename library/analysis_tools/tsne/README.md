@@ -1,7 +1,7 @@
-<img src="img/tsne-icon.png" width="50px"> t-SNE
+<img src="img/tsne-icon.png" width="50px"> t-SNE Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 t-distributed Stochastic Neighbor Embedding (t-SNE) (Van Der Maaten and Hinton, Journal of Machine Learning Research 2008) is a nonlinear dimensionality reduction technique which can project high-dimensional data in lower dimensions by minimizing distances between near points and maximizing distances between far points.
 

@@ -1,7 +1,7 @@
-<img src="img/l1000cds2-icon.png" width="50px"> L1000CDS<sup>2</sup> Query
+<img src="img/l1000cds2-icon.png" width="50px"> L1000CDS<sup>2</sup> Query Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 L1000CDS2 is a web-based tool for querying gene expression signatures against signatures created from human cell lines treated with over 20,000 small molecules and drugs for the LINCS project. It is commonly used to identify small molecules which mimic or reverse the effects of a gene expression signature generated from a differential gene expression analysis.
 

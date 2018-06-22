@@ -1,7 +1,7 @@
-<img src="img/enrichr-icon.png" width="50px"> Enrichr Links
+<img src="img/enrichr-icon.png" width="50px"> Enrichr Links Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Enrichment analysis is a statistical procedure used to identify biological terms which are over-represented in a given gene set. These include signaling pathways, molecular functions, diseases, and a wide variety of other biological terms obtained by integrating prior knowledge of gene function from multiple resources. Enrichr is a web-based application which allows to perform enrichment analysis using a large collection of gene-set libraries and various interactive approaches to display enrichment results.
 

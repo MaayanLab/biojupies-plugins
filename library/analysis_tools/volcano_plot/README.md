@@ -1,7 +1,7 @@
-<img src="img/volcano_plot-icon.png" width="50px"> Volcano Plot
+<img src="img/volcano_plot-icon.png" width="50px"> Volcano Plot Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Volcano plots are a type of scatter plot commonly used to display the results of a differential gene expression analysis. They can be used to quickly identify genes whose expression is significantly altered in a perturbation, and to assess the global similarity of gene expression in two groups of biological samples. Each point in the scatter plot represents a gene; the axes display the significance versus fold-change estimated by the differential expression analysis.
 

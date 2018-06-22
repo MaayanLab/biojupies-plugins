@@ -1,7 +1,7 @@
-<img src="img/go_enrichment-icon.png" width="50px"> Gene Ontology Enrichment Analysis
+<img src="img/go_enrichment-icon.png" width="50px"> Gene Ontology Enrichment Analysis Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Gene Ontology (GO) is a major bioinformatics initiative aimed at unifying the representation of gene attributes across all species. It contains a large collection of experimentally validated and predicted associations between genes and biological terms. This information can be leveraged by Enrichr to identify the biological processes, molecular functions and cellular components which are over-represented in the up-regulated and down-regulated genes identified by comparing two groups of samples.
 

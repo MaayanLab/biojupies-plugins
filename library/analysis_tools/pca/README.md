@@ -1,7 +1,7 @@
-<img src="img/pca-icon.png" width="50px"> PCA
+<img src="img/pca-icon.png" width="50px"> PCA Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Principal Component Analysis (PCA) is a statistical technique used to identify global patterns in high-dimensional datasets. It is commonly used to explore the similarity of biological samples in RNA-seq datasets. To achieve this, gene expression values are transformed into Principal Components (PCs), a set of linearly uncorrelated features which represent the most relevant sources of variance in the data, and subsequently visualized using a scatter plot.
 

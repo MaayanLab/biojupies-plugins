@@ -1,7 +1,7 @@
-<img src="img/signature_table-icon.png" width="50px"> Differential Expression Table
+<img src="img/signature_table-icon.png" width="50px"> Differential Expression Table Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Gene expression signatures are alterations in the patterns of gene expression that occur as a result of cellular perturbations such as drug treatments, gene knock-downs or diseases. They can be quantified using differential gene expression (DGE) methods, which compare gene expression between two groups of samples to identify genes whose expression is significantly altered in the perturbation. The signature table is used to interactively display the results of such analyses.
 

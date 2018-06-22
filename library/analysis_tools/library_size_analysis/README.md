@@ -1,7 +1,7 @@
-<img src="img/library_size_analysis-icon.png" width="50px"> Library Size Analysis
+<img src="img/library_size_analysis-icon.png" width="50px"> Library Size Analysis Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 In order to quantify gene expression in an RNA-seq dataset, reads generated from the sequencing step are mapped to a reference genome and subsequently aggregated into numeric gene counts. Due to experimental variations and random technical noise, samples in an RNA-seq datasets often have variable amounts of the total RNA. Library size analysis calculates and displays the total number of reads mapped for each sample in the RNA-seq dataset, facilitating the identification of outlying samples and the assessment of the overall quality of the data.
 

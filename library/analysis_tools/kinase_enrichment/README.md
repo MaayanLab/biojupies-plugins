@@ -1,7 +1,7 @@
-<img src="img/kinase_enrichment-icon.png" width="50px"> Kinase Enrichment Analysis
+<img src="img/kinase_enrichment-icon.png" width="50px"> Kinase Enrichment Analysis Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Protein kinases are enzymes that modify other proteins by chemically adding phosphate groups. Databases such as KEA contain a large number of associations between kinases and their substrates. This information can be leveraged by Enrichr to identify the protein kinases whose substrates are over-represented in the up-regulated and down-regulated genes identified by comparing two groups of samples.
 

@@ -1,7 +1,7 @@
-<img src="img/clustergrammer-icon.png" width="50px"> Clustergrammer
+<img src="img/clustergrammer-icon.png" width="50px"> Clustergrammer Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Clustergrammer is a web-based tool for visualizing and analyzing high-dimensional data as interactive and hierarchically clustered heatmaps.  It is commonly used to explore the similarity between samples in an RNA-seq dataset. In addition to identifying clusters of samples, it also allows to identify the genes which contribute to the clustering.
 

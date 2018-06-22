@@ -1,7 +1,7 @@
-<img src="img/tf_enrichment-icon.png" width="50px"> Transcription Factor Enrichment Analysis
+<img src="img/tf_enrichment-icon.png" width="50px"> Transcription Factor Enrichment Analysis Plug-in
 ================
 
-Plug-in Overview
+Overview
 ----------------
 Transcription Factors (TFs) are proteins involved in the transcriptional regulation of gene expression. Databases such as ChEA and ENCODE contain a large number of associations between TFs and their transcriptional targets. This information can be leveraged by Enrichr to identify the transcription factors whose targets are over-represented in the up-regulated and down-regulated genes identified by comparing two groups of samples.
 
