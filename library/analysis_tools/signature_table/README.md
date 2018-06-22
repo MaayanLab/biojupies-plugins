@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Differential Expression Table
-signature_table_results = signature_table.run(dataset)
+signature_table_results = signature_table.run(signature)
 ```
 
 

@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Pathway Enrichment Analysis
-pathway_enrichment_results = pathway_enrichment.run(dataset)
+pathway_enrichment_results = pathway_enrichment.run(enrichr_results)
 ```
 
 

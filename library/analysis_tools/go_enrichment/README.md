@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Gene Ontology Enrichment Analysis
-go_enrichment_results = go_enrichment.run(dataset)
+go_enrichment_results = go_enrichment.run(enrichr_results)
 ```
 
 

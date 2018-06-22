@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run L1000FWD Query
-l1000fwd_results = l1000fwd.run(dataset)
+l1000fwd_results = l1000fwd.run(signature)
 ```
 
 

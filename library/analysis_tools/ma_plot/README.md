@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run MA Plot
-ma_plot_results = ma_plot.run(dataset, pvalue_threshold=0.05, logfc_threshold=1.5)
+ma_plot_results = ma_plot.run(signature, pvalue_threshold=0.05, logfc_threshold=1.5)
 ```
 
 **Parameters**

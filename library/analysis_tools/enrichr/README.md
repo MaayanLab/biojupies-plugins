@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Enrichr Links
-enrichr_results = enrichr.run(dataset, geneset_size=500)
+enrichr_results = enrichr.run(signature, geneset_size=500)
 ```
 
 **Parameters**

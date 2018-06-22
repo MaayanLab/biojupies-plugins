@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run miRNA Enrichment Analysis
-mirna_enrichment_results = mirna_enrichment.run(dataset)
+mirna_enrichment_results = mirna_enrichment.run(enrichr_results)
 ```
 
 

@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Volcano Plot
-volcano_plot_results = volcano_plot.run(dataset, pvalue_threshold=0.05, logfc_threshold=1.5)
+volcano_plot_results = volcano_plot.run(signature, pvalue_threshold=0.05, logfc_threshold=1.5)
 ```
 
 **Parameters**

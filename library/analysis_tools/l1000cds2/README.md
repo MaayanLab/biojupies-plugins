@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run L1000CDS<sup>2</sup> Query
-l1000cds2_results = l1000cds2.run(dataset)
+l1000cds2_results = l1000cds2.run(signature)
 ```
 
 
