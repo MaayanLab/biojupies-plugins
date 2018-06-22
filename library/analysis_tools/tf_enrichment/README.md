@@ -14,7 +14,6 @@ tf_enrichment_results = tf_enrichment.run(dataset)
 ```
 
 
----
 ### Plotting the Results
 ```python
 # Plot Transcription Factor Enrichment Analysis results

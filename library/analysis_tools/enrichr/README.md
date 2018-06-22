@@ -19,7 +19,6 @@ enrichr_results = enrichr.run(dataset, geneset_size=500)
 | **geneset_size** | *int* | *100, 250, 500 (default)* | Size of the gene set to be extracted to perform enrichment analysis. |
 
 
----
 ### Plotting the Results
 ```python
 # Plot Enrichr Links results

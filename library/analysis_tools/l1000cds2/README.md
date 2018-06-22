@@ -14,7 +14,6 @@ l1000cds2_results = l1000cds2.run(dataset)
 ```
 
 
----
 ### Plotting the Results
 ```python
 # Plot L1000CDS<sup>2</sup> Query results

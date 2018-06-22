@@ -20,7 +20,6 @@ volcano_plot_results = volcano_plot.run(dataset, pvalue_threshold=0.05, logfc_th
 | **logfc_threshold** | *float* | *1, 1.5 (default), 2* | Threshold of the absolute log2-Fold Changes to indicate differentially expressed genes. |
 
 
----
 ### Plotting the Results
 ```python
 # Plot Volcano Plot results

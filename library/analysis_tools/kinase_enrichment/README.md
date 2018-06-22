@@ -14,7 +14,6 @@ kinase_enrichment_results = kinase_enrichment.run(dataset)
 ```
 
 
----
 ### Plotting the Results
 ```python
 # Plot Kinase Enrichment Analysis results

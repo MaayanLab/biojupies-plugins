@@ -21,7 +21,6 @@ tsne_results = tsne.run(dataset, nr_genes=2500, normalization=logCPM, z_score=Tr
 | **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
 
 
----
 ### Plotting the Results
 ```python
 # Plot t-SNE results

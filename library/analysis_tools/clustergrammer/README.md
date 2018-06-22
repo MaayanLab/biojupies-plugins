@@ -21,7 +21,6 @@ clustergrammer_results = clustergrammer.run(dataset, nr_genes=2500, normalizatio
 | **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
 
 
----
 ### Plotting the Results
 ```python
 # Plot Clustergrammer results

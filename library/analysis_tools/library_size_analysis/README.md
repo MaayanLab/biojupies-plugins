@@ -14,7 +14,6 @@ library_size_analysis_results = library_size_analysis.run(dataset)
 ```
 
 
----
 ### Plotting the Results
 ```python
 # Plot Library Size Analysis results

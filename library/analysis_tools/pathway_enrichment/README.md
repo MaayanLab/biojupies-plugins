@@ -14,7 +14,6 @@ pathway_enrichment_results = pathway_enrichment.run(dataset)
 ```
 
 
----
 ### Plotting the Results
 ```python
 # Plot Pathway Enrichment Analysis results
