@@ -7,6 +7,7 @@
     "result_description": "The Volcano Plot plug-in embeds an interactive scatter plot which displays the log2-fold changes and statistical significance of each gene calculated by performing differential gene expression analysis comparing samples in the Control group to samples in the Perturbation group. Every point in the plot represents a gene; additional information for each gene is available by hovering over it.",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "signature",
     "requires_signature": 1,
     "parameters": [
         {

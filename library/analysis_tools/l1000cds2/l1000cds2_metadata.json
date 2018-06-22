@@ -7,6 +7,7 @@
     "result_description": "The L1000CDS<sup>2</sup> plug-in embeds an interactive bar chart displaying the top small molecules which mimic or reverse the input gene expression signature.",
     "reference_link": "https://doi.org/10.1038/npjsba.2016.15",
     "video_tutorial": "https://www.youtube.com/watch?v=kiTAGlvoyWU",
+    "input": "signature",
     "requires_signature": 1,
     "parameters": []
 }

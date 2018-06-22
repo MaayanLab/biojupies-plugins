@@ -7,6 +7,7 @@
     "result_description": "The Kinase Enrichment Analysis plug-in embeds browsable tables displaying the results of the Protein Kinase (PK) enrichment analysis generated using Enrichr. Every row represents a PK; significant PKs are highlighted in bold. A displays results generated using KEA, indicating PKs whose experimentally validated substrates are enriched. C displays results generated using the ARCHS4 library, indicating PKs whose top coexpressed genes (according to the ARCHS4 dataset) are enriched.",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "enrichr_results",
     "requires_signature": 1,
     "parameters": []
 }

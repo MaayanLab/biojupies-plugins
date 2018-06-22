@@ -7,6 +7,7 @@
     "result_description": "The Signature Table plug-in embeds an interactive, scrollable table which contains the results of a differential gene expression (DGE) analysis between two groups of samples in the dataset. Every row of the table represents a gene; the columns display the results of the differential gene expression analysis. Links to external resources containing additional information for each gene are also provided.",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "signature",
     "requires_signature": 1,
     "parameters": []
 }

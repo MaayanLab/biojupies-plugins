@@ -7,6 +7,7 @@
     "result_description": "The Library Size Analysis plug-in embeds an interactive bar chart which displays the total number of reads mapped to each RNA-seq sample in the dataset. Additional information for each sample is available by hovering over the bars. If provided, sample groups are indicated using different colors, thus allowing for easier interpretation of the results.",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "dataset",
     "requires_signature": 0,
     "parameters": []
 }

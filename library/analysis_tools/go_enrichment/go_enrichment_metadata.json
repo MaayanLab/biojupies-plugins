@@ -7,6 +7,7 @@
     "result_description": "The Gene Ontology Enrichment Analysis plug-in embeds interactive bar charts displaying the results of the Gene Ontology enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term; significant terms are highlighted in bold. Results are grouped by library. Additional information about enrichment results is available by hovering over each bar",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "enrichr_results",
     "requires_signature": 1,
     "parameters": []
 }

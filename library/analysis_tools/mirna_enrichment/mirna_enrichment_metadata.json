@@ -7,6 +7,7 @@
     "result_description": "The miRNA Enrichment Analysis plug-in embeds browsable tables displaying the results of the miRNA enrichment analysis generated using Enrichr. Every row represents a miRNA; significant miRNAs are highlighted in bold. A. displays results generated using the TargetScan library, B. displays results generated using the miRTarBase library.",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "enrichr_results",
     "requires_signature": 1,
     "parameters": []
 }

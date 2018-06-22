@@ -7,6 +7,7 @@
     "result_description": "",
     "reference_link": "",
     "video_tutorial": "",
+    "input": "signature",
     "requires_signature": 1,
     "parameters": []
 }
