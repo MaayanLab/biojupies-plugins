@@ -30,6 +30,9 @@ def make_design_matrix(expression_dataframe, group_A, group_B, data):
 	group_B = [x.replace(':', '.').replace('-', '.') for x in group_B]
 	expression_dataframe.columns = [x.replace(':', '.').replace('-', '.') for x in expression_dataframe.columns]
 
+	# Collapse duplicate genes
+	expression_dataframe = expression_dataframe.reset_index().groupby('index').sum()
+
 	# Get expression dataframe
 	if data == 'subset':
 		expression_dataframe = expression_dataframe[group_A+group_B]
