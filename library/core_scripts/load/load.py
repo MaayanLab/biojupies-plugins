@@ -58,7 +58,7 @@ def archs4(gse, platform, version='v5', filter_metadata=False):
 ########## 2. Upload
 #############################################
 
-def upload(uid):
+def upload(uid, filter_metadata=False):
 
 	# Load HDF5 File
 	h5 = '/download/{uid}.h5'.format(**locals())
