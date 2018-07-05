@@ -48,7 +48,7 @@ def archs4(gse, platform, version='v5', filter_metadata=False):
 				sample_metadata_dataframe.drop(column, axis=1, inplace=True)
 
 	# Build data
-	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'archs4', 'datatype': 'rnaseq'}}
+	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'archs4', 'datatype': 'rnaseq', 'gse': gse, 'platform': platform, 'version': version}}
 	os.unlink(h5)
 		
 	# Return
