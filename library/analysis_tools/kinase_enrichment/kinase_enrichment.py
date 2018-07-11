@@ -57,7 +57,14 @@ def run(enrichr_results, signature_label):
 
 def plot(enrichment_results, plot_counter):
 
+	# Add table
 	results_table(enrichment_results['enrichment_dataframe'].copy(), source_label='Kinase', target_label='substrate')
+
+	# Download button
+	results_dataframe = enrichment_results['enrichment_dataframe'].copy()
+	results_dataframe['gene_set_library'] = [x.split('. ')[-1] for x in results_dataframe['gene_set_library']]
+	results_txt = results_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
+	download_button(results_txt, 'Download Results', 'kinase_enrichment_results.txt')
 
 	# Figure Legend
 	display(Markdown('** Table '+plot_counter('table')+' | Kinase Enrichment Analysis Results. **The figure contains browsable tables displaying the results of the Protein Kinase (PK) enrichment analysis generated using Enrichr. Every row represents a PK; significant PKs are highlighted in bold. A displays results generated using KEA, indicating PKs whose experimentally validated substrates are enriched. C displays results generated using the ARCHS4 library, indicating PKs whose top coexpressed genes (according to the ARCHS4 dataset) are enriched.'.format(**locals())))

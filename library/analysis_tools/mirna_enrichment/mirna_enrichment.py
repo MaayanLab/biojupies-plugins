@@ -57,7 +57,14 @@ def run(enrichr_results, signature_label):
 
 def plot(enrichment_results, plot_counter):
 
+	# Add table
 	results_table(enrichment_results['enrichment_dataframe'].copy(), source_label='miRNA', target_label='target')
+
+	# Download button
+	results_dataframe = enrichment_results['enrichment_dataframe'].copy()
+	results_dataframe['gene_set_library'] = [x.split('. ')[-1] for x in results_dataframe['gene_set_library']]
+	results_txt = results_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
+	download_button(results_txt, 'Download Results', 'mirna_enrichment_results.txt')
 
 	# Figure Legend
 	display(Markdown('** Table '+plot_counter('table')+' | miRNA Enrichment Analysis Results. **The figure contains browsable tables displaying the results of the miRNA enrichment analysis generated using Enrichr. Every row represents a miRNA; significant miRNAs are highlighted in bold. A. displays results generated using the TargetScan library, B. displays results generated using the miRTarBase library.'.format(**locals())))

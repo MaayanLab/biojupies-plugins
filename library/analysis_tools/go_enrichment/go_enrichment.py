@@ -56,5 +56,9 @@ def plot(enrichment_results, plot_counter):
 	for gene_set_library in enrichment_dataframe['gene_set_library'].unique():
 		plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'], 10, 300)
 
+	# Download button
+	results_txt = enrichment_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
+	download_button(results_txt, 'Download Results', 'go_enrichment_results.txt')
+
 	# Figure legend
 	display(Markdown('** Figure '+plot_counter()+' | Gene Ontology Enrichment Analysis Results. **The figure contains interactive bar charts displaying the results of the Gene Ontology enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term. Significant terms are highlighted in bold. Additional information about enrichment results is available by hovering over each bar'.format(**locals())))
