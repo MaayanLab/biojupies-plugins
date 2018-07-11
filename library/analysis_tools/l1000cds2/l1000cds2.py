@@ -10,6 +10,8 @@
 ##### 1. General support #####
 import requests
 import json
+import sys
+import os
 import pandas as pd
 import numpy as np
 from IPython.display import display, Markdown
@@ -18,6 +20,8 @@ from plotly.offline import iplot
 import plotly.graph_objs as go
 
 ##### 2. Other libraries #####
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
+from shared import *
 
 
 #######################################################
@@ -108,6 +112,16 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 	fig['layout']['yaxis2'].update(showticklabels=False)
 	fig['layout']['margin'].update(l=10, t=95, r=0, b=45, pad=5)
 	iplot(fig)
+
+	# Download
+	result_list = []
+	for direction, result_dict in l1000cds2_results.items():
+		if direction in ['mimic', 'reverse']:
+			df = pd.DataFrame(result_dict['table'])
+			df['direction'] = direction
+			result_list.append(df)
+	result_txt = pd.concat(result_list).to_csv(index=False, sep='\t')
+	download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
 
 	# Figure Legend
 	display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results.'.format(**locals())))
