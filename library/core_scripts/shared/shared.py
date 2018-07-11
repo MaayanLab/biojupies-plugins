@@ -19,7 +19,23 @@ from IPython.display import display, Markdown, HTML
 
 #######################################################
 #######################################################
-########## S1. Enrichr
+########## S1. Download Utilities
+#######################################################
+#######################################################
+
+#############################################
+########## 1. Download Button
+#############################################
+
+def download_button(content, label, filename):
+	# Add download button
+	outname = filename.split('.')[0]
+	display(HTML('<textarea id="textbox_{outname}" style="display: none;">{content}</textarea> <button id="create_{outname}">{label}</button> <a download="{filename}" id="downloadlink_{outname}" style="display: none">Download</a>'.format(**locals())))
+	display(HTML('<script type="text/javascript">!function(){{var e=null,t=document.getElementById("create_{outname}"),n=document.getElementById("textbox_{outname}");t.addEventListener("click",function(){{var t,l,c=document.getElementById("downloadlink_{outname}");c.href=(t=n.value,l=new Blob([t],{{type:"text/plain"}}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()}},!1)}}();</script>'.format(**locals())))
+
+#######################################################
+#######################################################
+########## S2. Enrichr
 #######################################################
 #######################################################
 
@@ -115,6 +131,9 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 	fig['layout']['margin'].update(l=0, t=65, r=0, b=30)
 	return iplot(fig)
 
+	# Add download button from enrichr_results
+	# download_button(enrichment_results.to_csv(sep='\t'), 'Download Enrichment Results', 'enrichment.txt')
+
 #############################################
 ########## 3. Display Result Table
 #############################################
@@ -158,3 +177,6 @@ def results_table(enrichment_dataframe, source_label, target_label):
 
 		# Display table
 		display(HTML(html_results))
+
+		# Download enrichment results from enrichment_dataframe
+		# download_button(enrichment_results.to_csv(sep='\t'), 'Download Enrichment Results', 'enrichment.txt')
