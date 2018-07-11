@@ -10,10 +10,13 @@
 ##### 1. General support #####
 import pandas as pd
 import qgrid
+import sys
+import os
 from IPython.display import display, Markdown, HTML
 
 ##### 2. Other libraries #####
-
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
+from shared import *
 
 #######################################################
 #######################################################
@@ -47,8 +50,10 @@ def plot(signature, plot_counter):
 	display(HTML(html_results))
 
 	# Add download button
-	display(HTML('<textarea id="textbox" style="display: none;">{}</textarea> <button id="create">Download Results</button> <a download="signature.txt" id="downloadlink" style="display: none">Download</a>'.format(signature_txt)))
-	display(HTML('<script type="text/javascript">!function(){var e=null,t=document.getElementById("create"),n=document.getElementById("textbox");t.addEventListener("click",function(){var t,l,c=document.getElementById("downloadlink");c.href=(t=n.value,l=new Blob([t],{type:"text/plain"}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()},!1)}();</script>'))
+	download_button(signature_txt, 'Download Signature', 'signature.txt')
+	# display(HTML('<textarea id="textbox" style="display: none;">{}</textarea> <button id="create">Download Results</button> <a download="signature.txt" id="downloadlink" style="display: none">Download</a>'.format(signature_txt)))
+	# display(HTML('<script type="text/javascript">!function(){var e=null,t=document.getElementById("create"),n=document.getElementById("textbox");t.addEventListener("click",function(){var t,l,c=document.getElementById("downloadlink");c.href=(t=n.value,l=new Blob([t],{type:"text/plain"}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()},!1)}();</script>'))
+	# download_button(signature_txt, 'Download Results', 'signature.txt')
 
 	# Figure Legend
 	display(Markdown('** Table '+plot_counter('table')+' | Differential Expression Table.** The figure displays a browsable table containing the gene expression signature generated from a differential gene expression analysis. Every row of the table represents a gene; the columns display the estimated measures of differential expression. Links to external resources containing additional information for each gene are also provided'.format(**locals())))
