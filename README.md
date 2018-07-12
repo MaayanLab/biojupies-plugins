@@ -6,7 +6,7 @@ BioJupies (http://biojupies.cloud) is a web server for the automated generation 
 
 To generate notebooks, BioJupies uses a modular set plug-ins which analyze RNA-seq data and embed the results using interactive plots and data visualizations. Source code for all plug-ins is stored in this GitHub repository.
 
-Source code for the BioJupies website and Jupyter Notebook generation server is available at: https://github.com/MaayanLab/biojupies.
+Source code for the BioJupies Jupyter Notebook generation server is available at: https://github.com/MaayanLab/biojupies.
 
 The Plug-ins
 ----------------
