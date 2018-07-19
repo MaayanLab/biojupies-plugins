@@ -37,7 +37,7 @@ def run(enrichr_results, signature_label):
 	}
 
 	# Get Enrichment Results
-	enrichment_results = {geneset: get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries) for geneset in ['upregulated', 'downregulated']}
+	enrichment_results = {geneset: get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset) for geneset in ['upregulated', 'downregulated']}
 	enrichment_results['signature_label'] = signature_label
 
 	# Return

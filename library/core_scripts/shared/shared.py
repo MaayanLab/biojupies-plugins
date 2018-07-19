@@ -43,7 +43,7 @@ def download_button(content, label, filename):
 ########## 1. Get Enrichr Results
 #############################################
 
-def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True):
+def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True, geneset=None):
 	ENRICHR_URL = 'http://amp.pharm.mssm.edu/Enrichr/enrich'
 	query_string = '?userListId=%s&backgroundType=%s'
 	results = []
@@ -64,6 +64,8 @@ def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True)
 		resultDataframe['gene_set_library'] = label
 		results.append(resultDataframe)
 	concatenatedDataframe = pd.concat(results)
+	if geneset:
+		concatenatedDataframe['geneset'] = geneset
 	return concatenatedDataframe
 
 #############################################

@@ -43,8 +43,7 @@ def run(enrichr_results, signature_label):
 	for geneset in ['upregulated', 'downregulated']:
 
 		# Append ChEA results
-		enrichment_dataframe = get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries)
-		enrichment_dataframe['geneset'] = geneset
+		enrichment_dataframe = get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset)
 		results.append(enrichment_dataframe)
 
 	# Concatenate results
