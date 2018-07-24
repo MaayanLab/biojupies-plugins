@@ -80,8 +80,8 @@ def plot(volcano_plot_results, plot_counter):
 		text=volcano_plot_results['text'],
 		color=volcano_plot_results['color'],
 		symmetric_x=True,
-		xlab='logFC',
-		ylab='log10P',
+		xlab='log2FC',
+		ylab='-log10P',
 		title='<b>{volcano_plot_results[signature_label]} Signature | Volcano Plot</b>'.format(**locals()),
 		labels=volcano_plot_results['signature_label'].split(' vs ')
 	)
