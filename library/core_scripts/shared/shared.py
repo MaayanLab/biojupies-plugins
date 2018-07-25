@@ -81,8 +81,9 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 			'combined_score', ascending=False).iloc[:nr_genesets].iloc[::-1]
 
 		# Format
-		plot_dataframe['overlapping_genes'] = [', '.join(x) if len(x) <= 5 else ', '.join(
-			x[:5])+', + '+str(len(x)-5)+' others' for x in plot_dataframe['overlapping_genes']]
+		n = 7
+		plot_dataframe['nr_genes'] = [len(genes) for genes in plot_dataframe['overlapping_genes']]
+		plot_dataframe['overlapping_genes'] = ['<br>'.join([', '.join(genes[i:i+n]) for i in range(0, len(genes), n)]) for genes in plot_dataframe['overlapping_genes']]
 
 		# Get Bar
 		bar = go.Bar(
@@ -91,8 +92,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 			orientation='h',
 			name=geneset.title(),
 			showlegend=False,
-			hovertext=['<b>{term_name}</b><br><b>P-value</b>: <i>{pvalue:.2}</i><br><b>FDR</b>: <i>{FDR:.2}</i><br><b>Z-score</b>: <i>{zscore:.3}</i><br><b>Combined score</b>: <i>{combined_score:.3}</i><br><b>Genes</b>: <i>{overlapping_genes}</i><br>'.format(
-				**rowData) for index, rowData in plot_dataframe.iterrows()],
+			hovertext=['<b>{term_name}</b><br><b>P-value</b>: <i>{pvalue:.2}</i><br><b>FDR</b>: <i>{FDR:.2}</i><br><b>Z-score</b>: <i>{zscore:.3}</i><br><b>Combined score</b>: <i>{combined_score:.3}</i><br><b>{nr_genes} Genes</b>: <i>{overlapping_genes}</i><br>'.format(**rowData) for index, rowData in plot_dataframe.iterrows()],
 			hoverinfo='text',
 			marker={'color': '#FA8072' if geneset == 'upregulated' else '	#87CEFA'}
 		)
