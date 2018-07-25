@@ -25,9 +25,11 @@ from IPython.display import display, Markdown
 ########## 1. Run
 #############################################
 
-def run(dataset, color_by=None):
- 
- 	return {'sample_metadata': dataset['sample_metadata'].loc[dataset['rawdata'].columns], 'library_sizes': dataset['rawdata'].sum().sort_values()/10**6, 'color_by': color_by}
+def run(dataset, color_by=None):  # , filter_samples=True
+	# if filter_samples and dataset.get('signature_metadata'):
+		# A_label, B_label = list(dataset.get('signature_metadata').keys())[0].split(' vs ')
+		# print(dataset.get('signature_metadata'))
+	return {'sample_metadata': dataset['sample_metadata'].loc[dataset['rawdata'].columns], 'library_sizes': dataset['rawdata'].sum().sort_values()/10**6, 'color_by': color_by}
 
 #############################################
 ########## 2. Plot
