@@ -5,6 +5,8 @@
 
 RNA-seq data analysis plugins for the BioJupies project (http://biojupies.cloud).
 
+Source code for the BioJupies web server available at https://github.com/MaayanLab/biojupies.
+
 ### Overview
 1. [What is BioJupies?](#what-is-biojupies)
 2. [What are BioJupies plugins?](#what-are-biojupies-plugins)
@@ -16,8 +18,6 @@ RNA-seq data analysis plugins for the BioJupies project (http://biojupies.cloud)
 BioJupies is a web server which allows users to automatically generate Jupyter Notebooks from RNA-seq datasets through an intuitive interface, with no knowledge of coding required. It can be accessed for free from http://biojupies.cloud.
 
 This repository is solely dedicated to storing the RNA-seq data analysis plugins used by BioJupies to generate Jupyter Notebooks.
-
-Source code for the BioJupies web server is available at https://github.com/MaayanLab/biojupies.
 
 ![Screenshot of the BioJupies website landing page.](https://github.com/MaayanLab/biojupies/raw/master/img/website.png)
 
