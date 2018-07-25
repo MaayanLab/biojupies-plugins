@@ -1,4 +1,5 @@
 __pycache__
 readme
 .vscode
-*.ipynb
+notebooks
+*-checkpoint.ipynb

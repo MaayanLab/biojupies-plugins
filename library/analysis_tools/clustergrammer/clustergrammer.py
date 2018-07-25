@@ -28,10 +28,15 @@ import pandas as pd
 ########## 1. Run
 #############################################
 
-def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_cols=None):
+def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_cols=None, filter_samples=True):
 
 	# Get data
 	data = dataset[normalization].copy()
+		
+	# Filter columns
+	if filter_samples and dataset.get('signature_metadata'):
+		selected_samples = [sample for samples in list(dataset['signature_metadata'].values())[0].values() for sample in samples]
+		data = data[selected_samples]
 
 	# Get tempfile
 	(fd, filename) = tempfile.mkstemp()
@@ -43,7 +48,7 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 
 		# Z-score
 		if z_score:
-			data = data.apply(ss.zscore, axis=1)
+			data = data.T.apply(ss.zscore, axis=0).T
 
 		# Sample metadata
 		sample_metadata = dataset['sample_metadata'].copy()

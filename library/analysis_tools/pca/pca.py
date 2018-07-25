@@ -13,6 +13,7 @@ import plotly.graph_objs as go
 from plotly.offline import iplot
 import scipy.stats as ss
 import warnings
+import pandas as pd
 from IPython.display import display, Markdown
 
 ##### 2. Other libraries #####
@@ -27,19 +28,24 @@ from IPython.display import display, Markdown
 ########## 1. Run
 #############################################
 
-def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='auto', color_type='categorical'):
+def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='auto', color_type='categorical', filter_samples=True):
 
 	# Get data
 	expression_dataframe = dataset[normalization].copy()
 	
-	# Filter
+	# Filter columns
+	if filter_samples and dataset.get('signature_metadata'):
+		selected_samples = [sample for samples in list(dataset['signature_metadata'].values())[0].values() for sample in samples]
+		expression_dataframe = expression_dataframe[selected_samples]
+
+	# Filter rows
 	expression_dataframe = expression_dataframe.loc[expression_dataframe.var(axis=1).sort_values(ascending=False).index[:nr_genes]]
 
 	# Z-score
 	if z_score == 'True' or z_score == True:
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
-			expression_dataframe = expression_dataframe.apply(ss.zscore, axis=1)
+			expression_dataframe = expression_dataframe.T.apply(ss.zscore, axis=0).T
 
 	# Run PCA
 	pca=PCA(n_components=3)
