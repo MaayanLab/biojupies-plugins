@@ -24,10 +24,9 @@ BioJupies plugins are modular snippets of code which can analyze RNA-seq data an
 
 Plugins may perform a variety of different analyses, ranging from exploratory data analysis visualizations, differential gene expression, clustering, enrichment analysis, and small molecule queries. A full list of the plugins available is displayed below.
 
-BioJupies currently supports plugins written in Python 3 and R.
+This repository contains the source code for all BioJupies plugins, written in Python 3 and R.
 
 ## What plugins are currently available?
-----------------
 The BioJupies RNA-seq analysis toolbox currently contains the following plugins:
 
 | Plug-in Name | Description |
