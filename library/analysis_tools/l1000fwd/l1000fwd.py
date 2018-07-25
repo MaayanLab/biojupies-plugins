@@ -37,11 +37,11 @@ def run(signature, nr_genes=500, signature_label=''):
 	payload = {"up_genes":upperGenes(signature.index[:nr_genes]),"down_genes":upperGenes(signature.index[-nr_genes:])}
 
 	# Get URL
-	L1000FWD_URL = 'http://amp.pharm.mssm.edu/L1000FWD/'
+	L1000FWD_URL = 'https://amp.pharm.mssm.edu/L1000FWD/'
 
 	# Get result
 	response = requests.post(L1000FWD_URL + 'sig_search', json=payload)
-	l1000fwd_results['result_url'] = 'http://amp.pharm.mssm.edu/l1000fwd/vanilla/result/'+response.json()['result_id']
+	l1000fwd_results['result_url'] = 'https://amp.pharm.mssm.edu/l1000fwd/vanilla/result/'+response.json()['result_id']
 
 	# Return
 	return l1000fwd_results

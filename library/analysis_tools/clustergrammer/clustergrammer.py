@@ -67,7 +67,7 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 
 		# Write file and get link
 		data.to_csv(filename, sep='\t')
-		clustergrammer_url = requests.post('http://amp.pharm.mssm.edu/clustergrammer/matrix_upload/', files={'file': open(filename, 'rb')}).text
+		clustergrammer_url = requests.post('https://amp.pharm.mssm.edu/clustergrammer/matrix_upload/', files={'file': open(filename, 'rb')}).text
 	finally:
 		os.remove(filename)
 	return clustergrammer_url
@@ -79,7 +79,7 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 def plot(clustergrammer_url, plot_counter):
 
 	# Embed
-	display(IFrame(clustergrammer_url, width="1000", height="1000"))
+	display(IFrame(clustergrammer_url.replace('http://', 'https://'), width="1000", height="1000"))
 
 	# Figure Legend
 	display(Markdown('** Figure '+plot_counter()+' | Clustergrammer analysis. **The figure contains an interactive heatmap displaying gene expression for each sample in the RNA-seq dataset. Every row of the heatmap represents a gene, every column represents a sample, and every cell displays normalized gene expression values. The heatmap additionally features color bars beside each column which represent prior knowledge of each sample, such as the tissue of origin or experimental treatment.'.format(**locals())))
