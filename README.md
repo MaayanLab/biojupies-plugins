@@ -50,7 +50,7 @@ The BioJupies RNA-seq analysis toolbox currently contains the following plugins:
 ## Can I contribute my RNA-seq analysis plugins?
 Users are welcome to contribute RNA-seq data analysis plugins for integration in BioJupies.
 
-To contribute your plugin, follow our [submission tutorial](https://amp.pharm.mssm.edu/biojupies/contribute), or visit the [contribute page](https://github.com/MaayanLab/biojupies-plugins/tree/master/contribute) on this GitHub repository.
+To contribute your plugin, follow our [submission tutorial](https://amp.pharm.mssm.edu/biojupies/contribute) or visit the [contribute page](https://github.com/MaayanLab/biojupies-plugins/tree/master/contribute) on this GitHub repository.
 
 ## References
 [BioJupies: Automated Generation of Interactive Notebooks for RNA-seq Data Analysis in the Cloud](https://doi.org/10.1101/352476) Torre, D., Lachmann, A., and Ma’ayan, A. (2018)
