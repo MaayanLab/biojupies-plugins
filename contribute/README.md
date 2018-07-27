@@ -1,6 +1,10 @@
 # Plugin Contribution Guide
 Step-by-step guide illustrating how users can contribute their own RNA-seq analysis tools for integration into BioJupies (http://biojupies.cloud). Once integrated, the plugins will be made available to all users for generation of Jupyter Notebooks.
 
+### Overview
+1. [What are BioJupies plugins?](#what-are-biojupies-plugins)
+2. [How do I submit a plugin?](#how-do-i-submit-a-plugin)
+
 ## What are BioJupies plugins?
 BioJupies plugins are modular snippets of code which can analyze RNA-seq data and embed visualizations, interactive plots, or analysis results in Jupyter Notebooks.
 
