@@ -20,7 +20,7 @@ To submit your RNA-seq analysis tool as a plugin, follow the instructions below:
     * The **Python Jupyter Notebook** ([python3_notebook.ipynb](https://github.com/MaayanLab/biojupies-plugins/blob/master/contribute/python3_notebook.ipynb)), for plugins written in Python 3.
     * The **R Jupyter Notebook** ([r_notebook.ipynb](https://github.com/MaayanLab/biojupies-plugins/blob/master/contribute/r_notebook.ipynb)), for plugins written in R.
 
-2. **Add your RNA-seq analysis code** to the notebook following the guidelines. The code should be divided into two functions:
+2. **Add your RNA-seq analysis code** to the notebook following the instructions in the notebook. The code should be divided into two functions:
     * An `analyze` function, which takes an RNA-seq dataset or gene signature as input, and returns the results of the analysis (e.g. as a dataframe, a list, or dictionary).
     * A `plot` function, which takes the output of the `analyze` function and displays by embedding a plot, table, or any type of interactive visualization in the notebook.
 
