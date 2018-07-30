@@ -1,0 +1,13 @@
+Sample_geo_accession	Sample Title	Stage	cell type
+GSM2344965	FM_1	primary melanocytes	normal melanocytes
+GSM2344966	FM_2	primary melanocytes	normal melanocytes
+GSM2344967	FM_3	primary melanocytes	normal melanocytes
+GSM2344968	SK_MEL_28_1	metastatic	melanoma cell line
+GSM2344969	SK_MEL_28_2	metastatic	melanoma cell line
+GSM2344970	SK_MEL_28_3	metastatic	melanoma cell line
+GSM2344971	SK_MEL_147_1	metastatic	melanoma cell line
+GSM2344972	SK_MEL_147_2	metastatic	melanoma cell line
+GSM2344973	SK_MEL_147_3	metastatic	melanoma cell line
+GSM2344974	UACC_62_1	metastatic	melanoma cell line
+GSM2344975	UACC_62_2	metastatic	melanoma cell line
+GSM2344976	UACC_62_3	metastatic	melanoma cell line
