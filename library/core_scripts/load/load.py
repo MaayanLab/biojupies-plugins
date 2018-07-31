@@ -13,6 +13,7 @@ import urllib
 import json
 import gzip
 import warnings
+import requests
 import os
 with warnings.catch_warnings():
 	warnings.simplefilter("ignore")
@@ -65,7 +66,7 @@ def upload(uid, filter_metadata=False):
 	with open(h5, 'wb') as openfile:
 		openfile.write(urllib.request.urlopen('https://storage.googleapis.com/jupyter-notebook-generator-user-data/{uid}/{uid}.h5'.format(**locals())).read())
 	f = h5py.File(h5, 'r')
-	
+		
 	# Get data
 	rawcount_dataframe = pd.DataFrame(data=f['data']['expression'].value, index=[x for x in f['meta']['gene']['symbol'].value], columns=[x for x in f['meta']['sample']['Sample'].value])
 	sample_metadata_dataframe = pd.DataFrame({key: [x for x in value.value] if type(value) == h5py._hl.dataset.Dataset else [x for x in [y for y in value.items()][0][1].value] for key, value in f['meta']['sample'].items()}).set_index('Sample')#, drop=False).rename(columns={'Sample': 'Sample Title'})
@@ -81,4 +82,13 @@ def upload(uid, filter_metadata=False):
 	os.unlink(h5)
 
 	# Return
+	return data
+
+#############################################
+########## 3. GTEx
+#############################################
+
+def gtex(samples):
+	r = requests.post('http://amp.pharm.mssm.edu/gtex2biojupies/api/data', json={"samples": samples})
+	data = {'rawdata': pd.DataFrame(json.loads(r.text)), 'sample_metadata': pd.DataFrame(), 'dataset_metadata': {'source': 'gtex', 'datatype': 'rnaseq'}}
 	return data
