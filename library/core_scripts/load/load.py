@@ -90,5 +90,7 @@ def upload(uid, filter_metadata=False):
 
 def gtex(samples):
 	r = requests.post('http://amp.pharm.mssm.edu/gtex2biojupies/api/data', json={"samples": samples})
-	data = {'rawdata': pd.DataFrame(json.loads(r.text)), 'sample_metadata': pd.DataFrame(), 'dataset_metadata': {'source': 'gtex', 'datatype': 'rnaseq'}}
+	count_dataframe = pd.DataFrame(json.loads(r.text))
+	metadata_dataframe = pd.DataFrame([{'index': x, 'source': 'gtex'} for x in count_dataframe.columns]).set_index('index')
+	data = {'rawdata': count_dataframe, 'sample_metadata': metadata_dataframe, 'dataset_metadata': {'source': 'gtex', 'datatype': 'rnaseq'}}
 	return data
