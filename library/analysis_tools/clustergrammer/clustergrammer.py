@@ -47,14 +47,14 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 		data = data.loc[data.var(axis=1).sort_values(ascending=False).index[:nr_genes]]
 
 		# Z-score
-		if z_score:
+		if z_score == True:
 			data = data.T.apply(ss.zscore, axis=0).T
 
 		# Sample metadata
 		sample_metadata = dataset['sample_metadata'].copy()
 
 		# For uploaded files
-		if sample_metadata.index.name == 'Sample':
+		if sample_metadata.index.name == 'Sample' or dataset['dataset_metadata']['source'] == 'gtex':
 			sample_metadata = pd.Series(index=sample_metadata.index, data=sample_metadata.index, name='Sample').to_frame().merge(sample_metadata, left_index=True, right_index=True)
 
 		# Filter columns
