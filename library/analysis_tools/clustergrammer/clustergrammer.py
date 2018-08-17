@@ -47,7 +47,7 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 		data = data.loc[data.var(axis=1).sort_values(ascending=False).index[:nr_genes]]
 
 		# Z-score
-		if z_score == True:
+		if z_score == True or z_score == 'True':
 			data = data.T.apply(ss.zscore, axis=0).T
 
 		# Sample metadata
