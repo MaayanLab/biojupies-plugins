@@ -34,7 +34,7 @@ from shared import *
 ########## 1. Run
 #############################################
 
-def run(signature, nr_genes=500, signature_label=''):
+def run(signature, nr_genes=500, signature_label='', plot_type='interactive'):
 
 	# Define results
 	l1000cds2_results = {'signature_label': signature_label}
@@ -57,6 +57,7 @@ def run(signature, nr_genes=500, signature_label=''):
 		resGeneSet = r.json()
 		l1000cds2_dataframe = l1000cds2_dataframe = pd.DataFrame(resGeneSet['topMeta'])[['cell_id', 'pert_desc', 'pert_dose', 'pert_dose_unit', 'pert_id', 'pert_time', 'pert_time_unit', 'pubchem_id', 'score', 'sig_id']].replace('-666', np.nan)
 		l1000cds2_results[label] = {'url': 'http://amp.pharm.mssm.edu/L1000CDS2/#/result/{}'.format(resGeneSet['shareId']), 'table': l1000cds2_dataframe}
+	l1000cds2_results['plot_type'] = plot_type
 
 	# Return
 	return l1000cds2_results
@@ -111,7 +112,12 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 	fig['layout']['yaxis1'].update(showticklabels=False)
 	fig['layout']['yaxis2'].update(showticklabels=False)
 	fig['layout']['margin'].update(l=10, t=95, r=0, b=45, pad=5)
-	iplot(fig)
+
+	if l1000cds2_results['plot_type'] == 'interactive':
+		iplot(fig)
+	else:
+		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+		py.image.ishow(fig)
 
 	# Download
 	result_list = []

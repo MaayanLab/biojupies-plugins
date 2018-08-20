@@ -10,11 +10,12 @@
 ##### 1. General support #####
 from sklearn.decomposition import PCA
 import plotly.graph_objs as go
-from plotly.offline import iplot
+from plotly.offline import iplot, plot_mpl
 import scipy.stats as ss
 import warnings
 import pandas as pd
 from IPython.display import display, Markdown
+import plotly.plotly as py
 
 ##### 2. Other libraries #####
 
@@ -28,7 +29,7 @@ from IPython.display import display, Markdown
 ########## 1. Run
 #############################################
 
-def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='auto', color_type='categorical', filter_samples=True):
+def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='auto', color_type='categorical', filter_samples=True, plot_type='interactive'):
 
 	# Get data
 	expression_dataframe = dataset[normalization].copy()
@@ -81,7 +82,7 @@ def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='
 
 
 	# Return
-	pca_results = {'pca': pca, 'var_explained': var_explained, 'sample_metadata': dataset['sample_metadata'].loc[expression_dataframe.columns], 'color_by': color_by, 'color_type': color_type, 'nr_genes': nr_genes, 'normalization': normalization, 'signature_metadata': dataset.get('signature_metadata')}
+	pca_results = {'pca': pca, 'var_explained': var_explained, 'sample_metadata': dataset['sample_metadata'].loc[expression_dataframe.columns], 'color_by': color_by, 'color_type': color_type, 'nr_genes': nr_genes, 'normalization': normalization, 'signature_metadata': dataset.get('signature_metadata'), 'plot_type': plot_type}
 	return pca_results
 
 #############################################
@@ -166,9 +167,13 @@ def plot(pca_results, plot_counter):
 		scene=dict(xaxis=dict(title=var_explained[0]), yaxis=dict(title=var_explained[1]),zaxis=dict(title=var_explained[2])))
 	fig = go.Figure(data=data, layout=layout)
 
-	# Plot
-	iplot(fig)
+	if pca_results['plot_type'] == 'interactive':
+		iplot(fig)
+		# Add Figure Legend
+		display(Markdown('** Figure '+plot_counter()+' | Principal Component Analysis results. ** The figure displays an interactive, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If provided, sample groups are indicated using different colors, allowing for easier interpretation of the results. If the plot is not displayed properly, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>'.format(**locals())))
+	else:
+		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+		py.image.ishow(fig)
+		display(Markdown('** Figure '+plot_counter()+' | Principal Component Analysis results. ** The figure displays a, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If the plot is not displayed properly, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>'.format(**locals())))
 
-	# Add Figure Legend
-	display(Markdown('** Figure '+plot_counter()+' | Principal Component Analysis results. ** The figure displays an interactive, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If provided, sample groups are indicated using different colors, allowing for easier interpretation of the results.'.format(**locals())))
 

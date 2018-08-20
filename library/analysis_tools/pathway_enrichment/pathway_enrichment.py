@@ -12,6 +12,7 @@ import pandas as pd
 import os
 import sys
 from IPython.display import display, Markdown
+import plotly.plotly as py
 
 ##### 2. Other libraries #####
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
@@ -28,7 +29,7 @@ from shared import *
 ########## 1. Run
 #############################################
 
-def run(enrichr_results, signature_label):
+def run(enrichr_results, signature_label, plot_type='interactive'):
 
 	# Libraries
 	libraries = {
@@ -40,6 +41,7 @@ def run(enrichr_results, signature_label):
 	# Get Enrichment Results
 	enrichment_results = {geneset: get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset) for geneset in ['upregulated', 'downregulated']}
 	enrichment_results['signature_label'] = signature_label
+	enrichment_results['plot_type'] = plot_type
 
 	# Return
 	return enrichment_results

@@ -16,10 +16,11 @@ from plotly import tools
 from plotly.offline import iplot
 import plotly.graph_objs as go
 from IPython.display import display, Markdown, HTML
+import plotly.plotly as py
 
 #######################################################
 #######################################################
-########## S1. Download Utilities
+########## S1. Generic Plots
 #######################################################
 #######################################################
 
@@ -33,9 +34,34 @@ def download_button(content, label, filename):
 	display(HTML('<textarea id="textbox_{outname}" style="display: none;">{content}</textarea> <button id="create_{outname}">{label}</button> <a download="{filename}" id="downloadlink_{outname}" style="display: none">Download</a>'.format(**locals())))
 	display(HTML('<script type="text/javascript">!function(){{var e=null,t=document.getElementById("create_{outname}"),n=document.getElementById("textbox_{outname}");t.addEventListener("click",function(){{var t,l,c=document.getElementById("downloadlink_{outname}");c.href=(t=n.value,l=new Blob([t],{{type:"text/plain"}}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()}},!1)}}();</script>'.format(**locals())))
 
+
+#############################################
+########## 2. 2D Scatter
+#############################################
+
+def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text', color='black', colorscale='Blues', size=8, showscale=False, symmetric_x=False, symmetric_y=False, pad=0.5, hline=False, vline=False, return_trace=False, labels=False, plot_type='interactive'):
+	range_x = [-max(abs(x))-pad, max(abs(x))+pad]if symmetric_x else []
+	range_y = [-max(abs(y))-pad, max(abs(y))+pad]if symmetric_y else []
+	trace = go.Scattergl(x=x, y=y, mode='markers', text=text, hoverinfo=hoverinfo, marker={'color': color, 'colorscale': colorscale, 'showscale': showscale, 'size': size})
+	if return_trace:
+		return trace
+	else:
+		annotations = [
+			{'x': 1, 'y': 0.1, 'text':'<span style="color: blue; font-size: 10pt; font-weight: 600;">Down-regulated in '+labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'right', 'yanchor': 'top'},
+			{'x': 1, 'y': 0.9, 'text':'<span style="color: red; font-size: 10pt; font-weight: 600;">Up-regulated in '+labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'right', 'yanchor': 'bottom'}
+		] if labels else []
+		layout = go.Layout(title=title, xaxis={'title': xlab, 'range': range_x}, yaxis={'title': ylab, 'range': range_y}, hovermode='closest', annotations=annotations)
+		fig = go.Figure(data=[trace], layout=layout)
+	
+	if plot_type=='interactive':
+		iplot(fig)
+	else:
+		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+		py.image.ishow(fig)
+
 #######################################################
 #######################################################
-########## S2. Enrichr
+########## S3. Enrichr
 #######################################################
 #######################################################
 
@@ -131,7 +157,11 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 	fig['layout']['yaxis1'].update(showticklabels=False)
 	fig['layout']['yaxis2'].update(showticklabels=False)
 	fig['layout']['margin'].update(l=0, t=65, r=0, b=30)
-	return iplot(fig)
+	if enrichr_results['plot_type']=='interactive':
+		iplot(fig)
+	else:
+		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+		py.image.ishow(fig)
 
 	# Add download button from enrichr_results
 	# download_button(enrichment_results.to_csv(sep='\t'), 'Download Enrichment Results', 'enrichment.txt')

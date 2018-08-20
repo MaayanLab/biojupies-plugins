@@ -11,6 +11,7 @@
 import plotly.graph_objs as go
 from plotly.offline import iplot
 from IPython.display import display, Markdown
+import plotly.plotly as py
 
 ##### 2. Other libraries #####
 
@@ -25,11 +26,11 @@ from IPython.display import display, Markdown
 ########## 1. Run
 #############################################
 
-def run(dataset, color_by=None):  # , filter_samples=True
+def run(dataset, color_by=None, plot_type='interactive'):  # , filter_samples=True
 	# if filter_samples and dataset.get('signature_metadata'):
 		# A_label, B_label = list(dataset.get('signature_metadata').keys())[0].split(' vs ')
 		# print(dataset.get('signature_metadata'))
-	return {'sample_metadata': dataset['sample_metadata'].loc[dataset['rawdata'].columns], 'library_sizes': dataset['rawdata'].sum().sort_values()/10**6, 'color_by': color_by}
+	return {'sample_metadata': dataset['sample_metadata'].loc[dataset['rawdata'].columns], 'library_sizes': dataset['rawdata'].sum().sort_values()/10**6, 'color_by': color_by, 'plot_type': plot_type}
 
 #############################################
 ########## 2. Plot
@@ -57,7 +58,11 @@ def plot(library_size_results, plot_counter):
 	fig = go.Figure(data=data, layout=layout)
 
 	# Plot
-	iplot(fig)
+	if library_size_results['plot_type'] == 'interactive':
+		iplot(fig)
+	else:
+		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+		py.image.ishow(fig)
 
 	# Figure Legend
 	display(Markdown('** Figure '+plot_counter()+' | Library Size Analysis results. **The figure contains an interactive bar chart which displays the total number of reads mapped to each RNA-seq sample in the dataset. Additional information for each sample is available by hovering over the bars. If provided, sample groups are indicated using different colors, thus allowing for easier interpretation of the results'.format(**locals())))

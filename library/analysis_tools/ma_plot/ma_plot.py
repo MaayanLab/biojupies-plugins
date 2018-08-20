@@ -12,9 +12,11 @@ import numpy as np
 import plotly.graph_objs as go
 from plotly.offline import iplot
 from IPython.display import display, Markdown
+import sys, os
 
 ##### 2. Other libraries #####
-
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
+from shared import *
 
 #######################################################
 #######################################################
@@ -22,26 +24,11 @@ from IPython.display import display, Markdown
 #######################################################
 #######################################################
 
-def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text', color='black', colorscale='Blues', size=8, showscale=False, symmetric_x=False, symmetric_y=False, pad=0.5, hline=False, vline=False, return_trace=False, labels=False):
-	range_x = [-max(abs(x))-pad, max(abs(x))+pad]if symmetric_x else []
-	range_y = [-max(abs(y))-pad, max(abs(y))+pad]if symmetric_y else []
-	trace = go.Scattergl(x=x, y=y, mode='markers', text=text, hoverinfo=hoverinfo, marker={'color': color, 'colorscale': colorscale, 'showscale': showscale, 'size': size})
-	if return_trace:
-		return trace
-	else:
-		annotations = [
-			{'x': 1, 'y': 0.1, 'text':'<span style="color: blue; font-size: 10pt; font-weight: 600;">Down-regulated in '+labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'right', 'yanchor': 'top'},
-			{'x': 1, 'y': 0.9, 'text':'<span style="color: red; font-size: 10pt; font-weight: 600;">Up-regulated in '+labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'right', 'yanchor': 'bottom'}
-		] if labels else []
-		layout = go.Layout(title=title, xaxis={'title': xlab, 'range': range_x}, yaxis={'title': ylab, 'range': range_y}, hovermode='closest', annotations=annotations)
-		fig = go.Figure(data=[trace], layout=layout)
-		return iplot(fig)
-
 #############################################
 ########## 1. Run
 #############################################
 
-def run(signature, signature_label='', pvalue_threshold=0.05, logfc_threshold=1.5):
+def run(signature, signature_label='', pvalue_threshold=0.05, logfc_threshold=1.5, plot_type='interactive'):
 
 	# Loop through signature
 	color = []
@@ -64,7 +51,7 @@ def run(signature, signature_label='', pvalue_threshold=0.05, logfc_threshold=1.
 			color.append('black')
 	
 	# Return 
-	volcano_plot_results = {'x': signature['AveExpr'], 'y': signature['logFC'], 'text':text, 'color': color, 'signature_label': signature_label}
+	volcano_plot_results = {'x': signature['AveExpr'], 'y': signature['logFC'], 'text':text, 'color': color, 'signature_label': signature_label, 'plot_type': plot_type}
 	return volcano_plot_results
 
 #############################################
@@ -81,7 +68,8 @@ def plot(volcano_plot_results, plot_counter):
 		xlab='Average Expression',
 		ylab='logFC',
 		title='<b>{volcano_plot_results[signature_label]} Signature | MA Plot</b>'.format(**locals()),
-		labels=volcano_plot_results['signature_label'].split(' vs ')
+		labels=volcano_plot_results['signature_label'].split(' vs '),
+		plot_type=volcano_plot_results['plot_type']
 	)
 
 	# Figure Legend
