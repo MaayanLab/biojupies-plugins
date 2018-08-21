@@ -64,4 +64,4 @@ def plot(enrichment_results, plot_counter):
 	download_button(results_txt, 'Download Results', 'pathway_enrichment_results.txt')
 
 	# Figure legend
-	display(Markdown('** Figure '+plot_counter()+' | Pathway Enrichment Analysis Results.** The figure contains interactive bar charts displaying the results of the pathway enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term. Significant terms are highlighted in bold. Additional information about enrichment results is available by hovering over each bar.'.format(**locals())))
+	display(Markdown('** Figure '+plot_counter()+' | Pathway Enrichment Analysis Results.** The figure contains interactive bar charts displaying the results of the pathway enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term. Significant terms are highlighted in bold. Additional information about enrichment results is available by hovering over each bar. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
