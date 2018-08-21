@@ -71,7 +71,8 @@ def plot(volcano_plot_results, plot_counter):
 		ylab='-log10P',
 		title='<b>{volcano_plot_results[signature_label]} Signature | Volcano Plot</b>'.format(**locals()),
 		labels=volcano_plot_results['signature_label'].split(' vs '),
-		plot_type=volcano_plot_results['plot_type']
+		plot_type=volcano_plot_results['plot_type'],
+		de_type='volcano'
 	)
 
 	# Figure Legend
