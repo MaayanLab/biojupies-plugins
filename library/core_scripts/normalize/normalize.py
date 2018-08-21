@@ -36,7 +36,7 @@ def logCPM(dataset):
 	# Z-score without warnings
 	with warnings.catch_warnings():
 		warnings.simplefilter("ignore")
-		data = data/data.sum()
+		data = (data/data.sum())*10**6
 		data = data.fillna(0)
 		data = np.log10(data+1)
 
