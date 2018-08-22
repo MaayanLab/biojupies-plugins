@@ -34,9 +34,16 @@ def download_button(content, label, filename):
 	display(HTML('<textarea id="textbox_{outname}" style="display: none;">{content}</textarea> <button id="create_{outname}">{label}</button> <a download="{filename}" id="downloadlink_{outname}" style="display: none">Download</a>'.format(**locals())))
 	display(HTML('<script type="text/javascript">!function(){{var e=null,t=document.getElementById("create_{outname}"),n=document.getElementById("textbox_{outname}");t.addEventListener("click",function(){{var t,l,c=document.getElementById("downloadlink_{outname}");c.href=(t=n.value,l=new Blob([t],{{type:"text/plain"}}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()}},!1)}}();</script>'.format(**locals())))
 
+#############################################
+########## 2. Static Plot
+#############################################
+
+def static_plot(fig):
+	py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+	py.image.ishow(fig)
 
 #############################################
-########## 2. 2D Scatter
+########## 3. 2D Scatter
 #############################################
 
 def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text', color='black', colorscale='Blues', size=8, showscale=False, symmetric_x=False, symmetric_y=False, pad=0.5, hline=False, vline=False, return_trace=False, labels=False, plot_type='interactive', de_type='ma'):
@@ -62,8 +69,7 @@ def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text',
 	if plot_type=='interactive':
 		iplot(fig)
 	else:
-		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
-		py.image.ishow(fig)
+		static_plot(fig)
 
 #######################################################
 #######################################################
@@ -166,8 +172,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 	if enrichr_results['plot_type']=='interactive':
 		iplot(fig)
 	else:
-		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
-		py.image.ishow(fig)
+		static_plot(fig)
 
 	# Add download button from enrichr_results
 	# download_button(enrichment_results.to_csv(sep='\t'), 'Download Enrichment Results', 'enrichment.txt')

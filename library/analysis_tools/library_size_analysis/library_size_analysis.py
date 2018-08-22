@@ -8,13 +8,15 @@
 ########## 1. Load libraries
 #############################################
 ##### 1. General support #####
+import sys, os
 import plotly.graph_objs as go
 from plotly.offline import iplot
 from IPython.display import display, Markdown
 import plotly.plotly as py
 
 ##### 2. Other libraries #####
-
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
+import shared as s
 
 #######################################################
 #######################################################
@@ -61,8 +63,7 @@ def plot(library_size_results, plot_counter):
 	if library_size_results['plot_type'] == 'interactive':
 		iplot(fig)
 	else:
-		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
-		py.image.ishow(fig)
+		s.static_plot(fig)
 
 	# Figure Legend
 	display(Markdown('** Figure '+plot_counter()+' | Library Size Analysis results. **The figure contains an interactive bar chart which displays the total number of reads mapped to each RNA-seq sample in the dataset. Additional information for each sample is available by hovering over the bars. If provided, sample groups are indicated using different colors, thus allowing for easier interpretation of the results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))

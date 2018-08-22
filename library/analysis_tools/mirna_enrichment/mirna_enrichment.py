@@ -15,7 +15,7 @@ from IPython.display import display, Markdown, HTML
 
 ##### 2. Other libraries #####
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
-from shared import *
+import shared as s
 
 #######################################################
 #######################################################
@@ -42,7 +42,7 @@ def run(enrichr_results, signature_label):
 	for geneset in ['upregulated', 'downregulated']:
 
 		# Append ChEA results
-		enrichment_dataframe = get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset)
+		enrichment_dataframe = s.get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset)
 		results.append(enrichment_dataframe)
 
 	# Concatenate results
@@ -57,13 +57,13 @@ def run(enrichr_results, signature_label):
 def plot(enrichment_results, plot_counter):
 
 	# Add table
-	results_table(enrichment_results['enrichment_dataframe'].copy(), source_label='miRNA', target_label='target')
+	s.results_table(enrichment_results['enrichment_dataframe'].copy(), source_label='miRNA', target_label='target')
 
 	# Download button
 	results_dataframe = enrichment_results['enrichment_dataframe'].copy()
 	results_dataframe['gene_set_library'] = [x.split('. ')[-1] for x in results_dataframe['gene_set_library']]
 	results_txt = results_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
-	download_button(results_txt, 'Download Results', 'mirna_enrichment_results.txt')
+	s.download_button(results_txt, 'Download Results', 'mirna_enrichment_results.txt')
 
 	# Figure Legend
 	display(Markdown('** Table '+plot_counter('table')+' | miRNA Enrichment Analysis Results. **The figure contains browsable tables displaying the results of the miRNA enrichment analysis generated using Enrichr. Every row represents a miRNA; significant miRNAs are highlighted in bold. A. displays results generated using the TargetScan library, B. displays results generated using the miRTarBase library.'.format(**locals())))

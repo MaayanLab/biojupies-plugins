@@ -21,7 +21,7 @@ import plotly.graph_objs as go
 
 ##### 2. Other libraries #####
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))), 'core_scripts', 'shared', 'shared.py'))
-from shared import *
+import shared as s
 
 
 #######################################################
@@ -116,8 +116,7 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 	if l1000cds2_results['plot_type'] == 'interactive':
 		iplot(fig)
 	else:
-		py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
-		py.image.ishow(fig)
+		s.static_plot(fig)
 
 	# Download
 	result_list = []
@@ -127,7 +126,7 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 			df['direction'] = direction
 			result_list.append(df)
 	result_txt = pd.concat(result_list).to_csv(index=False, sep='\t')
-	download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
+	s.download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
 
 	# Figure Legend
 	display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))

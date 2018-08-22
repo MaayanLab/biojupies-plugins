@@ -3,3 +3,4 @@ readme
 .vscode
 notebooks
 *-checkpoint.ipynb
+*.pyc
