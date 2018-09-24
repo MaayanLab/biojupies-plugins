@@ -25,6 +25,7 @@ pymysql.install_as_MySQLdb()
 #############################################
 ##### 1. Variables #####
 tool_metadata = glob.glob('../library/analysis_tools/*/*_metadata.json')
+option_metadata = glob.glob('../library/core_scripts/*/*_metadata.json')
 engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI'])
 
 ##### 2. R Connection #####
@@ -110,6 +111,27 @@ def createParameterTable(infiles, outfiles):
 	parameter_table.to_csv(outfiles[0], sep='\t', index=False)
 	parameter_value_table.to_csv(outfiles[1], sep='\t', index=False)
 
+#############################################
+########## 3. Options Table
+#############################################
+
+@merge(option_metadata,
+	   's1-tables.dir/core_scripts-table.txt')
+
+def createOptionTable(infiles, outfile):
+
+	# Get options
+	options = []
+	for infile in infiles:
+		with open(infile) as openfile:
+			options += json.load(openfile)
+
+	# Create dataframe
+	option_dataframe = pd.DataFrame(options)
+	option_dataframe['id'] = [x+1 for x in option_dataframe.index]
+
+	# Write
+	option_dataframe.to_csv(outfile, sep='\t', index=False)
 
 #######################################################
 #######################################################
