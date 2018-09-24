@@ -9,5 +9,9 @@
     "video_tutorial": "https://www.youtube.com/watch?v=kiTAGlvoyWU",
     "input": "signature",
     "requires_signature": 1,
-    "parameters": []
+    "parameters": [],
+    "reference": "Duan, Q., Reid, S.P., Clark, N.R., Wang, Z., Fernandez, N.F., Rouillard, A.D., Readhead, B., Tritsch, S.R., Hodos, R., Hafner, M., et al. (2016). <b>L1000CDS2: LINCS L1000 characteristic direction signatures search engine.</b> <i>Npj Systems Biology and Applications</i> 2.",
+    "default_selected": 0,
+    "section_fk": 4,
+    "display": 1
 }

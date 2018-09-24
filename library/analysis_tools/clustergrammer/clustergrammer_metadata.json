@@ -4,7 +4,7 @@
     "tool_description": "Interactive hierarchical clustering heatmap visualization",
     "introduction": "Clustergrammer is a web-based tool for visualizing and analyzing high-dimensional data as interactive and hierarchically clustered heatmaps.  It is commonly used to explore the similarity between samples in an RNA-seq dataset. In addition to identifying clusters of samples, it also allows to identify the genes which contribute to the clustering.",
     "methods": "The interactive heatmap was generated using Clustergrammer (<a href='#10.1038/sdata.2017.151'>Fernandez et al., 2017</a>) which is freely available at http://amp.pharm.mssm.edu/clustergrammer/. Prior to displaying the heatmap, the raw gene counts were normalized using the {normalization} method, filtered by selecting the {nr_genes} genes with most variable expression, and finally transformed using the Z-score method.",
-    "result_description": "The Clustergrammer plug-in embeds an interactive heatmap which displays gene expression for each sample in the RNA-seq dataset. Every row of the heatmap represents a gene, every column represents a sample, and every cell displays normalized gene expression values. The heatmap additionally features color bars beside each column which represent prior knowledge of each sample \u0096 for example, the tissue of origin or experimental treatment",
+    "result_description": "The Clustergrammer plug-in embeds an interactive heatmap which displays gene expression for each sample in the RNA-seq dataset. Every row of the heatmap represents a gene, every column represents a sample, and every cell displays normalized gene expression values. The heatmap additionally features color bars beside each column which represent prior knowledge of each sample \u2013 for example, the tissue of origin or experimental treatment",
     "reference_link": "http://dx.doi.org/10.1038/sdata.2017.151",
     "video_tutorial": "https://youtu.be/8MgvyeroW98?t=59s",
     "input": "dataset",
@@ -14,7 +14,6 @@
             "parameter_name": "Top Genes",
             "parameter_description": "Number of most variably expressed genes to use for the analysis",
             "parameter_string": "nr_genes",
-            "parameter_type": "int",
             "values": [
                 {
                     "value": "500",
@@ -34,7 +33,6 @@
             "parameter_name": "Normalization",
             "parameter_description": "Normalization method for the dataset",
             "parameter_string": "normalization",
-            "parameter_type": "str",
             "values": [
                 {
                     "value": "logCPM",
@@ -54,7 +52,6 @@
             "parameter_name": "Z-score",
             "parameter_description": "Whether to perform Z-score on the rows of the normalized dataset",
             "parameter_string": "z_score",
-            "parameter_type": "bool",
             "values": [
                 {
                     "value": "True",
@@ -66,5 +63,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "reference": "Fernandez, N.F., Gundersen, G.W., Rahman, A., Grimes, M.L., Rikova, K., Hornbeck, P., and Ma'ayan, A. (2017). <b>Clustergrammer, a web-based heatmap visualization and analysis tool for high-dimensional biological data.</b> <i>Scientific Data</i> 4, 170151.",
+    "default_selected": 1,
+    "section_fk": 1,
+    "display": 1
 }

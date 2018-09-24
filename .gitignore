@@ -4,3 +4,7 @@ readme
 notebooks
 *-checkpoint.ipynb
 *.pyc
+*.ipynb
+*.icloud
+*.sqlite
+*.dir

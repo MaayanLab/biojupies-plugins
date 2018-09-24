@@ -14,7 +14,6 @@
             "parameter_name": "Top Genes",
             "parameter_description": "Number of most variably expressed genes to use for the analysis",
             "parameter_string": "nr_genes",
-            "parameter_type": "int",
             "values": [
                 {
                     "value": "500",
@@ -34,7 +33,6 @@
             "parameter_name": "Normalization",
             "parameter_description": "Normalization method for the dataset",
             "parameter_string": "normalization",
-            "parameter_type": "str",
             "values": [
                 {
                     "value": "logCPM",
@@ -54,7 +52,6 @@
             "parameter_name": "Z-score",
             "parameter_description": "Whether to perform Z-score on the rows of the normalized dataset",
             "parameter_string": "z_score",
-            "parameter_type": "bool",
             "values": [
                 {
                     "value": "True",
@@ -66,5 +63,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "reference": "Pearson, K. (1901). <b>LIII. On lines and planes of closest fit to systems of points in space.</b> <i>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</i> 2, 559\u00d0572.",
+    "default_selected": 1,
+    "section_fk": 1,
+    "display": 1
 }

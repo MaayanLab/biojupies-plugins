@@ -6,7 +6,7 @@
     "methods": "t-SNE analysis was performed using the `TSNE` function from the `sklearn` Python module, available here: http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html. Prior to performing t-SNE, the dataset was normalized using the zscore method, and a subset of the top {nr_genes} most variably expressed genes was used for the t-SNE analysis.",
     "result_description": "",
     "reference_link": "https://lvdmaaten.github.io/publications/papers/JMLR_2008.pdf",
-    "video_tutorial": "",
+    "video_tutorial": null,
     "input": "dataset",
     "requires_signature": 0,
     "parameters": [
@@ -14,7 +14,6 @@
             "parameter_name": "Top Genes",
             "parameter_description": "Number of most variably expressed genes to use for the analysis",
             "parameter_string": "nr_genes",
-            "parameter_type": "int",
             "values": [
                 {
                     "value": "500",
@@ -34,7 +33,6 @@
             "parameter_name": "Normalization",
             "parameter_description": "Normalization method for the dataset",
             "parameter_string": "normalization",
-            "parameter_type": "str",
             "values": [
                 {
                     "value": "logCPM",
@@ -54,7 +52,6 @@
             "parameter_name": "Z-score",
             "parameter_description": "Whether to perform Z-score on the rows of the normalized dataset",
             "parameter_string": "z_score",
-            "parameter_type": "bool",
             "values": [
                 {
                     "value": "True",
@@ -66,5 +63,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "reference": "L.J.P. van der Maaten and G.E. Hinton. <b>Visualizing High-Dimensional Data Using t-SNE.</b> <i>Journal of Machine Learning Research</i> 9 (Nov):2579-2605, 2008.",
+    "default_selected": 0,
+    "section_fk": 1,
+    "display": 0
 }
