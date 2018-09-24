@@ -1,0 +1,26 @@
+[
+    {
+        "option_string": "archs4",
+        "option_name": "ARCHS4",
+        "introduction": "Here, the GEO dataset {gse} is loaded into the notebook. Expression data was quantified as gene-level counts using the ARCHS<sup>4</sup> pipeline (<a href='#10.1101/189092'>Lachmann et al., 2017</a>), available at <a href='http://amp.pharm.mssm.edu/archs4/' target='_blank'>http://amp.pharm.mssm.edu/archs4/</a>.",
+        "methods": "Raw RNA-seq data for GEO dataset {gse} was downloaded from the SRA database (<a href=\"https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={gse}\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={gse}</a>) and quantified to gene-level counts using the ARCHS4 pipeline (<a href=\"#10.1101/189092\">Lachmann et al., 2017</a>). Gene counts were downloaded from the ARCHS4 gene expression matrix v1.1. For more information about ARCHS4, as well as free access to the quantified gene expression matrix, visit the project home page at the following URL: <a href=\"http://amp.pharm.mssm.edu/archs4/download.html\" target=\"_blank\">http://amp.pharm.mssm.edu/archs4/download.html</a>.",
+        "reference": "Lachmann, A., Torre, D., Keenan, A.B., Jagodnik, K.M., Lee, H.J., Silverstein, M.C., Wang, L., and Ma\u2019ayan, A. (2017). <b>Massive Mining of Publicly Available RNA-seq Data from Human and Mouse</b> <i>(Cold Spring Harbor Laboratory)</i>.",
+        "reference_link": "https://doi.org/10.1101/189092"
+    },
+    {
+        "option_string": "upload",
+        "option_name": "User Upload",
+        "introduction": "Here we upload a dataset submitted by users.",
+        "methods": "Dataset was user-submitted, compressed in an HDF5 data package, and uploaded to Google Cloud.",
+        "reference": "",
+        "reference_link": ""
+    },
+    {
+        "option_string": "gtex",
+        "option_name": "GTEx",
+        "introduction": "Here, we load and preview a subset of the GTEx RNA-seq dataset containing the samples selected in the notebook generation process on BioJupies.",
+        "methods": "Gene-level counts were downloaded from the GTEx_Analysis_2016-01-15_v7_RNASeQCv1.1.8_gene_reads.gct.gz file available GTEx web portal (https://www.gtexportal.org/home/datasets). Metadata was downloaded and processed from the GTEx_v7_Annotations_SubjectPhenotypesDS.txt and GTEx_v7_Annotations_SampleAttributesDS.txt files.",
+        "reference": "",
+        "reference_link": ""
+    }
+]

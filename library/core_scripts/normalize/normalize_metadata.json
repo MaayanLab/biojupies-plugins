@@ -1,0 +1,34 @@
+[
+    {
+        "option_string": "zscore",
+        "option_name": "Z-Score",
+        "introduction": "",
+        "methods": "Z-score normalization was performed by first calculating the Counts Per Million (CPM) for each RNA-seq sample, followed by a log10 transformation, and finally applying a Z-score transformation for the gene expression levels. This was performed using the `zscore` function in the `scipy.stats` Python module, available here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.zscore.html.",
+        "reference": "",
+        "reference_link": ""
+    },
+    {
+        "option_string": "vst",
+        "option_name": "Variance Stabilizing Transform",
+        "introduction": "",
+        "methods": "",
+        "reference": "Love, M.I., Huber, W., and Anders, S. (2014). <b>Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.</b> <i>Genome Biology</i> 15.",
+        "reference_link": "http://doi.org/10.1186/s13059-014-0550-8"
+    },
+    {
+        "option_string": "quantile",
+        "option_name": "Quantile Normalization",
+        "introduction": "",
+        "methods": "",
+        "reference": "Love, M.I., Huber, W., and Anders, S. (2014). <b>Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.</b> <i>Genome Biology</i> 15.",
+        "reference_link": "http://doi.org/10.1186/s13059-014-0550-8"
+    },
+    {
+        "option_string": "logCPM",
+        "option_name": "logCPM",
+        "introduction": "logCPM",
+        "methods": "Raw counts were normalized to log10-Counts Per Million (logCPM) by dividing each column by the total sum of its counts, multiplying it by 10<sup>6</sup>, followed by the application of a log10-transform.",
+        "reference": "",
+        "reference_link": ""
+    }
+]

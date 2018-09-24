@@ -19,8 +19,6 @@ pymysql.install_as_MySQLdb()
 
 ##### 2. Custom modules #####
 # Pipeline running
-sys.path.append('pipeline/scripts')
-import Update as P
 
 #############################################
 ########## 2. General Setup
@@ -115,16 +113,31 @@ def createParameterTable(infiles, outfiles):
 
 #######################################################
 #######################################################
-########## S. 
+########## S2. Update
 #######################################################
 #######################################################
 
 #############################################
-########## . 
+########## 1. Upload Tables
 #############################################
 
-# engine.execute('TRUNCATE TABLE tool_dev')
-# tool_table.to_sql('tool_dev', engine, if_exists='append')
+@follows(mkdir('s2-upload.dir'))
+
+@transform(['s1-tables.dir/{}-table.txt'.format(x) for x in ['parameter_value', 'parameter', 'tool']],
+		   regex(r'.*/(.*).txt'),
+		   r's2-upload.dir/\1.upload')
+
+def uploadTables(infile, outfile):
+
+	# Read table
+	table = pd.read_table(infile, index_col='id')
+
+	# Get table name
+	table_name = os.path.basename(infile).split('-')[0]
+
+	# Upload
+	# engine.execute('TRUNCATE TABLE {}_dev'.format(table_name))
+	table.to_sql(table_name+'_dev', engine, if_exists='append')
 
 ##################################################
 ##################################################
