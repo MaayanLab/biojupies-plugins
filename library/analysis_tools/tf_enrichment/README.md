@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Transcription Factor Enrichment Analysis
-tf_enrichment_results = tf_enrichment.run(enrichr_results)
+tf_enrichment_results = tf_enrichment.run(enrichr)
 ```
 
 

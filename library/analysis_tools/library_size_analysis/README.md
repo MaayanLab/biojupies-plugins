@@ -10,8 +10,14 @@ Usage
 ### Running the Analysis
 ```python
 # Run Library Size Analysis
-library_size_analysis_results = library_size_analysis.run(dataset)
+library_size_analysis_results = library_size_analysis.run(dataset, plot_type=interactive)
 ```
+
+**Parameters**
+
+| Name | Values | Description |
+| ---- | ------ | ----------- |
+| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
 
 
 ### Plotting the Results

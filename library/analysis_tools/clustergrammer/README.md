@@ -15,11 +15,11 @@ clustergrammer_results = clustergrammer.run(dataset, nr_genes=2500, normalizatio
 
 **Parameters**
 
-| Name | Type | Values | Description |
-| ---- | ---- | ------ | ----------- |
-| **nr_genes** | *int* | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
-| **normalization** | *str* | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
-| **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
+| Name | Values | Description |
+| ---- | ------ | ----------- |
+| **nr_genes** | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
+| **normalization** | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
+| **z_score** | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
 
 
 ### Plotting the Results
@@ -28,4 +28,4 @@ clustergrammer_results = clustergrammer.run(dataset, nr_genes=2500, normalizatio
 clustergrammer.plot(clustergrammer_results)
 ```
 <img src="img/clustergrammer-example.png"> 
-The Clustergrammer plug-in embeds an interactive heatmap which displays gene expression for each sample in the RNA-seq dataset. Every row of the heatmap represents a gene, every column represents a sample, and every cell displays normalized gene expression values. The heatmap additionally features color bars beside each column which represent prior knowledge of each sample  for example, the tissue of origin or experimental treatment
+The Clustergrammer plug-in embeds an interactive heatmap which displays gene expression for each sample in the RNA-seq dataset. Every row of the heatmap represents a gene, every column represents a sample, and every cell displays normalized gene expression values. The heatmap additionally features color bars beside each column which represent prior knowledge of each sample – for example, the tissue of origin or experimental treatment

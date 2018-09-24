@@ -15,11 +15,11 @@ tsne_results = tsne.run(dataset, nr_genes=2500, normalization=logCPM, z_score=Tr
 
 **Parameters**
 
-| Name | Type | Values | Description |
-| ---- | ---- | ------ | ----------- |
-| **nr_genes** | *int* | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
-| **normalization** | *str* | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
-| **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
+| Name | Values | Description |
+| ---- | ------ | ----------- |
+| **nr_genes** | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
+| **normalization** | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
+| **z_score** | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
 
 
 ### Plotting the Results
@@ -28,3 +28,4 @@ tsne_results = tsne.run(dataset, nr_genes=2500, normalization=logCPM, z_score=Tr
 tsne.plot(tsne_results)
 ```
 <img src="img/tsne-example.png"> 
+Test

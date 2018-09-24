@@ -10,8 +10,14 @@ Usage
 ### Running the Analysis
 ```python
 # Run L1000CDS2 Query
-l1000cds2_results = l1000cds2.run(signature)
+l1000cds2_results = l1000cds2.run(signature, plot_type=interactive)
 ```
+
+**Parameters**
+
+| Name | Values | Description |
+| ---- | ------ | ----------- |
+| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
 
 
 ### Plotting the Results

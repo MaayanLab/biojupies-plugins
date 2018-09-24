@@ -10,16 +10,17 @@ Usage
 ### Running the Analysis
 ```python
 # Run PCA
-pca_results = pca.run(dataset, nr_genes=2500, normalization=logCPM, z_score=True)
+pca_results = pca.run(dataset, nr_genes=2500, normalization=logCPM, z_score=True, plot_type=interactive)
 ```
 
 **Parameters**
 
-| Name | Type | Values | Description |
-| ---- | ---- | ------ | ----------- |
-| **nr_genes** | *int* | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
-| **normalization** | *str* | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
-| **z_score** | *bool* | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
+| Name | Values | Description |
+| ---- | ------ | ----------- |
+| **nr_genes** | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis. |
+| **normalization** | *logCPM (default), quantile, VST* | Normalization method for the dataset. |
+| **z_score** | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset. |
+| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
 
 
 ### Plotting the Results

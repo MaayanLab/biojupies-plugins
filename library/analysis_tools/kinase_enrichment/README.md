@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Kinase Enrichment Analysis
-kinase_enrichment_results = kinase_enrichment.run(enrichr_results)
+kinase_enrichment_results = kinase_enrichment.run(enrichr)
 ```
 
 
