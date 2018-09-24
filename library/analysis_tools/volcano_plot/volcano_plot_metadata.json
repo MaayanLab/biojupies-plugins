@@ -47,6 +47,21 @@
                     "default": 0
                 }
             ]
+        },
+        {
+            "parameter_name": "Plot type",
+            "parameter_description": "Whether to display the plot statically or interactively.",
+            "parameter_string": "plot_type",
+            "values": [
+                {
+                    "value": "interactive",
+                    "default": 1
+                },
+                {
+                    "value": "static",
+                    "default": 0
+                }
+            ]
         }
     ],
     "reference": "",

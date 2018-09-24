@@ -62,6 +62,21 @@
                     "default": 0
                 }
             ]
+        },
+        {
+            "parameter_name": "Plot type",
+            "parameter_description": "Whether to display the plot statically or interactively.",
+            "parameter_string": "plot_type",
+            "values": [
+                {
+                    "value": "interactive",
+                    "default": 1
+                },
+                {
+                    "value": "static",
+                    "default": 0
+                }
+            ]
         }
     ],
     "reference": "Pearson, K. (1901). <b>LIII. On lines and planes of closest fit to systems of points in space.</b> <i>The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science</i> 2, 559\u00d0572.",

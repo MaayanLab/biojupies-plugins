@@ -57,7 +57,7 @@ def createToolTable(infiles, outfile):
 	tool_table = pd.DataFrame(new_tools).set_index('tool_string').drop('parameters', axis=1)
 
 	# Read IDs
-	tool_ids = pd.read_sql_query('SELECT id, tool_string FROM tool_dev', engine).set_index('tool_string').to_dict()['id']
+	tool_ids = pd.read_sql_query('SELECT id, tool_string FROM tool', engine).set_index('tool_string').to_dict()['id']
 
 	# Update IDs
 	for tool_string in tool_table.index:
@@ -145,21 +145,32 @@ def createOptionTable(infiles, outfile):
 
 @follows(mkdir('s2-upload.dir'))
 
-@transform(['s1-tables.dir/{}-table.txt'.format(x) for x in ['parameter_value', 'parameter', 'tool']],
-		   regex(r'.*/(.*).txt'),
-		   r's2-upload.dir/\1.upload')
+@merge(glob.glob('s1-tables.dir/*-table.txt'),
+	   's2-upload.dir/upload.txt')
 
-def uploadTables(infile, outfile):
+def uploadTables(infiles, outfile):
 
-	# Read table
-	table = pd.read_table(infile, index_col='id')
+	# Initialize table dict
+	table_dict = {}
 
-	# Get table name
-	table_name = os.path.basename(infile).split('-')[0]
+	# 3Loop through infiles
+	for infile in infiles:
 
-	# Upload
-	# engine.execute('TRUNCATE TABLE {}_dev'.format(table_name))
-	table.to_sql(table_name+'_dev', engine, if_exists='append')
+		# Get table name
+		table_name = os.path.basename(infile).split('-')[0]
+
+		# Read table
+		print(table_name)
+		table_dict[table_name] = pd.read_table(infile, index_col='id')
+
+	# Loop through tables
+	for table_name in ['tool', 'parameter', 'parameter_value', 'core_scripts']:
+
+		# Upload
+		engine.execute('SET FOREIGN_KEY_CHECKS=0;')
+		engine.execute('TRUNCATE TABLE {}; '.format(table_name))
+		engine.execute('SET FOREIGN_KEY_CHECKS=1;')
+		table_dict[table_name].fillna('').to_sql(table_name, engine, if_exists='append')
 
 ##################################################
 ##################################################

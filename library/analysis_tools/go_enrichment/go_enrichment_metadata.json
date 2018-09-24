@@ -9,7 +9,23 @@
     "video_tutorial": null,
     "input": "enrichr",
     "requires_signature": 1,
-    "parameters": [],
+    "parameters": [
+        {
+            "parameter_name": "Plot type",
+            "parameter_description": "Whether to display the plot statically or interactively.",
+            "parameter_string": "plot_type",
+            "values": [
+                {
+                    "value": "interactive",
+                    "default": 1
+                },
+                {
+                    "value": "static",
+                    "default": 0
+                }
+            ]
+        }
+    ],
     "reference": "",
     "default_selected": 0,
     "section_fk": 3,

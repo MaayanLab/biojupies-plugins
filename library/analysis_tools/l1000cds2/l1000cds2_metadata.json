@@ -9,7 +9,23 @@
     "video_tutorial": "https://www.youtube.com/watch?v=kiTAGlvoyWU",
     "input": "signature",
     "requires_signature": 1,
-    "parameters": [],
+    "parameters": [
+        {
+            "parameter_name": "Plot type",
+            "parameter_description": "Whether to display the plot statically or interactively.",
+            "parameter_string": "plot_type",
+            "values": [
+                {
+                    "value": "interactive",
+                    "default": 1
+                },
+                {
+                    "value": "static",
+                    "default": 0
+                }
+            ]
+        }
+    ],
     "reference": "Duan, Q., Reid, S.P., Clark, N.R., Wang, Z., Fernandez, N.F., Rouillard, A.D., Readhead, B., Tritsch, S.R., Hodos, R., Hafner, M., et al. (2016). <b>L1000CDS2: LINCS L1000 characteristic direction signatures search engine.</b> <i>Npj Systems Biology and Applications</i> 2.",
     "default_selected": 0,
     "section_fk": 4,
