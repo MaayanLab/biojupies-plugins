@@ -14,6 +14,7 @@ ma_plot_results = ma_plot.run(signature, pvalue_threshold="0.05", logfc_threshol
 ```
 
 **Parameters**
+
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **pvalue_threshold** | * "0.01", "0.05" (default), "0.1"* | P-value cutoff to display significant genes on the plot |

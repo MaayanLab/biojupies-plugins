@@ -14,6 +14,7 @@ pca_results = pca.run(dataset, nr_genes=2500, normalization="logCPM", z_score=Tr
 ```
 
 **Parameters**
+
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **nr_genes** | * 500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis |

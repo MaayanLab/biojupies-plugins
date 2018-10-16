@@ -14,6 +14,7 @@ sample_clustering_heatmap_results = sample_clustering_heatmap.run(signature, pva
 ```
 
 **Parameters**
+
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **pvalue_threshold** | * "0.01", "0.05" (default), "0.1"* | P-value cutoff to display significant genes on the plot |
