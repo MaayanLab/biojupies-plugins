@@ -249,6 +249,12 @@ def updateToolReadme(infiles, outfile):
 ########## Run pipeline
 ##################################################
 ##################################################
-pipeline_run([createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme])
-# pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)
+if len(sys.argv) == 1:
+	pipeline_run([createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme])
+elif sys.argv[-1] == 'readme':
+	pipeline_run([updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[uploadTables, updateMainReadme])
+elif sys.argv[-1] == 'database':
+	pipeline_run([createToolTable, createParameterTable, createOptionTable], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
+else:
+	pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)
 print('Done!')
