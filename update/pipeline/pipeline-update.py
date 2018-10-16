@@ -12,7 +12,7 @@
 #############################################
 ##### 1. Python modules #####
 from ruffus import *
-import sys, glob, json, os, pymysql
+import sys, glob, json, os, pymysql, math
 import pandas as pd
 from sqlalchemy import create_engine
 pymysql.install_as_MySQLdb()
@@ -26,7 +26,7 @@ pymysql.install_as_MySQLdb()
 ##### 1. Variables #####
 tool_metadata = glob.glob('../library/analysis_tools/*/*_metadata.json')
 option_metadata = glob.glob('../library/core_scripts/*/*_metadata.json')
-engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI'])
+engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI']+'-copy')
 
 ##### 2. R Connection #####
 
@@ -52,23 +52,30 @@ def createToolTable(infiles, outfile):
 	for infile in infiles:
 		with open(infile) as openfile:
 			new_tools.append(json.load(openfile))
+
+	# Get new and old data
+	new_tool_dict = pd.DataFrame(new_tools).drop('parameters', axis=1).set_index('tool_string').to_dict(orient='index')
+	tool_dict = pd.read_sql_table('tool', engine).set_index('tool_string').to_dict(orient='index')
+
+	# Loop through new tools - adds new tools, updates existing ones, leaves old ones
+	for tool_string, new_tool_data in new_tool_dict.items():
+		# Update existing tools
+		if tool_string in tool_dict.keys():
+			tool_dict[tool_string].update(new_tool_data)
+		# Add new tools
+		else:
+			tool_dict[tool_string] = new_tool_data
 			
-	# Create table
-	tool_table = pd.DataFrame(new_tools).set_index('tool_string').drop('parameters', axis=1)
+	# Create dataframe
+	tool_dataframe = pd.DataFrame(tool_dict).T.sort_values('id').rename_axis('tool_string')
 
-	# Read IDs
-	tool_ids = pd.read_sql_query('SELECT id, tool_string FROM tool', engine).set_index('tool_string').to_dict()['id']
-
-	# Update IDs
-	for tool_string in tool_table.index:
-		if not tool_ids.get(tool_string):
-			tool_ids[tool_string] = max(tool_ids.values())+1
-
-	# Add IDs
-	tool_table['id'] = [tool_ids[x] for x in tool_table.index]
+	# Update IDs for new tools
+	for index, rowData in tool_dataframe.iterrows():
+		if math.isnan(rowData['id']):
+			tool_dataframe.loc[index, 'id'] = max(tool_dataframe['id'])+1
 
 	# Write
-	tool_table.to_csv(outfile, sep='\t')
+	tool_dataframe.to_csv(outfile, sep='\t')
 
 #############################################
 ########## 2. Parameter Table
@@ -145,15 +152,15 @@ def createOptionTable(infiles, outfile):
 
 @follows(mkdir('s2-upload.dir'))
 
-@merge(glob.glob('s1-tables.dir/*-table.txt'),
-	   's2-upload.dir/upload.txt')
+@files(glob.glob('s1-tables.dir/*-table.txt'),
+	   None)
 
 def uploadTables(infiles, outfile):
 
 	# Initialize table dict
 	table_dict = {}
 
-	# 3Loop through infiles
+	# Loop through infiles
 	for infile in infiles:
 
 		# Get table name
@@ -177,5 +184,5 @@ def uploadTables(infiles, outfile):
 ########## Run pipeline
 ##################################################
 ##################################################
-pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)
+pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
 print('Done!')
