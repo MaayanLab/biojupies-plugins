@@ -214,6 +214,37 @@ def updateToolReadme(infiles, outfile):
 	with open(outfile, 'w') as openfile:
 		openfile.write(rendered_template)
 
+#############################################
+########## 2. Main README
+#############################################
+
+@merge(['s2-readme_templates.dir/main_README.md', tool_metadata],
+	   '../README.md')
+
+def updateMainReadme(infiles, outfile):
+
+	# Split infiles
+	template_file, metadata_files = infiles
+
+	# Read tool metadata
+	tool_metadata = {}
+	for metadata_file in metadata_files:
+		with open(metadata_file) as openfile:
+			tool_metadata[metadata_file.split('/')[-2]] = json.load(openfile)
+	tool_dataframe = pd.DataFrame(tool_metadata).T.sort_values(['section_fk', 'tool_string']).query('display == 1')
+
+	# Read template
+	with open(template_file) as openfile:
+		template = jinja2.Template(openfile.read())
+
+	# Render template
+	rendered_template = template.render(tools=tool_dataframe.to_dict(orient='records'))
+
+	# Write
+	with open(outfile, 'w') as openfile:
+		openfile.write(rendered_template)
+
+
 ##################################################
 ##################################################
 ########## Run pipeline
