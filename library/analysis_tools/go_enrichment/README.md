@@ -17,7 +17,7 @@ go_enrichment_results = go_enrichment.run(enrichr, plot_type="interactive")
 
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
+| **plot_type** | *"interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results

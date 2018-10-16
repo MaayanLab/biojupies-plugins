@@ -17,7 +17,7 @@ pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type="interact
 
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
+| **plot_type** | *"interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results

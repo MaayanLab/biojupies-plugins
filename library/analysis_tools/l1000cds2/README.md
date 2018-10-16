@@ -17,7 +17,7 @@ l1000cds2_results = l1000cds2.run(signature, plot_type="interactive")
 
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
+| **plot_type** | *"interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results
