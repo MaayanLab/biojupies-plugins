@@ -12,13 +12,15 @@
 #############################################
 ##### 1. Python modules #####
 from ruffus import *
-import sys, glob, json, os, pymysql, math
+import sys, glob, json, os, pymysql, math, jinja2
 import pandas as pd
 from sqlalchemy import create_engine
 pymysql.install_as_MySQLdb()
 
 ##### 2. Custom modules #####
 # Pipeline running
+# sys.path.append('pipeline')
+# from README import *
 
 #############################################
 ########## 2. General Setup
@@ -142,15 +144,13 @@ def createOptionTable(infiles, outfile):
 
 #######################################################
 #######################################################
-########## S2. Update
+########## S2. Update Tables
 #######################################################
 #######################################################
 
 #############################################
 ########## 1. Upload Tables
 #############################################
-
-@follows(mkdir('s2-upload.dir'))
 
 @files(glob.glob('s1-tables.dir/*-table.txt'),
 	   None)
@@ -179,10 +179,45 @@ def uploadTables(infiles, outfile):
 		engine.execute('SET FOREIGN_KEY_CHECKS=1;')
 		table_dict[table_name].fillna('').to_sql(table_name, engine, if_exists='append')
 
+#######################################################
+#######################################################
+########## S3. README
+#######################################################
+#######################################################
+
+#############################################
+########## 1. Tool README
+#############################################
+
+@transform(tool_metadata,
+		   regex(r'(.*)/.*/*_metadata.json'),
+           add_inputs('s2-readme_templates.dir/tool_README.md'),
+		   r'\1/README.md')
+
+def updateToolReadme(infiles, outfile):
+
+	# Split infiles
+	metadata_file, template_file = infiles
+
+	# Read tool metadata
+	with open(metadata_file) as openfile:
+		tool_metadata = json.load(openfile)
+
+	# Read template
+	with open(template_file) as openfile:
+		template = jinja2.Template(openfile.read())
+
+	# Render template
+	rendered_template = template.render(tool_metadata=tool_metadata)
+
+	# Write
+	with open(outfile, 'w') as openfile:
+		openfile.write(rendered_template)
+
 ##################################################
 ##################################################
 ########## Run pipeline
 ##################################################
 ##################################################
-pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
+pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)#, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
 print('Done!')
