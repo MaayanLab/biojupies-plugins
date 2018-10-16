@@ -167,13 +167,13 @@ def uploadTables(infiles, outfile):
 		table_name = os.path.basename(infile).split('-')[0]
 
 		# Read table
-		print(table_name)
 		table_dict[table_name] = pd.read_table(infile, index_col='id')
 
 	# Loop through tables
 	for table_name in ['tool', 'parameter', 'parameter_value', 'core_scripts']:
 
 		# Upload
+		print('Updating {} table...'.format(table_name))
 		engine.execute('SET FOREIGN_KEY_CHECKS=0;')
 		engine.execute('TRUNCATE TABLE {}; '.format(table_name))
 		engine.execute('SET FOREIGN_KEY_CHECKS=1;')
@@ -186,7 +186,37 @@ def uploadTables(infiles, outfile):
 #######################################################
 
 #############################################
-########## 1. Tool README
+########## 1. Main README
+#############################################
+
+@merge(['s2-readme_templates.dir/main_README.md', tool_metadata],
+       '../README.md')
+def updateMainReadme(infiles, outfile):
+
+	# Split infiles
+	template_file, metadata_files = infiles
+
+	# Read tool metadata
+	tool_metadata = {}
+	for metadata_file in metadata_files:
+		with open(metadata_file) as openfile:
+			tool_metadata[metadata_file.split('/')[-2]] = json.load(openfile)
+	tool_dataframe = pd.DataFrame(tool_metadata).T.sort_values(
+		['section_fk', 'tool_string']).query('display == 1')
+
+	# Read template
+	with open(template_file) as openfile:
+		template = jinja2.Template(openfile.read())
+
+	# Render template
+	rendered_template = template.render(tools=tool_dataframe.to_dict(orient='records'))
+
+	# Write
+	with open(outfile, 'w') as openfile:
+		openfile.write(rendered_template)
+
+#############################################
+########## 2. Tool README
 #############################################
 
 @transform(tool_metadata,
@@ -214,41 +244,11 @@ def updateToolReadme(infiles, outfile):
 	with open(outfile, 'w') as openfile:
 		openfile.write(rendered_template)
 
-#############################################
-########## 2. Main README
-#############################################
-
-@merge(['s2-readme_templates.dir/main_README.md', tool_metadata],
-	   '../README.md')
-
-def updateMainReadme(infiles, outfile):
-
-	# Split infiles
-	template_file, metadata_files = infiles
-
-	# Read tool metadata
-	tool_metadata = {}
-	for metadata_file in metadata_files:
-		with open(metadata_file) as openfile:
-			tool_metadata[metadata_file.split('/')[-2]] = json.load(openfile)
-	tool_dataframe = pd.DataFrame(tool_metadata).T.sort_values(['section_fk', 'tool_string']).query('display == 1')
-
-	# Read template
-	with open(template_file) as openfile:
-		template = jinja2.Template(openfile.read())
-
-	# Render template
-	rendered_template = template.render(tools=tool_dataframe.to_dict(orient='records'))
-
-	# Write
-	with open(outfile, 'w') as openfile:
-		openfile.write(rendered_template)
-
-
 ##################################################
 ##################################################
 ########## Run pipeline
 ##################################################
 ##################################################
-pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)#, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
+pipeline_run([createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme])
+# pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)
 print('Done!')
