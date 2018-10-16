@@ -1,4 +1,4 @@
-<img src="img/volcano_plot-icon.png" width="50px"> Volcano Plot Plug-in
+<img src="img/sample_clustering_heatmap-icon.png" width="50px"> Volcano Plot Plug-in
 ================
 
 Overview
@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Volcano Plot
-volcano_plot_results = volcano_plot.run(signature, pvalue_threshold="0.05", logfc_threshold="1.5", plot_type="interactive")
+sample_clustering_heatmap_results = sample_clustering_heatmap.run(signature, pvalue_threshold="0.05", logfc_threshold="1.5", plot_type="interactive")
 ```
 
 **Parameters**
@@ -24,7 +24,7 @@ volcano_plot_results = volcano_plot.run(signature, pvalue_threshold="0.05", logf
 ### Plotting the Results
 ```python
 # Plot Volcano Plot results
-volcano_plot.plot(volcano_plot_results)
+sample_clustering_heatmap.plot(sample_clustering_heatmap_results)
 ```
-<img src="img/volcano_plot-example.png"> 
+<img src="img/sample_clustering_heatmap-example.png"> 
 The Volcano Plot plug-in embeds an interactive scatter plot which displays the log2-fold changes and statistical significance of each gene calculated by performing differential gene expression analysis comparing samples in the Control group to samples in the Perturbation group. Every point in the plot represents a gene; additional information for each gene is available by hovering over it.

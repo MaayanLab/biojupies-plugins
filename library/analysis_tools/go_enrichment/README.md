@@ -10,14 +10,13 @@ Usage
 ### Running the Analysis
 ```python
 # Run Gene Ontology Enrichment Analysis
-go_enrichment_results = go_enrichment.run(enrichr, plot_type=interactive)
+go_enrichment_results = go_enrichment.run(enrichr, plot_type="interactive")
 ```
 
 **Parameters**
-
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
+| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results

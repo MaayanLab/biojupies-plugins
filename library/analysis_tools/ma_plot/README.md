@@ -10,16 +10,15 @@ Usage
 ### Running the Analysis
 ```python
 # Run MA Plot
-ma_plot_results = ma_plot.run(signature, pvalue_threshold=0.05, logfc_threshold=1.5, plot_type=interactive)
+ma_plot_results = ma_plot.run(signature, pvalue_threshold="0.05", logfc_threshold="1.5", plot_type="interactive")
 ```
 
 **Parameters**
-
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **pvalue_threshold** | *0.01, 0.05 (default), 0.1* | P-value cutoff to display significant genes on the plot. |
-| **logfc_threshold** | *1, 1.5 (default), 2* | Threshold of the absolute log2-Fold Changes to indicate differentially expressed genes. |
-| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
+| **pvalue_threshold** | * "0.01", "0.05" (default), "0.1"* | P-value cutoff to display significant genes on the plot |
+| **logfc_threshold** | * 1, "1.5" (default), 2* | Threshold of the absolute log2-Fold Changes to indicate differentially expressed genes |
+| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results

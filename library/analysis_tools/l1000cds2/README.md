@@ -1,4 +1,4 @@
-<img src="img/l1000cds2-icon.png" width="50px"> L1000CDS2 Query Plug-in
+<img src="img/l1000cds2-icon.png" width="50px"> L1000CDS<sup>2</sup> Query Plug-in
 ================
 
 Overview
@@ -9,20 +9,19 @@ Usage
 ----------------
 ### Running the Analysis
 ```python
-# Run L1000CDS2 Query
-l1000cds2_results = l1000cds2.run(signature, plot_type=interactive)
+# Run L1000CDS<sup>2</sup> Query
+l1000cds2_results = l1000cds2.run(signature, plot_type="interactive")
 ```
 
 **Parameters**
-
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
+| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results
 ```python
-# Plot L1000CDS2 Query results
+# Plot L1000CDS<sup>2</sup> Query results
 l1000cds2.plot(l1000cds2_results)
 ```
 <img src="img/l1000cds2-example.png"> 

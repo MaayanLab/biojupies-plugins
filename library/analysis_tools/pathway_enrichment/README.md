@@ -10,14 +10,13 @@ Usage
 ### Running the Analysis
 ```python
 # Run Pathway Enrichment Analysis
-pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type=interactive)
+pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type="interactive")
 ```
 
 **Parameters**
-
 | Name | Values | Description |
 | ---- | ------ | ----------- |
-| **plot_type** | *interactive (default), static* | Whether to display the plot statically or interactively.. |
+| **plot_type** | * "interactive" (default), "static"* | Whether to display the plot statically or interactively. |
 
 
 ### Plotting the Results
