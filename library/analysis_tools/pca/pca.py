@@ -48,7 +48,7 @@ def run(dataset, normalization='logCPM', nr_genes=2500, z_score=True, color_by='
 	if z_score == 'True' or z_score == True:
 		with warnings.catch_warnings():
 			warnings.simplefilter("ignore")
-			expression_dataframe = expression_dataframe.T.apply(ss.zscore, axis=0).T
+			expression_dataframe = expression_dataframe.T.apply(ss.zscore, axis=0).T.dropna()
 
 	# Run PCA
 	pca=PCA(n_components=3)
