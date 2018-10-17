@@ -28,7 +28,7 @@ pymysql.install_as_MySQLdb()
 ##### 1. Variables #####
 tool_metadata = glob.glob('../library/analysis_tools/*/*_metadata.json')
 option_metadata = glob.glob('../library/core_scripts/*/*_metadata.json')
-engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI']+'-copy')
+engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI'])#+'-copy')
 
 ##### 2. R Connection #####
 
