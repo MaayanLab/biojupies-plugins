@@ -7,7 +7,7 @@
         "reference_link": ""
     },
     {
-        "option_string": "vst",
+        "option_string": "VST",
         "option_name": "Variance Stabilizing Transform",
         "methods": "",
         "reference": "Love, M.I., Huber, W., and Anders, S. (2014). <b>Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.</b> <i>Genome Biology</i> 15.",

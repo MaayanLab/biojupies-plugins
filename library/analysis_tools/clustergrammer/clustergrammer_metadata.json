@@ -41,10 +41,6 @@
                 {
                     "value": "quantile",
                     "default": 0
-                },
-                {
-                    "value": "VST",
-                    "default": 0
                 }
             ]
         },

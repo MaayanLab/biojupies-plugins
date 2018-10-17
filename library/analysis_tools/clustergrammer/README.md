@@ -18,7 +18,7 @@ clustergrammer_results = clustergrammer.run(dataset, nr_genes=2500, normalizatio
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **nr_genes** | *500, 2500 (default), 5000* | Number of most variably expressed genes to use for the analysis |
-| **normalization** | *"logCPM" (default), "quantile", "VST"* | Normalization method for the dataset |
+| **normalization** | *"logCPM" (default), "quantile"* | Normalization method for the dataset |
 | **z_score** | *True (default), False* | Whether to perform Z-score on the rows of the normalized dataset |
 
 
