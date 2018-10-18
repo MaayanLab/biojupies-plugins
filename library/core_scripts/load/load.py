@@ -29,7 +29,7 @@ with warnings.catch_warnings():
 ########## 1. ARCHS4
 #############################################
 
-def archs4(gse, platform, version='v5', filter_metadata=False):
+def archs4(gse, platform, version='v6', filter_metadata=False):
 
 	# Load HDF5 File
 	h5 = '/download/{gse}-{platform}.h5'.format(**locals())
