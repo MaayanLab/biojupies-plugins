@@ -55,12 +55,19 @@ def plot(enrichment_results, plot_counter):
 	enrichment_dataframe = pd.concat([enrichment_results['upregulated'], enrichment_results['downregulated']])
 
 	# Plot barcharts
-	for gene_set_library in enrichment_dataframe['gene_set_library'].unique():
-		s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'], 10, 300)
+	libraries = enrichment_dataframe['gene_set_library'].unique()
+	if len(libraries):
 
-	# Download button
-	results_txt = enrichment_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
-	s.download_button(results_txt, 'Download Results', 'go_enrichment_results.txt')
+		# Barcharts
+		for gene_set_library in libraries:
+			s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'], 10, 300)
 
-	# Figure legend
-	display(Markdown('** Figure '+plot_counter()+' | Gene Ontology Enrichment Analysis Results. **The figure contains interactive bar charts displaying the results of the Gene Ontology enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term. Significant terms are highlighted in bold. Additional information about enrichment results is available by hovering over each bar.  If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
+		# Download button
+		results_txt = enrichment_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
+		s.download_button(results_txt, 'Download Results', 'go_enrichment_results.txt')
+
+		# Figure legend
+		display(Markdown('** Figure '+plot_counter()+' | Gene Ontology Enrichment Analysis Results. **The figure contains interactive bar charts displaying the results of the Gene Ontology enrichment analysis generated using Enrichr. The x axis indicates the enrichment score for each term. Significant terms are highlighted in bold. Additional information about enrichment results is available by hovering over each bar.  If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
+	else:
+		display(Markdown('### No enrichment results were found.\n This is likely due to the fact that the gene identifiers were not recognized by Enrichr. Please note that Enrichr currently only supports HGNC gene symbols (https://www.genenames.org/) as identifiers. If your dataset uses other gene identifier systems, such as Ensembl IDs or Entrez IDs, consider converting them to HGNC. Automated gene identifier conversion is currently under development.'))
+
