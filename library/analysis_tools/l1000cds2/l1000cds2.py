@@ -55,8 +55,11 @@ def run(signature, nr_genes=500, signature_label='', plot_type='interactive'):
 
 		# Add results
 		resGeneSet = r.json()
-		l1000cds2_dataframe = l1000cds2_dataframe = pd.DataFrame(resGeneSet['topMeta'])[['cell_id', 'pert_desc', 'pert_dose', 'pert_dose_unit', 'pert_id', 'pert_time', 'pert_time_unit', 'pubchem_id', 'score', 'sig_id']].replace('-666', np.nan)
-		l1000cds2_results[label] = {'url': 'http://amp.pharm.mssm.edu/L1000CDS2/#/result/{}'.format(resGeneSet['shareId']), 'table': l1000cds2_dataframe}
+		if resGeneSet.get('topMeta'):
+			l1000cds2_dataframe = pd.DataFrame(resGeneSet['topMeta'])[['cell_id', 'pert_desc', 'pert_dose', 'pert_dose_unit', 'pert_id', 'pert_time', 'pert_time_unit', 'pubchem_id', 'score', 'sig_id']].replace('-666', np.nan)
+			l1000cds2_results[label] = {'url': 'http://amp.pharm.mssm.edu/L1000CDS2/#/result/{}'.format(resGeneSet['shareId']), 'table': l1000cds2_dataframe}
+		else:
+			l1000cds2_results[label] = None
 	l1000cds2_results['plot_type'] = plot_type
 
 	# Return
@@ -67,67 +70,72 @@ def run(signature, nr_genes=500, signature_label='', plot_type='interactive'):
 #############################################
 
 def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
-	# Links
-	if l1000cds2_results['signature_label']:
-		display(Markdown('\n### {signature_label} signature:'.format(**l1000cds2_results)))
-	display(Markdown(' **L1000CDS<sup>2</sup> Links:**'))
-	display(Markdown(' *Mimic Signature Query Results*: {url}'.format(**l1000cds2_results['mimic'])))
-	display(Markdown(' *Reverse Signature Query Results*: {url}'.format(**l1000cds2_results['reverse'])))
 
-	# Bar charts
-	fig = tools.make_subplots(rows=1, cols=2, print_grid=False);
-	for i, direction in enumerate(['mimic', 'reverse']):
-		drug_counts = l1000cds2_results[direction]['table'].groupby('pert_desc').size().sort_values(ascending=False).iloc[:nr_drugs].iloc[::-1]
-
-		# Get Bar
-		bar = go.Bar(
-			x=drug_counts.values,
-			y=drug_counts.index,
-			orientation='h',
-			name=direction.title(),
-			hovertext=drug_counts.index,
-			hoverinfo='text',
-			marker={'color': '#FF7F50' if direction=='mimic' else '	#9370DB'}
-		)
-		fig.append_trace(bar, 1, i+1)
-		
-		# Get text
-		text = go.Scatter(
-			 x=[max(bar['x'])/50 for x in range(len(bar['y']))],
-			 y=bar['y'],
-			 mode='text',
-			 hoverinfo='none',
-			 showlegend=False,
-			 text=drug_counts.index,
-			 textposition="middle right",
-			 textfont={'color': 'black'}
-		)
-		fig.append_trace(text, 1, i+1)
-
-	fig['layout'].update(height=height, title='<b>L1000CDS<sup>2</sup> | Small Molecule Query</b><br><i>Top small molecules</i>', hovermode='closest')
-	fig['layout']['xaxis1'].update(domain=[0,0.5])
-	fig['layout']['xaxis1'].update(title='<br>Count')
-	fig['layout']['xaxis2'].update(title='<br>Count')
-	fig['layout']['xaxis2'].update(domain=[0.5,1])
-	fig['layout']['yaxis1'].update(showticklabels=False)
-	fig['layout']['yaxis2'].update(showticklabels=False)
-	fig['layout']['margin'].update(l=10, t=95, r=0, b=45, pad=5)
-
-	if l1000cds2_results['plot_type'] == 'interactive':
-		iplot(fig)
+	# Check if there are results
+	if not l1000cds2_results['mimic'] or not l1000cds2_results['reverse']:
+		display(Markdown('### No results were found.\n This is likely due to the fact that the gene identifiers were not recognized by L1000CDS<sup>2</sup>. Please note that L1000CDS<sup>2</sup> currently only supports HGNC gene symbols (https://www.genenames.org/). If your dataset uses other gene identifier systems, such as Ensembl IDs or Entrez IDs, consider converting them to HGNC. Automated gene identifier conversion is currently under development.'))
 	else:
-		s.static_plot(fig)
+		# Links
+		if l1000cds2_results['signature_label']:
+			display(Markdown('\n### {signature_label} signature:'.format(**l1000cds2_results)))
+		display(Markdown(' **L1000CDS<sup>2</sup> Links:**'))
+		display(Markdown(' *Mimic Signature Query Results*: {url}'.format(**l1000cds2_results['mimic'])))
+		display(Markdown(' *Reverse Signature Query Results*: {url}'.format(**l1000cds2_results['reverse'])))
 
-	# Download
-	result_list = []
-	for direction, result_dict in l1000cds2_results.items():
-		if direction in ['mimic', 'reverse']:
-			df = pd.DataFrame(result_dict['table'])
-			df['direction'] = direction
-			result_list.append(df)
-	result_txt = pd.concat(result_list).to_csv(index=False, sep='\t')
-	s.download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
+		# Bar charts
+		fig = tools.make_subplots(rows=1, cols=2, print_grid=False);
+		for i, direction in enumerate(['mimic', 'reverse']):
+			drug_counts = l1000cds2_results[direction]['table'].groupby('pert_desc').size().sort_values(ascending=False).iloc[:nr_drugs].iloc[::-1]
 
-	# Figure Legend
-	display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
+			# Get Bar
+			bar = go.Bar(
+				x=drug_counts.values,
+				y=drug_counts.index,
+				orientation='h',
+				name=direction.title(),
+				hovertext=drug_counts.index,
+				hoverinfo='text',
+				marker={'color': '#FF7F50' if direction=='mimic' else '	#9370DB'}
+			)
+			fig.append_trace(bar, 1, i+1)
+			
+			# Get text
+			text = go.Scatter(
+				x=[max(bar['x'])/50 for x in range(len(bar['y']))],
+				y=bar['y'],
+				mode='text',
+				hoverinfo='none',
+				showlegend=False,
+				text=drug_counts.index,
+				textposition="middle right",
+				textfont={'color': 'black'}
+			)
+			fig.append_trace(text, 1, i+1)
+
+		fig['layout'].update(height=height, title='<b>L1000CDS<sup>2</sup> | Small Molecule Query</b><br><i>Top small molecules</i>', hovermode='closest')
+		fig['layout']['xaxis1'].update(domain=[0,0.5])
+		fig['layout']['xaxis1'].update(title='<br>Count')
+		fig['layout']['xaxis2'].update(title='<br>Count')
+		fig['layout']['xaxis2'].update(domain=[0.5,1])
+		fig['layout']['yaxis1'].update(showticklabels=False)
+		fig['layout']['yaxis2'].update(showticklabels=False)
+		fig['layout']['margin'].update(l=10, t=95, r=0, b=45, pad=5)
+
+		if l1000cds2_results['plot_type'] == 'interactive':
+			iplot(fig)
+		else:
+			s.static_plot(fig)
+
+		# Download
+		result_list = []
+		for direction, result_dict in l1000cds2_results.items():
+			if direction in ['mimic', 'reverse']:
+				df = pd.DataFrame(result_dict['table'])
+				df['direction'] = direction
+				result_list.append(df)
+		result_txt = pd.concat(result_list).to_csv(index=False, sep='\t')
+		s.download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
+
+		# Figure Legend
+		display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
 
