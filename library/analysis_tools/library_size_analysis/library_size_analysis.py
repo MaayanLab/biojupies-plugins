@@ -41,7 +41,7 @@ def run(dataset, color_by=None, plot_type='interactive'):  # , filter_samples=Tr
 def plot(library_size_results, plot_counter):
 	colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928']
 	color_by = library_size_results['color_by']
-	sample_metadata = library_size_results['sample_metadata']
+	sample_metadata = library_size_results['sample_metadata'].loc[library_size_results['library_sizes'].index]
 	if color_by:
 		colored_string = '<i>, colored by {}</i>'.format(color_by)
 		color_column = sample_metadata[color_by]
