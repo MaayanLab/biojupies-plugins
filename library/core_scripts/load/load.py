@@ -78,7 +78,7 @@ def upload(uid, filter_metadata=False):
 			if len(unique_vals) == 1 or any([len(x) > 20 for x in unique_vals]):
 				sample_metadata_dataframe.drop(column, axis=1, inplace=True)
 
-	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'upload', 'datatype': 'rnaseq'}}
+	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'upload', 'datatype': 'rnaseq', 'qc': json.loads(f['meta']['sequencing']['qc'].value) if f['meta'].get('sequencing') else None}}
 	os.unlink(h5)
 
 	# Return
