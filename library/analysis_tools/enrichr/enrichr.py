@@ -36,11 +36,12 @@ def get_genesets(signature_dataframe, signature_col, top_n=True, nr_genes=500):
 	genesets['downregulated'] = sorted_genes[:500]
 	return genesets
 
-def submit_enrichr_geneset(geneset):
+def submit_enrichr_geneset(geneset, label):
 	ENRICHR_URL = 'http://amp.pharm.mssm.edu/Enrichr/addList'
 	genes_str = '\n'.join(geneset)
 	payload = {
-	'list': (None, genes_str),
+		'list': (None, genes_str),
+		'description': (None, label)
 	}
 	response = requests.post(ENRICHR_URL, files=payload)
 	if not response.ok:
@@ -56,7 +57,8 @@ def run(signature, geneset_size=500, libraries=['GO_Biological_Process_2017b', '
 	genesets['downregulated'] = signature.index[-geneset_size:]
 
 	# Submit to Enrichr
-	enrichr_ids = {geneset_label: submit_enrichr_geneset(geneset=geneset) for geneset_label, geneset in genesets.items()}
+	print('submittin')
+	enrichr_ids = {geneset_label: submit_enrichr_geneset(geneset=geneset, label=signature_label+', '+geneset_label+', from BioJupies') for geneset_label, geneset in genesets.items()}
 	enrichr_ids['signature_label'] = signature_label
 	return enrichr_ids
 
