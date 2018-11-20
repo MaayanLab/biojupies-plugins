@@ -10,6 +10,7 @@
 ##### 1. General support #####
 import requests
 import json
+import time
 import pandas as pd
 from IPython.display import display, Markdown
 from plotly import tools
@@ -46,6 +47,7 @@ def submit_enrichr_geneset(geneset, label):
 	response = requests.post(ENRICHR_URL, files=payload)
 	if not response.ok:
 		raise Exception('Error analyzing gene list')
+	time.sleep(0.5)
 	data = json.loads(response.text)
 	return data
 
@@ -57,7 +59,6 @@ def run(signature, geneset_size=500, libraries=['GO_Biological_Process_2017b', '
 	genesets['downregulated'] = signature.index[-geneset_size:]
 
 	# Submit to Enrichr
-	print('submittin')
 	enrichr_ids = {geneset_label: submit_enrichr_geneset(geneset=geneset, label=signature_label+', '+geneset_label+', from BioJupies') for geneset_label, geneset in genesets.items()}
 	enrichr_ids['signature_label'] = signature_label
 	return enrichr_ids
