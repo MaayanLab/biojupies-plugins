@@ -39,7 +39,7 @@ def download_button(content, label, filename):
 #############################################
 
 def static_plot(fig):
-	py.sign_in('biojupies', 'ViF0ssJnq2UOuzWfK9cJ')
+	py.sign_in('denis-torre', '1w2EWVWYx2Wjo9MMdKpf')
 	py.image.ishow(fig)
 
 #############################################
