@@ -29,13 +29,14 @@ from shared import *
 #############################################
 
 def run(signature, signature_label=''):
-	return signature.copy()
+	return {'signature': signature.copy(), 'signature_label': signature_label}
 
 #############################################
 ########## 2. Plot
 #############################################
 
-def plot(signature, plot_counter):
+def plot(signature_table_results, plot_counter):
+	signature = signature_table_results['signature']
 	signature_txt = signature.to_csv(sep='\t')
 	# signature.index = ['<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene={x}" target="_blank">{x}</a>'.format(**locals()) for x in signature.index] # human
 	signature.index = ['<a href="http://amp.pharm.mssm.edu/Harmonizome/gene/'+x.upper()+'" target="_blank">'+x+'</a>' for x in signature.index] # mouse
@@ -50,7 +51,7 @@ def plot(signature, plot_counter):
 	display(HTML(html_results))
 
 	# Add download button
-	download_button(signature_txt, 'Download Signature', 'signature.txt')
+	download_button(signature_txt, 'Download Signature', '{signature_label}.txt'.format(**signature_table_results))
 	# display(HTML('<textarea id="textbox" style="display: none;">{}</textarea> <button id="create">Download Results</button> <a download="signature.txt" id="downloadlink" style="display: none">Download</a>'.format(signature_txt)))
 	# display(HTML('<script type="text/javascript">!function(){var e=null,t=document.getElementById("create"),n=document.getElementById("textbox");t.addEventListener("click",function(){var t,l,c=document.getElementById("downloadlink");c.href=(t=n.value,l=new Blob([t],{type:"text/plain"}),null!==e&&window.URL.revokeObjectURL(e),e=window.URL.createObjectURL(l)),c.click()},!1)}();</script>'))
 	# download_button(signature_txt, 'Download Results', 'signature.txt')
