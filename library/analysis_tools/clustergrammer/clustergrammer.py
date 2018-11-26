@@ -68,6 +68,10 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 		# Write file and get link
 		data.to_csv(filename, sep='\t')
 		clustergrammer_url = requests.post('https://amp.pharm.mssm.edu/clustergrammer/matrix_upload/', files={'file': open(filename, 'rb')}).text
+
+		# Report error
+		if 'amp.pharm.mssm.edu/clustergrammer' not in clustergrammer_url:
+			raise ValueError('Error generating the Clustergrammer visualization.')
 	finally:
 		os.remove(filename)
 	return clustergrammer_url
