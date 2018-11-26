@@ -59,7 +59,7 @@ def archs4(gse, platform, version='v6', filter_metadata=False):
 ########## 2. Upload
 #############################################
 
-def upload(uid, filter_metadata=False):
+def upload(uid, filter_metadata=False, collapse_duplicates=True):
 
 	# Load HDF5 File
 	h5 = '/download/{uid}.h5'.format(**locals())
@@ -77,6 +77,14 @@ def upload(uid, filter_metadata=False):
 			unique_vals = list(set(sample_metadata_dataframe[column]))
 			if len(unique_vals) == 1 or any([len(x) > 20 for x in unique_vals]):
 				sample_metadata_dataframe.drop(column, axis=1, inplace=True)
+
+	# Collapse duplicates
+	if collapse_duplicates:
+		try:
+			rawcount_dataframe = rawcount_dataframe.fillna(0).reset_index().groupby('index').sum()
+		except:
+			pass
+
 
 	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'upload', 'datatype': 'rnaseq', 'qc': json.loads(f['meta']['sequencing']['qc'].value) if f['meta'].get('sequencing') else None}}
 	os.unlink(h5)
