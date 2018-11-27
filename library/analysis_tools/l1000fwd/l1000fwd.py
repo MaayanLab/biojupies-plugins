@@ -10,7 +10,7 @@
 ##### 1. General support #####
 import requests
 import json
-from IPython.display import display, IFrame
+from IPython.display import display, IFrame, Markdown
 
 ##### 2. Other libraries #####
 
@@ -41,7 +41,10 @@ def run(signature, nr_genes=500, signature_label=''):
 
 	# Get result
 	response = requests.post(L1000FWD_URL + 'sig_search', json=payload)
-	l1000fwd_results['result_url'] = 'https://amp.pharm.mssm.edu/l1000fwd/vanilla/result/'+response.json()['result_id']
+	if 'KeyError' in response.text:
+		l1000fwd_results['result_url'] = None
+	else:
+		l1000fwd_results['result_url'] = 'https://amp.pharm.mssm.edu/l1000fwd/vanilla/result/'+response.json()['result_id']
 
 	# Return
 	return l1000fwd_results
@@ -52,6 +55,14 @@ def run(signature, nr_genes=500, signature_label=''):
 
 def plot(l1000fwd_results, plot_counter, nr_drugs=7, height=300):
 	
-	# Display IFrame
-	display(IFrame(l1000fwd_results['result_url'], width="1000", height="1000"))
+	# Check if results
+	if l1000fwd_results['result_url']:
+
+		# Display IFrame
+		display(IFrame(l1000fwd_results['result_url'], width="1000", height="1000"))
+
+	# Display error
+	else:
+		display(Markdown('### No results were found.\n This is likely due to the fact that the gene identifiers were not recognized by L1000FWD. Please note that L1000FWD currently only supports HGNC gene symbols (https://www.genenames.org/). If your dataset uses other gene identifier systems, such as Ensembl IDs or Entrez IDs, consider converting them to HGNC. Automated gene identifier conversion is currently under development.'))
+
 
