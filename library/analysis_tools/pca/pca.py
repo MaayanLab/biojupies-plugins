@@ -103,17 +103,7 @@ def plot(pca_results, plot_counter):
 	colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928']
 	sample_titles = ['<b>{}</b><br>'.format(index)+'<br>'.join('<i>{key}</i>: {value}'.format(**locals()) for key, value in rowData.items()) for index, rowData in sample_metadata.iterrows()]
 
-	if not color_by:
-		marker = dict(size=15)
-		trace = go.Scatter3d(x=pca.components_[0],
-							 y=pca.components_[1],
-							 z=pca.components_[2],
-							 mode='markers',
-							 hoverinfo='text',
-							 text=sample_titles,
-							 marker=marker)
-		data = [trace]
-	elif color_by and color_type == 'continuous':
+	if color_by and color_type == 'continuous':
 		marker = dict(size=15, color=color_column, colorscale='Viridis', showscale=True)
 		trace = go.Scatter3d(x=pca.components_[0],
 							 y=pca.components_[1],
@@ -123,7 +113,7 @@ def plot(pca_results, plot_counter):
 							 text=sample_titles,
 							 marker=marker)
 		data = [trace]
-	elif color_by and color_type == 'categorical':
+	elif color_by and color_type == 'categorical' and len(color_column.unique()) <= len(colors):
 
 		# Get unique categories
 		unique_categories = color_column.unique()
@@ -163,6 +153,16 @@ def plot(pca_results, plot_counter):
 			
 			# Append trace to data list
 			data.append(trace)
+	else:
+		marker = dict(size=15)
+		trace = go.Scatter3d(x=pca.components_[0],
+					y=pca.components_[1],
+					z=pca.components_[2],
+					mode='markers',
+					hoverinfo='text',
+					text=sample_titles,
+					marker=marker)
+		data = [trace]
 	
 	colored = '' if str(color_by) == 'None' else 'Colored by {}'.format(color_by)
 	layout = go.Layout(title='<b>PCA Analysis | Scatter Plot</b><br><i>{}</i>'.format(colored), hovermode='closest', margin=go.Margin(l=0,r=0,b=0,t=50), width=900,
