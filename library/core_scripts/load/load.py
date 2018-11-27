@@ -79,7 +79,7 @@ def upload(uid, filter_metadata=False, collapse_duplicates=True):
 				sample_metadata_dataframe.drop(column, axis=1, inplace=True)
 
 	# Collapse duplicates
-	if collapse_duplicates:
+	if collapse_duplicates and any(rawcount_dataframe.index.duplicated()):
 		try:
 			rawcount_dataframe = rawcount_dataframe.fillna(0).reset_index().groupby('index').sum()
 		except:
