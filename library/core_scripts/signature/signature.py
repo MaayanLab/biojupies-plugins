@@ -54,13 +54,13 @@ def make_design_matrix(expression_dataframe, group_A, group_B, data):
 ########## 1. limma
 #############################################
 
-def limma(dataset, group_A, group_B, data='subset'):
+def limma(dataset, group_A, group_B, data='subset', sort_by='logFC'):
 
 	# Get design
 	processed_data = make_design_matrix(dataset['rawdata'].copy(), group_A, group_B, data)
 
 	# Add
-	return pandas2ri.ri2py(r.limma(pandas2ri.py2ri(processed_data['expression']), pandas2ri.py2ri(processed_data['design']))).sort_values('logFC', ascending=False).set_index('gene_symbol')
+	return pandas2ri.ri2py(r.limma(pandas2ri.py2ri(processed_data['expression']), pandas2ri.py2ri(processed_data['design']))).sort_values(sort_by, ascending=False).set_index('gene_symbol')
 
 #############################################
 ########## 2. CD
