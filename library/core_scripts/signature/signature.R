@@ -33,6 +33,10 @@ limma <- function(rawcount_dataframe, design_dataframe, adjust="BH") {
 	# Create DGEList object
 	dge <- DGEList(counts=rawcount_dataframe)
 
+	# Filter genes
+	keep <- filterByExpr(dge, design)
+	dge <- dge[keep,]
+
 	# Calculate normalization factors
 	dge <- calcNormFactors(dge)
 
