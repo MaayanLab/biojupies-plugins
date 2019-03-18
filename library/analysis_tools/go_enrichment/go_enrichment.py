@@ -28,13 +28,13 @@ import shared as s
 ########## 1. Run
 #############################################
 
-def run(enrichr_results, signature_label, plot_type='interactive'):
+def run(enrichr_results, signature_label, plot_type='interactive', go_version='2018'):
 
 	# Libraries
 	libraries = {
-		'GO_Biological_Process_2017b': 'Gene Ontology Biological Process',
-		'GO_Molecular_Function_2017b': 'Gene Ontology Molecular Function',
-		'GO_Cellular_Component_2017b': 'Gene Ontology Cellular Component'
+		'GO_Biological_Process_'+go_version: 'Gene Ontology Biological Process',
+		'GO_Molecular_Function_'+go_version: 'Gene Ontology Molecular Function',
+		'GO_Cellular_Component_'+go_version: 'Gene Ontology Cellular Component'
 	}
 
 	# Get Enrichment Results
