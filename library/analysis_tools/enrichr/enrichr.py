@@ -37,7 +37,7 @@ def get_genesets(signature_dataframe, signature_col, top_n=True, nr_genes=500):
 	genesets['downregulated'] = sorted_genes[:500]
 	return genesets
 
-def submit_enrichr_geneset(geneset, label):
+def submit_enrichr_geneset(geneset, label=''):
 	ENRICHR_URL = 'http://amp.pharm.mssm.edu/Enrichr/addList'
 	genes_str = '\n'.join(geneset)
 	payload = {
