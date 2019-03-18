@@ -12,6 +12,7 @@ import os
 import requests
 import json
 import pandas as pd
+import numpy as np
 from plotly import tools
 from plotly.offline import iplot
 import plotly.graph_objs as go
@@ -100,6 +101,7 @@ def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True,
 			'term_name', 'zscore', 'combined_score', 'FDR', 'pvalue', 'overlapping_genes']
 		resultDataframe = resultDataframe.loc[:, selectedColumns]
 		resultDataframe['gene_set_library'] = label
+		resultDataframe['log10P'] = -np.log10(resultDataframe['pvalue'])
 		results.append(resultDataframe)
 	concatenatedDataframe = pd.concat(results)
 	if geneset:
@@ -116,7 +118,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 		# Get dataframe
 		enrichment_dataframe = enrichr_results[geneset]
 		plot_dataframe = enrichment_dataframe[enrichment_dataframe['gene_set_library'] == gene_set_library].sort_values(
-			'combined_score', ascending=False).iloc[:nr_genesets].iloc[::-1]
+			'pvalue', ascending=True).iloc[:nr_genesets].iloc[::-1]
 
 		# Format
 		n = 7
@@ -125,7 +127,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 
 		# Get Bar
 		bar = go.Bar(
-			x=plot_dataframe['combined_score'],
+			x=plot_dataframe['log10P'],
 			y=plot_dataframe['term_name'],
 			orientation='h',
 			name=geneset.title(),
