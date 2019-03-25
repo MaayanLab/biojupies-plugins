@@ -80,11 +80,6 @@ def preview_data(dataset):
 	if dataset['dataset_metadata'].get('gse'):
 		url = 'http://amp.pharm.mssm.edu/notebook-generator-server/download?gse={gse}&platform={platform}&version={version}&content=expression'.format(**dataset['dataset_metadata'])
 		display(HTML('<a href="{}" target="_blank" style="color: black;" download><button>Download Dataset</button></a>'.format(url)))
-	if dataset['dataset_metadata'].get('qc'):
-		try:
-			shared.alignment_barchart(dataset)
-		except:
-			raise
 
 # Display metadata
 def display_metadata(dataset):
