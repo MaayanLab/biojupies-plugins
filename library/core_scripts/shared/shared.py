@@ -72,6 +72,48 @@ def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text',
 	else:
 		static_plot(fig)
 
+#############################################
+########## 4. Alignment Bar Chart
+#############################################
+
+def alignment_barchart(dataset):
+
+	# Process alignment dataframe
+	alignment_dataframe = pd.DataFrame(dataset['dataset_metadata'].get('qc')).T
+	for col, colData in alignment_dataframe.items():
+		alignment_dataframe[col] = [int(x.replace(',', '')) for x in colData]
+	alignment_dataframe['unaligned'] = [rowData['processed'] - rowData['pseudoaligned'] for index, rowData in alignment_dataframe.iterrows()]
+	alignment_dataframe = alignment_dataframe.sort_values('processed')
+
+	# Traces
+	data = []
+	for col in ['pseudoaligned', 'unaligned']:
+		data.append(go.Bar(
+			x = alignment_dataframe[col],
+			y = alignment_dataframe.index,
+			name = col.title(),
+			orientation = 'h',
+			marker = {'color': '#0078b1' if col == 'pseudoaligned' else '#9fcee3'}
+		))
+		
+	# Genome label
+	genome_label = dataset['dataset_metadata'].get('reference_genome')
+	if genome_label:
+		genome_label = ' against <br>Ensembl '+genome_label+' reference genome'
+
+	# Layout
+	layout = go.Layout(
+		barmode = 'stack',
+		xaxis = go.layout.XAxis(title='Reads'),
+		yaxis = go.layout.YAxis(automargin=True),
+		height = min(max((len(alignment_dataframe.index) * 20), 500), 1000),
+		title = '<b>FASTQ Alignment Summary</b><br><span style="font-style: italic;">Reads processed using kallisto{genome_label}</span>'.format(**locals())
+	)
+
+	# Figure
+	fig = go.Figure(data=data, layout=layout)
+	iplot(fig)
+
 #######################################################
 #######################################################
 ########## S3. Enrichr
