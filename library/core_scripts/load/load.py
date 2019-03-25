@@ -85,7 +85,13 @@ def upload(uid, filter_metadata=False, collapse_duplicates=True):
 		except:
 			pass
 
-	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'upload', 'datatype': 'rnaseq', 'qc': json.loads(f['meta']['sequencing']['qc'].value) if f['meta'].get('sequencing') else None, 'reference_genome': f['meta']['sequencing']['reference_genome'].value if f['meta'].get('sequencing') else None}}
+	data = {'rawdata': rawcount_dataframe, 'sample_metadata': sample_metadata_dataframe, 'dataset_metadata': {'source': 'upload', 'datatype': 'rnaseq'}}
+
+	# Sequencing
+	if f['meta'].get('sequencing'):
+		data['dataset_metadata']['qc'] = json.loads(f['meta']['sequencing']['qc'].value)
+		data['dataset_metadata']['reference_genome'] = f['meta']['sequencing'].get('reference_genome').value if f['meta']['sequencing'].get('reference_genome') else None
+
 	os.unlink(h5)
 
 	# Return
