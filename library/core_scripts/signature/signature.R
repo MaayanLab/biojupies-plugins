@@ -21,7 +21,7 @@
 ########## 1. limma
 #############################################
 
-limma <- function(rawcount_dataframe, design_dataframe, adjust="BH") {
+limma <- function(rawcount_dataframe, design_dataframe, filter_genes=FALSE, adjust="BH") {
 
 	# Load packages
 	suppressMessages(require(limma))
@@ -34,8 +34,10 @@ limma <- function(rawcount_dataframe, design_dataframe, adjust="BH") {
 	dge <- DGEList(counts=rawcount_dataframe)
 
 	# Filter genes
-	keep <- filterByExpr(dge, design)
-	dge <- dge[keep,]
+	if (filter_genes) {
+		keep <- filterByExpr(dge, design)
+		dge <- dge[keep,]
+	}
 
 	# Calculate normalization factors
 	dge <- calcNormFactors(dge)
