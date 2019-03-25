@@ -84,7 +84,7 @@ def preview_data(dataset):
 		try:
 			shared.alignment_barchart(dataset)
 		except:
-			pass
+			raise
 
 # Display metadata
 def display_metadata(dataset):

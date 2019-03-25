@@ -98,8 +98,7 @@ def alignment_barchart(dataset):
 		
 	# Genome label
 	genome_label = dataset['dataset_metadata'].get('reference_genome')
-	if genome_label:
-		genome_label = ' against <br>Ensembl '+genome_label+' reference genome'
+	genome_label = ' against <br>Ensembl '+genome_label+' reference genome' if genome_label else ''
 
 	# Layout
 	layout = go.Layout(
