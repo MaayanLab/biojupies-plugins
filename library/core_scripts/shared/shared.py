@@ -48,8 +48,8 @@ def static_plot(fig):
 #############################################
 
 def plot_2D_scatter(x, y, text='', title='', xlab='', ylab='', hoverinfo='text', color='black', colorscale='Blues', size=8, showscale=False, symmetric_x=False, symmetric_y=False, pad=0.5, hline=False, vline=False, return_trace=False, labels=False, plot_type='interactive', de_type='ma'):
-	range_x = [-max(abs(x))-pad, max(abs(x))+pad]if symmetric_x else []
-	range_y = [-max(abs(y))-pad, max(abs(y))+pad]if symmetric_y else []
+	range_x = [-max(abs(x))-pad, max(abs(x))+pad]if symmetric_x else None
+	range_y = [-max(abs(y))-pad, max(abs(y))+pad]if symmetric_y else None
 	trace = go.Scattergl(x=x, y=y, mode='markers', text=text, hoverinfo=hoverinfo, marker={'color': color, 'colorscale': colorscale, 'showscale': showscale, 'size': size})
 	if return_trace:
 		return trace
@@ -175,7 +175,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 			showlegend=False,
 			hovertext=['<b>{term_name}</b><br><b>P-value</b>: <i>{pvalue:.2}</i><br><b>FDR</b>: <i>{FDR:.2}</i><br><b>Z-score</b>: <i>{zscore:.3}</i><br><b>Combined score</b>: <i>{combined_score:.3}</i><br><b>{nr_genes} Genes</b>: <i>{overlapping_genes}</i><br>'.format(**rowData) for index, rowData in plot_dataframe.iterrows()],
 			hoverinfo='text',
-			marker={'color': '#FA8072' if geneset == 'upregulated' else '	#87CEFA'}
+			marker={'color': '#FA8072' if geneset == 'upregulated' else '#87CEFA'}
 		)
 		fig.append_trace(bar, 1, i+1)
 
@@ -196,9 +196,9 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 	# Get annotations
 	labels = signature_label.split('vs ')
 	annotations = [
-		{'x': 0.25, 'y': 1.12, 'text': '<span style="color: #FA8072; font-size: 10pt; font-weight: 600;">Up-regulated in ' +
+		{'x': 0.25, 'y': 1.06, 'text': '<span style="color: #FA8072; font-size: 10pt; font-weight: 600;">Up-regulated in ' +
 			labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'center'},
-		{'x': 0.75, 'y': 1.12, 'text': '<span style="color: #87CEFA; font-size: 10pt; font-weight: 600;">Down-regulated in ' +
+		{'x': 0.75, 'y': 1.06, 'text': '<span style="color: #87CEFA; font-size: 10pt; font-weight: 600;">Down-regulated in ' +
 			labels[-1]+'</span>', 'showarrow': False, 'xref': 'paper', 'yref': 'paper', 'xanchor': 'center'}
 	] if signature_label else []
 
@@ -207,11 +207,11 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 
 	fig['layout'].update(height=height, title='<b>{}</b>'.format(title),
 	                     hovermode='closest', annotations=annotations)
-	fig['layout']['xaxis1'].update(domain=[0, 0.49], title='')
-	fig['layout']['xaxis2'].update(domain=[0.51, 1], title='')
+	fig['layout']['xaxis1'].update(domain=[0, 0.49], title='-log10P')
+	fig['layout']['xaxis2'].update(domain=[0.51, 1], title='-log10P')
 	fig['layout']['yaxis1'].update(showticklabels=False)
 	fig['layout']['yaxis2'].update(showticklabels=False)
-	fig['layout']['margin'].update(l=0, t=65, r=0, b=30)
+	fig['layout']['margin'].update(l=0, t=65, r=0, b=35)
 	if enrichr_results['plot_type']=='interactive':
 		iplot(fig)
 	else:
