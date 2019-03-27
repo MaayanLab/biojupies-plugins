@@ -153,7 +153,7 @@ def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True,
 ########## 2. Plot Enrichment Barchart
 #############################################
 
-def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr_genesets, height):
+def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr_genesets=15, height=400):
 	fig = tools.make_subplots(rows=1, cols=2, print_grid=False)
 	for i, geneset in enumerate(['upregulated', 'downregulated']):
 		# Get dataframe

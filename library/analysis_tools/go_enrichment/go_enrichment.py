@@ -60,7 +60,7 @@ def plot(enrichment_results, plot_counter):
 
 		# Barcharts
 		for gene_set_library in libraries:
-			s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'], 15, 400) # 10 300
+			s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label']) # 10 300
 
 		# Download button
 		results_txt = enrichment_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
