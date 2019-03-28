@@ -24,6 +24,40 @@
                     "default": 0
                 }
             ]
+        },
+        {
+            "parameter_name": "GO Library Version",
+            "parameter_description": "Version of the Gene Ontology library to be used in Enrichr",
+            "parameter_string": "go_version",
+            "values": [
+                {
+                    "value": "2017",
+                    "default": 0
+                },
+                {
+                    "value": "2017b",
+                    "default": 0
+                },
+                {
+                    "value": "2018",
+                    "default": 1
+                }
+            ]
+        },
+        {
+            "parameter_name": "Sort results by",
+            "parameter_description": "Metric by which to sort the enrichment results",
+            "parameter_string": "sort_results_by",
+            "values": [
+                {
+                    "value": "combined_score",
+                    "default": 0
+                },
+                {
+                    "value": "pvalue",
+                    "default": 1
+                }
+            ]
         }
     ],
     "reference": "",

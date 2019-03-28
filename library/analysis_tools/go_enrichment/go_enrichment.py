@@ -31,6 +31,7 @@ import shared as s
 def run(enrichr_results, signature_label, plot_type='interactive', go_version='2018', sort_results_by='pvalue'):
 
 	# Libraries
+	go_version = str(go_version)
 	libraries = {
 		'GO_Biological_Process_'+go_version: 'Gene Ontology Biological Process ('+go_version+' version)',
 		'GO_Molecular_Function_'+go_version: 'Gene Ontology Molecular Function ('+go_version+' version)',

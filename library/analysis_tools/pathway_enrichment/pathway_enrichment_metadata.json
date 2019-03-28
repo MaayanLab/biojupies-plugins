@@ -24,6 +24,21 @@
                     "default": 0
                 }
             ]
+        },
+        {
+            "parameter_name": "Sort results by",
+            "parameter_description": "Metric by which to sort the enrichment results",
+            "parameter_string": "sort_results_by",
+            "values": [
+                {
+                    "value": "combined_score",
+                    "default": 0
+                },
+                {
+                    "value": "pvalue",
+                    "default": 1
+                }
+            ]
         }
     ],
     "reference": "",
