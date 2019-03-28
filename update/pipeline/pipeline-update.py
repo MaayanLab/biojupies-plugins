@@ -150,6 +150,9 @@ def createOptionTable(infiles, outfile):
 
 def uploadTables(infiles, outfile):
 
+	# Fix infiles
+	infiles = set([x if type(x) == str else y for x in infiles for y in x])
+
 	# Initialize table dict
 	table_dict = {}
 
