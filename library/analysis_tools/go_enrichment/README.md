@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Gene Ontology Enrichment Analysis
-go_enrichment_results = go_enrichment.run(enrichr, plot_type="interactive")
+go_enrichment_results = go_enrichment.run(enrichr, plot_type="interactive", go_version=2018, sort_results_by="pvalue")
 ```
 
 **Parameters**
@@ -18,6 +18,8 @@ go_enrichment_results = go_enrichment.run(enrichr, plot_type="interactive")
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **plot_type** | *"interactive" (default), "static"* | Whether to display the plot statically or interactively. |
+| **go_version** | *2017, "2017b", 2018 (default)* | Version of the Gene Ontology library to be used in Enrichr |
+| **sort_results_by** | *"combined_score", "pvalue" (default)* | Metric by which to sort the enrichment results |
 
 
 ### Plotting the Results

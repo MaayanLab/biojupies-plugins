@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Enrichr Links
-enrichr_results = enrichr.run(signature, geneset_size=500)
+enrichr_results = enrichr.run(signature, geneset_size=500, sort_genes_by="t")
 ```
 
 **Parameters**
@@ -18,6 +18,7 @@ enrichr_results = enrichr.run(signature, geneset_size=500)
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **geneset_size** | *100, 250, 500 (default)* | Size of the gene set to be extracted to perform enrichment analysis |
+| **sort_genes_by** | *"logFC", "t" (default)* | Metric by which to sort the differentially expressed genes prior to submission to Enrichr |
 
 
 ### Plotting the Results

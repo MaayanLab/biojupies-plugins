@@ -1,26 +1,27 @@
 #################################################################
 #################################################################
-############### BioJupies Plugin Updater ################
+############### BioJupies Plugin Updater ########################
 #################################################################
 #################################################################
 ##### Author: Denis Torre
 ##### Affiliation: Ma'ayan Laboratory,
 ##### Icahn School of Medicine at Mount Sinai
 
+##### USAGE:
+### This Python script handles two tasks that have to be performed
+### every time updates are made to the BioJupies plugin library metadata:
+### 1. Updates the tool, parameter, parameter value, and core scripts tables (cmd: python pipeline/pipeline-update.py tables)
+### 2. Updates the main README and the tool READMEs (cmd: python pipeline/pipeline-update.py readme). Will only add tools with display=1 to the main README
+
 #############################################
 ########## 1. Load libraries
 #############################################
 ##### 1. Python modules #####
 from ruffus import *
-import sys, glob, json, os, pymysql, math, jinja2
+import sys, glob, json, os, pymysql, math, jinja2, datetime
 import pandas as pd
 from sqlalchemy import create_engine
 pymysql.install_as_MySQLdb()
-
-##### 2. Custom modules #####
-# Pipeline running
-# sys.path.append('pipeline')
-# from README import *
 
 #############################################
 ########## 2. General Setup
@@ -28,9 +29,7 @@ pymysql.install_as_MySQLdb()
 ##### 1. Variables #####
 tool_metadata = glob.glob('../library/analysis_tools/*/*_metadata.json')
 option_metadata = glob.glob('../library/core_scripts/*/*_metadata.json')
-engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI'])#+'-copy')
-
-##### 2. R Connection #####
+engine = create_engine(os.environ['SQLALCHEMY_DATABASE_URI'])
 
 #######################################################
 #######################################################
@@ -142,20 +141,17 @@ def createOptionTable(infiles, outfile):
 	# Write
 	option_dataframe.to_csv(outfile, sep='\t', index=False)
 
-#######################################################
-#######################################################
-########## S2. Update Tables
-#######################################################
-#######################################################
-
 #############################################
-########## 1. Upload Tables
+########## 2. Upload
 #############################################
 
-@files(glob.glob('s1-tables.dir/*-table.txt'),
-	   None)
+@merge((createToolTable, createParameterTable, createOptionTable),
+       's1-tables.dir/update.txt')
 
 def uploadTables(infiles, outfile):
+
+	# Fix infiles
+	infiles = set([x if type(x) == str else y for x in infiles for y in x])
 
 	# Initialize table dict
 	table_dict = {}
@@ -179,9 +175,13 @@ def uploadTables(infiles, outfile):
 		engine.execute('SET FOREIGN_KEY_CHECKS=1;')
 		table_dict[table_name].fillna('').to_sql(table_name, engine, if_exists='append')
 
+	# Write
+	with open(outfile, 'w') as openfile:
+		openfile.write('Last updated {}.'.format(datetime.datetime.now()))
+
 #######################################################
 #######################################################
-########## S3. README
+########## S2. README
 #######################################################
 #######################################################
 
@@ -189,8 +189,11 @@ def uploadTables(infiles, outfile):
 ########## 1. Main README
 #############################################
 
-@merge(['s2-readme_templates.dir/main_README.md', tool_metadata],
+@follows(mkdir('s2-readme.dir'))
+
+@merge(('readme_templates/main_README.md', tool_metadata),
        '../README.md')
+
 def updateMainReadme(infiles, outfile):
 
 	# Split infiles
@@ -201,8 +204,7 @@ def updateMainReadme(infiles, outfile):
 	for metadata_file in metadata_files:
 		with open(metadata_file) as openfile:
 			tool_metadata[metadata_file.split('/')[-2]] = json.load(openfile)
-	tool_dataframe = pd.DataFrame(tool_metadata).T.sort_values(
-		['section_fk', 'tool_string']).query('display == 1')
+	tool_dataframe = pd.DataFrame(tool_metadata).T.sort_values(['section_fk', 'tool_string']).query('display == 1')
 
 	# Read template
 	with open(template_file) as openfile:
@@ -221,7 +223,7 @@ def updateMainReadme(infiles, outfile):
 
 @transform(tool_metadata,
 		   regex(r'(.*)/.*/*_metadata.json'),
-           add_inputs('s2-readme_templates.dir/tool_README.md'),
+           add_inputs('readme_templates/tool_README.md'),
 		   r'\1/README.md')
 
 def updateToolReadme(infiles, outfile):
@@ -244,17 +246,42 @@ def updateToolReadme(infiles, outfile):
 	with open(outfile, 'w') as openfile:
 		openfile.write(rendered_template)
 
+#############################################
+########## 3. Both README
+#############################################
+
+@merge((updateMainReadme, updateToolReadme),
+	   's2-readme.dir/update.txt')
+
+def updateReadme(infiles, outfile):
+
+	# Write
+	with open(outfile, 'w') as openfile:
+		openfile.write('Last updated {}.'.format(datetime.datetime.now()))
+
 ##################################################
 ##################################################
 ########## Run pipeline
 ##################################################
 ##################################################
-if len(sys.argv) == 1:
-	pipeline_run([createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables, updateMainReadme])
-elif sys.argv[-1] == 'readme':
-	pipeline_run([updateMainReadme, updateToolReadme], multiprocess=1, verbose=1, forcedtorun_tasks=[uploadTables, updateMainReadme])
-elif sys.argv[-1] == 'database':
-	pipeline_run([createToolTable, createParameterTable, createOptionTable], multiprocess=1, verbose=1, forcedtorun_tasks=[createToolTable, createParameterTable, createOptionTable, uploadTables])
+# Dependency graph
+run = {
+	'tables': [uploadTables, createToolTable, createParameterTable, createOptionTable],
+	'readme': [updateReadme, updateMainReadme, updateToolReadme]
+}
+
+# Print graph
+with open('pipeline/pipeline.png', 'wb') as openfile:
+	pipeline_printout_graph(openfile, output_format='png')
+
+# Get option
+option = sys.argv[-1]
+
+# Check option
+if option not in run.keys():
+	raise ValueError('Please specify one of the two following options: "'+'", "'.join(run.keys())+'".')
 else:
-	pipeline_run([sys.argv[-1]], multiprocess=1, verbose=1)
+	pipeline_run(target_tasks = run[option][0], forcedtorun_tasks=run[option][1:])
+
+# Print
 print('Done!')

@@ -10,7 +10,7 @@ Usage
 ### Running the Analysis
 ```python
 # Run Pathway Enrichment Analysis
-pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type="interactive")
+pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type="interactive", sort_results_by="pvalue")
 ```
 
 **Parameters**
@@ -18,6 +18,7 @@ pathway_enrichment_results = pathway_enrichment.run(enrichr, plot_type="interact
 | Name | Values | Description |
 | ---- | ------ | ----------- |
 | **plot_type** | *"interactive" (default), "static"* | Whether to display the plot statically or interactively. |
+| **sort_results_by** | *"combined_score", "pvalue" (default)* | Metric by which to sort the enrichment results |
 
 
 ### Plotting the Results

@@ -28,6 +28,21 @@
                     "default": 1
                 }
             ]
+        },
+        {
+            "parameter_name": "Sort genes by",
+            "parameter_description": "Metric by which to sort the differentially expressed genes prior to submission to Enrichr",
+            "parameter_string": "sort_genes_by",
+            "values": [
+                {
+                    "value": "logFC",
+                    "default": 0
+                },
+                {
+                    "value": "t",
+                    "default": 1
+                }
+            ]
         }
     ],
     "reference": "Kuleshov, M.V., Jones, M.R., Rouillard, A.D., Fernandez, N.F., Duan, Q., Wang, Z., Koplev, S., Jenkins, S.L., Jagodnik, K.M., Lachmann, A., et al. (2016). <b>Enrichr: a comprehensive gene set enrichment analysis web server 2016 update.</b> <i>Nucleic Acids Research</i> 44, W90\u00d0W97.",

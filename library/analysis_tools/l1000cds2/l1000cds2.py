@@ -95,7 +95,7 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 				name=direction.title(),
 				hovertext=drug_counts.index,
 				hoverinfo='text',
-				marker={'color': '#FF7F50' if direction=='mimic' else '	#9370DB'}
+				marker={'color': '#FF7F50' if direction=='mimic' else '#9370DB'}
 			)
 			fig.append_trace(bar, 1, i+1)
 			

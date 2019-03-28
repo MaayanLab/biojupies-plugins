@@ -51,12 +51,16 @@ def submit_enrichr_geneset(geneset, label=''):
 	data = json.loads(response.text)
 	return data
 
-def run(signature, geneset_size=500, libraries=['GO_Biological_Process_2017b', 'ENCODE_TF_ChIP-seq_2015', 'KEGG_2016', 'ARCHS4_TFs_Coexp', 'MGI_Mammalian_Phenotype_2017', 'Allen_Brain_Atlas_up'], signature_label=''):
+def run(signature, signature_label, geneset_size=500, sort_genes_by='t'):
+
+	# Sort signature
+	signature = signature.sort_values(sort_genes_by, ascending=False)
 
 	# Get genesets
-	genesets = {}
-	genesets['upregulated'] = signature.index[:geneset_size]
-	genesets['downregulated'] = signature.index[-geneset_size:]
+	genesets = {
+		'upregulated': signature.index[:geneset_size],
+		'downregulated': signature.index[-geneset_size:]
+	}
 
 	# Submit to Enrichr
 	enrichr_ids = {geneset_label: submit_enrichr_geneset(geneset=geneset, label=signature_label+', '+geneset_label+', from BioJupies') for geneset_label, geneset in genesets.items()}
