@@ -153,13 +153,13 @@ def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True,
 ########## 2. Plot Enrichment Barchart
 #############################################
 
-def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr_genesets=15, height=400):
+def plot_library_barchart(enrichr_results, gene_set_library, signature_label, sort_results_by='pvalue', nr_genesets=15, height=400):
+	sort_results_by = 'log10P' if sort_results_by == 'pvalue' else 'combined_score'
 	fig = tools.make_subplots(rows=1, cols=2, print_grid=False)
 	for i, geneset in enumerate(['upregulated', 'downregulated']):
 		# Get dataframe
 		enrichment_dataframe = enrichr_results[geneset]
-		plot_dataframe = enrichment_dataframe[enrichment_dataframe['gene_set_library'] == gene_set_library].sort_values(
-			'pvalue', ascending=True).iloc[:nr_genesets].iloc[::-1]
+		plot_dataframe = enrichment_dataframe[enrichment_dataframe['gene_set_library'] == gene_set_library].sort_values(sort_results_by, ascending=False).iloc[:nr_genesets].iloc[::-1]
 
 		# Format
 		n = 7
@@ -168,7 +168,7 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 
 		# Get Bar
 		bar = go.Bar(
-			x=plot_dataframe['log10P'],
+			x=plot_dataframe[sort_results_by],
 			y=plot_dataframe['term_name'],
 			orientation='h',
 			name=geneset.title(),
@@ -207,8 +207,8 @@ def plot_library_barchart(enrichr_results, gene_set_library, signature_label, nr
 
 	fig['layout'].update(height=height, title='<b>{}</b>'.format(title),
 	                     hovermode='closest', annotations=annotations)
-	fig['layout']['xaxis1'].update(domain=[0, 0.49], title='-log10P')
-	fig['layout']['xaxis2'].update(domain=[0.51, 1], title='-log10P')
+	fig['layout']['xaxis1'].update(domain=[0, 0.49], title='-log10P' if sort_results_by == 'log10P' else 'Enrichment score')
+	fig['layout']['xaxis2'].update(domain=[0.51, 1], title='-log10P' if sort_results_by == 'log10P' else 'Enrichment score')
 	fig['layout']['yaxis1'].update(showticklabels=False)
 	fig['layout']['yaxis2'].update(showticklabels=False)
 	fig['layout']['margin'].update(l=0, t=65, r=0, b=35)

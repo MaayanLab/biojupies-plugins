@@ -28,7 +28,7 @@ import shared as s
 ########## 1. Run
 #############################################
 
-def run(enrichr_results, signature_label, plot_type='interactive'):
+def run(enrichr_results, signature_label, plot_type='interactive', sort_results_by='pvalue'):
 
 	# Libraries
 	libraries = {
@@ -41,6 +41,7 @@ def run(enrichr_results, signature_label, plot_type='interactive'):
 	enrichment_results = {geneset: s.get_enrichr_results(enrichr_results[geneset]['userListId'], gene_set_libraries=libraries, geneset=geneset) for geneset in ['upregulated', 'downregulated']}
 	enrichment_results['signature_label'] = signature_label
 	enrichment_results['plot_type'] = plot_type
+	enrichment_results['sort_results_by'] = sort_results_by
 
 	# Return
 	return enrichment_results
@@ -60,7 +61,7 @@ def plot(enrichment_results, plot_counter):
 
 		# Barcharts
 		for gene_set_library in libraries:
-			s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'])
+			s.plot_library_barchart(enrichment_results, gene_set_library, enrichment_results['signature_label'], enrichment_results['sort_results_by'])
 
 		# Download button
 		results_txt = enrichment_dataframe.sort_values('pvalue').to_csv(sep='\t', index=False)
