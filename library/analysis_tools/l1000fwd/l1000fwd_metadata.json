@@ -3,7 +3,7 @@
     "tool_string": "l1000fwd",
     "tool_description": "Projects signatures on a 2-dimensional visualization of the L1000 signature database",
     "introduction": "L1000FWD is a web-based tool for querying gene expression signatures against signatures created from human cell lines treated with over 20,000 small molecules and drugs for the LINCS project.",
-    "methods": "The L1000FWD analysis (<a href='#10.1093/bioinformatics/bty060'>Wang et al., 2018</a>) was performed by submitting the top 2000 genes in the gene expression signature to the <a href='http://amp.pharm.mssm.edu/L1000FWD' target='_blank'>L1000FWD</a> signature search API. For more information on the methods used to generate the signature, see the Differential Gene Expression section.",
+    "methods": "The L1000FWD analysis (<a href='#10.1093/bioinformatics/bty060'>Wang et al., 2018</a>) was performed by submitting the top 2000 genes in the gene expression signature to the <a href='https://maayanlab.cloud/L1000FWD' target='_blank'>L1000FWD</a> signature search API. For more information on the methods used to generate the signature, see the Differential Gene Expression section.",
     "result_description": "The L1000CDS<sup>2</sup> plug-in embeds an interactive projection of the top most similar and opposite signatures from the L1000 database on a 2-dimensional plane.",
     "reference_link": "https://doi.org/10.1093/bioinformatics/bty060",
     "video_tutorial": null,

@@ -3,7 +3,7 @@
     "tool_string": "l1000cds2",
     "tool_description": "Identifies small molecules which mimic or reverse a given differential gene expression signature",
     "introduction": "L1000CDS2 is a web-based tool for querying gene expression signatures against signatures created from human cell lines treated with over 20,000 small molecules and drugs for the LINCS project. It is commonly used to identify small molecules which mimic or reverse the effects of a gene expression signature generated from a differential gene expression analysis.",
-    "methods": "The L1000CDS2 analysis (<a href='#10.1038/npjsba.2016.15'>Duan et al., 2016</a>) was performed by submitting the top 2000 genes in the gene expression signature to the <a href='http://amp.pharm.mssm.edu/L1000CDS2/#/index' target='_blank'>L1000CDS2</a> signature search API. For more information on the methods used to generate the signature, see the Differential Gene Expression section.",
+    "methods": "The L1000CDS2 analysis (<a href='#10.1038/npjsba.2016.15'>Duan et al., 2016</a>) was performed by submitting the top 2000 genes in the gene expression signature to the <a href='https://maayanlab.cloud/L1000CDS2/#/index' target='_blank'>L1000CDS2</a> signature search API. For more information on the methods used to generate the signature, see the Differential Gene Expression section.",
     "result_description": "The L1000CDS<sup>2</sup> plug-in embeds an interactive bar chart displaying the top small molecules which mimic or reverse the input gene expression signature.",
     "reference_link": "https://doi.org/10.1038/npjsba.2016.15",
     "video_tutorial": "https://www.youtube.com/watch?v=kiTAGlvoyWU",

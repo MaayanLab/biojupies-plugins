@@ -173,6 +173,6 @@ def plot(pca_results, plot_counter):
 		iplot(fig)
 	else:
 		s.static_plot(fig)
-	display(Markdown('** Figure '+plot_counter()+' | Principal Component Analysis results. ** The figure displays an interactive, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If provided, sample groups are indicated using different colors, allowing for easier interpretation of the results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>'.format(**locals())))
+	display(Markdown('** Figure '+plot_counter()+' | Principal Component Analysis results. ** The figure displays an interactive, three-dimensional scatter plot of the first three Principal Components (PCs) of the data. Each point represents an RNA-seq sample. Samples with similar gene expression profiles are closer in the three-dimensional space. If provided, sample groups are indicated using different colors, allowing for easier interpretation of the results. If you are experiencing issues visualizing the plot, please visit our <a href="https://maayanlab.cloud/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>'.format(**locals())))
 
 

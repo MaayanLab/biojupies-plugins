@@ -102,7 +102,7 @@ def upload(uid, filter_metadata=False, collapse_duplicates=True):
 #############################################
 
 def gtex(samples):
-	r = requests.post('http://amp.pharm.mssm.edu/biojupies-gtex', json={"samples": samples})
+	r = requests.post('https://maayanlab.cloud/biojupies-gtex', json={"samples": samples})
 	data = {key: pd.DataFrame(value) for key, value in json.loads(r.text).items()} # potentially rename columns in sample_metadata
 	data['dataset_metadata'] = {'source': 'gtex', 'datatype': 'rnaseq'}
 	return data

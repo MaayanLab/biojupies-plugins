@@ -78,13 +78,13 @@ def plot(results, **kwargs):
 def preview_data(dataset):
 	display(HTML(dataset['rawdata'].head().to_html(escape=False)))
 	if dataset['dataset_metadata'].get('gse'):
-		url = 'http://amp.pharm.mssm.edu/notebook-generator-server/download?gse={gse}&platform={platform}&version={version}&content=expression'.format(**dataset['dataset_metadata'])
+		url = 'https://maayanlab.cloud/notebook-generator-server/download?gse={gse}&platform={platform}&version={version}&content=expression'.format(**dataset['dataset_metadata'])
 		display(HTML('<a href="{}" target="_blank" style="color: black;" download><button>Download Dataset</button></a>'.format(url)))
 
 # Display metadata
 def display_metadata(dataset):
 	display(HTML('<div style="max-height: 350px; overflow-y: auto;">'+dataset['sample_metadata'].to_html(escape=False)+'</div>'))
 	if dataset['dataset_metadata'].get('gse'):
-		url = 'http://amp.pharm.mssm.edu/notebook-generator-server/download?gse={gse}&platform={platform}&version={version}&content=metadata'.format(**dataset['dataset_metadata'])
+		url = 'https://maayanlab.cloud/notebook-generator-server/download?gse={gse}&platform={platform}&version={version}&content=metadata'.format(**dataset['dataset_metadata'])
 		display(HTML('<a href="{}" target="_blank" style="color: black;" download><button>Download Metadata</button></a>'.format(url)))
 

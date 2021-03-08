@@ -25,7 +25,7 @@ To submit your RNA-seq analysis tool as a plugin, follow the instructions below:
 
 3. **Upload the notebook to GitHub**. You can add the notebook to your personal GitHub repository, or create a new fork in the [MaayanLab/biojupies-plugins](https://github.com/MaayanLab/biojupies-plugins) repository.
 
-4. **Fill the submission form** on the BioJupies website: https://amp.pharm.mssm.edu/biojupies/contribute. You will be requested to specify a link to the notebook on GitHub, a contact email, and a brief description of the plugin.
+4. **Fill the submission form** on the BioJupies website: https://maayanlab.cloud/biojupies/contribute. You will be requested to specify a link to the notebook on GitHub, a contact email, and a brief description of the plugin.
 
 5. **We will notify you** on the status of the submission. Once completed, your plugin will be made available on the BioJupies website (http://biojupies.cloud) for Jupyter Notebook generation.
 

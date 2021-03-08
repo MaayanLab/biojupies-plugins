@@ -50,14 +50,14 @@ def run(signature, nr_genes=500, signature_label='', plot_type='interactive'):
 
 		# Send to API
 		config = {"aggravate":aggravate,"searchMethod":"geneSet","share":True,"combination":False,"db-version":"latest"}
-		r = requests.post('http://amp.pharm.mssm.edu/L1000CDS2/query',data=json.dumps({"data":data,"config":config}),headers={'content-type':'application/json'})
+		r = requests.post('https://maayanlab.cloud/L1000CDS2/query',data=json.dumps({"data":data,"config":config}),headers={'content-type':'application/json'})
 		label = 'mimic' if aggravate else 'reverse'
 
 		# Add results
 		resGeneSet = r.json()
 		if resGeneSet.get('topMeta'):
 			l1000cds2_dataframe = pd.DataFrame(resGeneSet['topMeta'])[['cell_id', 'pert_desc', 'pert_dose', 'pert_dose_unit', 'pert_id', 'pert_time', 'pert_time_unit', 'pubchem_id', 'score', 'sig_id']].replace('-666', np.nan)
-			l1000cds2_results[label] = {'url': 'http://amp.pharm.mssm.edu/L1000CDS2/#/result/{}'.format(resGeneSet['shareId']), 'table': l1000cds2_dataframe}
+			l1000cds2_results[label] = {'url': 'https://maayanlab.cloud/L1000CDS2/#/result/{}'.format(resGeneSet['shareId']), 'table': l1000cds2_dataframe}
 		else:
 			l1000cds2_results[label] = None
 	l1000cds2_results['plot_type'] = plot_type
@@ -137,5 +137,5 @@ def plot(l1000cds2_results, plot_counter, nr_drugs=7, height=300):
 		s.download_button(result_txt, 'Download Results', 'l1000cds2_results.txt')
 
 		# Figure Legend
-		display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results. If you are experiencing issues visualizing the plot, please visit our <a href="https://amp.pharm.mssm.edu/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
+		display(Markdown('** Figure '+plot_counter()+' | L1000CDS<sup>2</sup> Query results. **The figure contains an interactive bar chart displaying the top small molecules identified by the L1000CDS2 query. The left panel displays the small molecules which mimic the observed gene expression signature, while the right panel displays the small molecules which reverse it.  Links to the L1000CDS2 web server are additionally provided, allowing users to interactively explore the analysis results. If you are experiencing issues visualizing the plot, please visit our <a href="https://maayanlab.cloud/biojupies/help#troubleshooting" target="_blank">Troubleshooting guide</a>.'.format(**locals())))
 

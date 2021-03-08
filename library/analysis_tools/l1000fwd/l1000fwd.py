@@ -42,7 +42,7 @@ def run(signature, nr_genes=500, signature_label=''):
 	payload = {"up_genes":upperGenes(signature.index[:nr_genes]),"down_genes":upperGenes(signature.index[-nr_genes:])}
 
 	# Get URL
-	L1000FWD_URL = 'https://amp.pharm.mssm.edu/L1000FWD/'
+	L1000FWD_URL = 'https://maayanlab.cloud/l1000fwd/'
 
 	# Get result
 	response = requests.post(L1000FWD_URL + 'sig_search', json=payload)
@@ -51,7 +51,7 @@ def run(signature, nr_genes=500, signature_label=''):
 	else:
 		# Get ID and URL
 		result_id = response.json()['result_id']
-		l1000fwd_results['result_url'] = 'https://amp.pharm.mssm.edu/l1000fwd/vanilla/result/'+result_id
+		l1000fwd_results['result_url'] = 'https://maayanlab.cloud/l1000fwd/vanilla/result/'+result_id
 		l1000fwd_results['result_id'] = result_id
 
 		# Get Top
@@ -84,7 +84,7 @@ def plot(l1000fwd_results, plot_counter, nr_drugs=7, height=300):
 
 			# Display table
 			pd.set_option('max.colwidth', -1)
-			signature_dataframe['Signature ID'] = ['<a href="http://amp.pharm.mssm.edu/dmoa/sig/{x}" target="_blank">{x}</a>'.format(**locals()) for x in signature_dataframe['Signature ID']]
+			signature_dataframe['Signature ID'] = ['<a href="https://maayanlab.cloud/dmoa/sig/{x}" target="_blank">{x}</a>'.format(**locals()) for x in signature_dataframe['Signature ID']]
 			table_html = signature_dataframe.to_html(escape=False, classes='w-100')
 			display(Markdown('** {} Signatures: **'.format(direction.title())))
 			display(HTML('<style>.w-100{{width: 100% !important;}}</style><div style="max-height: 250px; overflow-y: auto; margin-bottom: 25px;">{}</div>'.format(table_html)))

@@ -67,7 +67,7 @@ def run(dataset, normalization='logCPM', z_score=True, nr_genes=1500, metadata_c
 
 		# Write file and get link
 		data.to_csv(filename, sep='\t')
-		clustergrammer_url = requests.post('https://amp.pharm.mssm.edu/clustergrammer/matrix_upload/', files={'file': open(filename, 'rb')}).text
+		clustergrammer_url = requests.post('https://maayanlab.cloud/clustergrammer/matrix_upload/', files={'file': open(filename, 'rb')}).text
 
 		# Report error
 		if not clustergrammer_url.startswith('http'):

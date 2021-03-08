@@ -124,7 +124,7 @@ def alignment_barchart(dataset):
 #############################################
 
 def get_enrichr_results(user_list_id, gene_set_libraries, overlappingGenes=True, geneset=None):
-	ENRICHR_URL = 'http://amp.pharm.mssm.edu/Enrichr/enrich'
+	ENRICHR_URL = 'https://maayanlab.cloud/Enrichr/enrich'
 	query_string = '?userListId=%s&backgroundType=%s'
 	results = []
 	for gene_set_library, label in gene_set_libraries.items():
@@ -237,7 +237,7 @@ def results_table(enrichment_dataframe, source_label, target_label):
 		enrichment_dataframe_subset = enrichment_dataframe_subset.sort_values(['FDR', 'pvalue']).rename(columns={'pvalue': 'P-value'}).drop_duplicates(source_label)
 
 		# Add links and bold for significant results
-		enrichment_dataframe_subset[source_label] = ['<a href="http://www.mirbase.org/cgi-bin/query.pl?terms={x}" target="_blank">{x}</a>'.format(**locals()) if '-miR-' in x else '<a href="http://amp.pharm.mssm.edu/Harmonizome/gene/{x}" target="_blank">{x}</a>'.format(**locals())for x in enrichment_dataframe_subset[source_label]]
+		enrichment_dataframe_subset[source_label] = ['<a href="http://www.mirbase.org/cgi-bin/query.pl?terms={x}" target="_blank">{x}</a>'.format(**locals()) if '-miR-' in x else '<a href="https://maayanlab.cloud/Harmonizome/gene/{x}" target="_blank">{x}</a>'.format(**locals())for x in enrichment_dataframe_subset[source_label]]
 		enrichment_dataframe_subset[source_label] = [rowData[source_label].replace('target="_blank">', 'target="_blank"><b>').replace('</a>', '*</b></a>') if rowData['FDR'] < 0.05 else rowData[source_label] for index, rowData in enrichment_dataframe_subset.iterrows()]
 
 		# Add rank

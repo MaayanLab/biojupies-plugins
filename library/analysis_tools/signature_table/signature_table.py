@@ -39,7 +39,7 @@ def plot(signature_table_results, plot_counter):
 	signature = signature_table_results['signature']
 	signature_txt = signature.to_csv(sep='\t')
 	# signature.index = ['<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene={x}" target="_blank">{x}</a>'.format(**locals()) for x in signature.index] # human
-	signature.index = ['<a href="http://amp.pharm.mssm.edu/Harmonizome/gene/'+x.upper()+'" target="_blank">'+x+'</a>' for x in signature.index] # mouse
+	signature.index = ['<a href="https://maayanlab.cloud/Harmonizome/gene/'+x.upper()+'" target="_blank">'+x+'</a>' for x in signature.index] # mouse
 	signature.index = [index.replace('target="_blank">', 'target="_blank"><b>*').replace('</a>', '</b></a>') if rowData['adj.P.Val'] < 0.05 else index for index, rowData in signature.iterrows()] # mouse
 	signature.index.name = 'Gene'
 	signature['logFC'] = round(signature['logFC'], ndigits=2)

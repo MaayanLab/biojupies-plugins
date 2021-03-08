@@ -1,5 +1,5 @@
 # BioJupies Plugins
-![Notebooks Generated](https://img.shields.io/badge/dynamic/json.svg?url=https://amp.pharm.mssm.edu/biojupies/api/stats?obj=notebook&label=notebooks%20generated&query=$.n&colorB=blue)
+![Notebooks Generated](https://img.shields.io/badge/dynamic/json.svg?url=https://maayanlab.cloud/biojupies/api/stats?obj=notebook&label=notebooks%20generated&query=$.n&colorB=blue)
 ![Datasets Available](https://img.shields.io/badge/RNA--seq%20datasets%20available-9145-green.svg)
 ![Plugins](https://img.shields.io/badge/analysis%20plugins-14-yellow.svg)
 
@@ -50,7 +50,7 @@ The BioJupies RNA-seq analysis toolbox currently contains the following plugins:
 ## Can I contribute my RNA-seq analysis plugins?
 Users are welcome to contribute RNA-seq data analysis plugins for integration in BioJupies.
 
-To contribute your plugin, follow our [submission tutorial](https://amp.pharm.mssm.edu/biojupies/contribute) or visit the [contribute page](https://github.com/MaayanLab/biojupies-plugins/tree/master/contribute) on this GitHub repository.
+To contribute your plugin, follow our [submission tutorial](https://maayanlab.cloud/biojupies/contribute) or visit the [contribute page](https://github.com/MaayanLab/biojupies-plugins/tree/master/contribute) on this GitHub repository.
 
 ## References
 [BioJupies: Automated Generation of Interactive Notebooks for RNA-seq Data Analysis in the Cloud](http://dx.doi.org/10.1016/j.cels.2018.10.007) Torre, D., Lachmann, A., and Ma’ayan, A. (Cell Systems, 2018)
