@@ -28,4 +28,4 @@ ma_plot_results = ma_plot.run(signature, pvalue_threshold="0.05", logfc_threshol
 ma_plot.plot(ma_plot_results)
 ```
 <img src="img/ma_plot-example.png"> 
-The MA Plot plug-in embeds an interactive scatter plot which displays the average expression and statistical significance of each gene calculated by performing differential gene expression analysis comparing samples in the Control group to samples in the Perturbation group. Every point in the plot represents a gene; additional information for each gene is available by hovering over it.
+The MA Plot plug-in embeds an interactive scatter plot which displays the average expression and log2-fold change of each gene calculated by performing differential gene expression analysis comparing samples in the Control group to samples in the Perturbation group. Every point in the plot represents a gene; additional information for each gene is available by hovering over it.
