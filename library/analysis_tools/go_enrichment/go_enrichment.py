@@ -28,7 +28,7 @@ import shared as s
 ########## 1. Run
 #############################################
 
-def run(enrichr_results, signature_label, plot_type='interactive', go_version='2018', sort_results_by='pvalue'):
+def run(enrichr_results, signature_label, plot_type='interactive', go_version='2025', sort_results_by='pvalue'):
 
 	# Libraries
 	go_version = str(go_version)

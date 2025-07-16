@@ -32,9 +32,9 @@ def run(enrichr_results, signature_label, plot_type='interactive', sort_results_
 
 	# Libraries
 	libraries = {
-		'KEGG_2016': 'KEGG Pathways',
-		'WikiPathways_2016': 'WikiPathways',
-		'Reactome_2016': 'Reactome Pathways'
+		'KEGG_2021_Human': 'KEGG Pathways',
+		'WikiPathways_2024_Human': 'WikiPathways',
+		'Reactome_Pathways_2024': 'Reactome Pathways'
 	}
 
 	# Get Enrichment Results

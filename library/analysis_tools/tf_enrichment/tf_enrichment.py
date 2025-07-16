@@ -31,7 +31,7 @@ def run(enrichr_results, signature_label):
 
 	# Libraries
 	libraries = {
-		'ChEA_2016': '### A. ChEA (experimentally validated targets)',
+		'ChEA_2022': '### A. ChEA (experimentally validated targets)',
 		'ENCODE_TF_ChIP-seq_2015': '### B. ENCODE (experimentally validated targets)',
 		'ARCHS4_TFs_Coexp': '### C. ARCHS4 (coexpressed genes)'
 	}
